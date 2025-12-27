@@ -1,0 +1,37 @@
+$ rpcclient -U "" 10.129.202.5
+
+Password for [WORKGROUP\]:
+rpcclient $> enumdomains
+name:[DEVSMB] idx:[0x0]
+name:[Builtin] idx:[0x1]
+rpcclient $> 
+
+
+rpcclient $> querydominfo
+Domain:		DEVOPS
+Server:		DEVSMB
+Comment:	InlaneFreight SMB server (Samba, Ubuntu)
+Total Users:	0
+Total Groups:	0
+Total Aliases:	0
+Sequence No:	1766869617
+Force Logoff:	-1
+Domain Server State:	0x1
+Server Role:	ROLE_DOMAIN_PDC
+Unknown 3:	0x1
+rpcclient $> 
+
+
+rpcclient $> netshareenumall
+netname: print$
+	remark:	Printer Drivers
+	path:	C:\var\lib\samba\printers
+	password:	
+netname: sambashare
+	remark:	InFreight SMB v3.1
+	path:	C:\home\sambauser\
+	password:	
+netname: IPC$
+	remark:	IPC Service (InlaneFreight SMB server (Samba, Ubuntu))
+	path:	C:\tmp
+	password:	

@@ -1,0 +1,22 @@
+$ sudo nmap 10.129.202.5 -sV -sC -p139,445
+
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-12-27 14:49 CST
+Nmap scan report for 10.129.202.5
+Host is up (0.0089s latency).
+
+PORT    STATE SERVICE     VERSION
+139/tcp open  netbios-ssn Samba smbd 4.6.2
+445/tcp open  netbios-ssn Samba smbd 4.6.2
+
+Host script results:
+| smb2-time: 
+|   date: 2025-12-27T20:48:56
+|_  start_date: N/A
+|_nbstat: NetBIOS name: DEVSMB, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
+| smb2-security-mode: 
+|   3:1:1: 
+|_    Message signing enabled but not required
+|_clock-skew: -25s
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 11.54 seconds

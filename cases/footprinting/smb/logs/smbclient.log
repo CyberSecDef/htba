@@ -1,0 +1,24 @@
+$ smbclient //10.129.202.5/sambashare
+Password for [WORKGROUP\htb-ac-2332050]:
+Try "help" to get a list of possible commands.
+
+smb: \> ls
+  .                                   D        0  Mon Nov  8 07:43:14 2021
+  ..                                  D        0  Mon Nov  8 09:53:19 2021
+  .profile                            H      807  Tue Feb 25 06:03:22 2020
+  contents                            D        0  Mon Nov  8 07:43:45 2021
+  .bash_logout                        H      220  Tue Feb 25 06:03:22 2020
+  .bashrc                             H     3771  Tue Feb 25 06:03:22 2020
+
+		5090944 blocks of size 1024. 1765988 blocks available
+smb: \> cd contents
+smb: \contents\> ls
+  .                                   D        0  Mon Nov  8 07:43:45 2021
+  ..                                  D        0  Mon Nov  8 07:43:14 2021
+  flag.txt                            N       38  Mon Nov  8 07:43:45 2021
+
+		5090944 blocks of size 1024. 1765988 blocks available
+
+
+smb: \contents\> more flag.txt
+getting file \contents\flag.txt of size 38 as /tmp/smbmore.g1IsYH (0.9 KiloBytes/sec) (average 0.9 KiloBytes/sec)
