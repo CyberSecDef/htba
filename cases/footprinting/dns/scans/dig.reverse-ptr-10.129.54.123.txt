@@ -1,0 +1,29 @@
+dig @10.129.54.123 -x 10.129.54.123 PTR +multi +stats +ttlunits
+
+; <<>> DiG 9.20.15-2-Debian <<>> @10.129.54.123 -x 10.129.54.123 PTR +multi +stats +ttlunits
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 40805
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+; COOKIE: 587d717c30d8e869010000006951994f37a9c434e65f16d2 (good)
+;; QUESTION SECTION:
+;123.54.129.10.in-addr.arpa. IN PTR
+
+;; AUTHORITY SECTION:
+10.IN-ADDR.ARPA.	1d IN SOA 10.IN-ADDR.ARPA. . (
+				0          ; serial
+				28800      ; refresh (8 hours)
+				7200       ; retry (2 hours)
+				604800     ; expire (1 week)
+				86400      ; minimum (1 day)
+				)
+
+;; Query time: 287 msec
+;; SERVER: 10.129.54.123#53(10.129.54.123) (UDP)
+;; WHEN: Sun Dec 28 15:56:08 EST 2025
+;; MSG SIZE  rcvd: 133

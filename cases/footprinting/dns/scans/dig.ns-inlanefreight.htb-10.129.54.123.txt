@@ -1,0 +1,26 @@
+dig @10.129.54.123 inlanefreight.htb NS +multi +stats +ttlunits
+
+; <<>> DiG 9.20.15-2-Debian <<>> @10.129.54.123 inlanefreight.htb NS +multi +stats +ttlunits
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 31269
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 2
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+; COOKIE: c521a9615dabcdba0100000069519b5da176eb7a844ed352 (good)
+;; QUESTION SECTION:
+;inlanefreight.htb.	IN NS
+
+;; ANSWER SECTION:
+inlanefreight.htb.	1w IN NS ns.inlanefreight.htb.
+
+;; ADDITIONAL SECTION:
+ns.inlanefreight.htb.	1w IN A	127.0.0.1
+
+;; Query time: 35 msec
+;; SERVER: 10.129.54.123#53(10.129.54.123) (UDP)
+;; WHEN: Sun Dec 28 16:04:54 EST 2025
+;; MSG SIZE  rcvd: 107

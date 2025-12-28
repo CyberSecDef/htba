@@ -1,0 +1,23 @@
+dig @10.129.54.123 CHAOS TXT version.bind +multi +stats +ttlunits
+
+; <<>> DiG 9.20.15-2-Debian <<>> @10.129.54.123 CHAOS TXT version.bind +multi +stats +ttlunits
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 8516
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+; COOKIE: 7049ba777e9855e8010000006951990f7ee3a09a3041aba9 (good)
+;; QUESTION SECTION:
+;version.bind.		CH TXT
+
+;; ANSWER SECTION:
+version.bind.		0s CH TXT "9.16.1-Ubuntu"
+
+;; Query time: 31 msec
+;; SERVER: 10.129.54.123#53(10.129.54.123) (UDP)
+;; WHEN: Sun Dec 28 15:55:04 EST 2025
+;; MSG SIZE  rcvd: 95

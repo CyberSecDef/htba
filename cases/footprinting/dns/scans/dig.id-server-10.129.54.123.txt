@@ -1,0 +1,29 @@
+dig @10.129.54.123 CHAOS TXT id.server +multi +stats +ttlunits
+
+; <<>> DiG 9.20.15-2-Debian <<>> @10.129.54.123 CHAOS TXT id.server +multi +stats +ttlunits
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 22597
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+; COOKIE: 04eebf02321354150100000069519929948e5afbbcf9d564 (good)
+;; QUESTION SECTION:
+;id.server.		CH TXT
+
+;; AUTHORITY SECTION:
+id.server.		1d CH SOA id.server. hostmaster.id.server. (
+				0          ; serial
+				28800      ; refresh (8 hours)
+				7200       ; retry (2 hours)
+				604800     ; expire (1 week)
+				86400      ; minimum (1 day)
+				)
+
+;; Query time: 27 msec
+;; SERVER: 10.129.54.123#53(10.129.54.123) (UDP)
+;; WHEN: Sun Dec 28 15:55:30 EST 2025
+;; MSG SIZE  rcvd: 113

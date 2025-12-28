@@ -1,0 +1,32 @@
+dig @10.129.54.123 inlanefreight.htb AXFR +multi +stats +ttlunits
+
+; <<>> DiG 9.20.15-2-Debian <<>> @10.129.54.123 inlanefreight.htb AXFR +multi +stats +ttlunits
+; (1 server found)
+;; global options: +cmd
+inlanefreight.htb.	1w IN SOA inlanefreight.htb. root.inlanefreight.htb. (
+				2          ; serial
+				604800     ; refresh (1 week)
+				86400      ; retry (1 day)
+				2419200    ; expire (4 weeks)
+				604800     ; minimum (1 week)
+				)
+inlanefreight.htb.	1w IN TXT "MS=ms97310371"
+inlanefreight.htb.	1w IN TXT "atlassian-domain-verification=t1rKCy68JFszSdCKVpw64A1QksWdXuYFUeSXKU"
+inlanefreight.htb.	1w IN TXT "v=spf1 include:mailgun.org include:_spf.google.com include:spf.protection.outlook.com include:_spf.atlassian.net ip4:10.129.124.8 ip4:10.129.127.2 ip4:10.129.42.106 ~all"
+inlanefreight.htb.	1w IN NS ns.inlanefreight.htb.
+app.inlanefreight.htb.	1w IN A	10.129.18.15
+dev.inlanefreight.htb.	1w IN A	10.12.0.1
+internal.inlanefreight.htb. 1w IN A 10.129.1.6
+mail1.inlanefreight.htb. 1w IN A 10.129.18.201
+ns.inlanefreight.htb.	1w IN A	127.0.0.1
+inlanefreight.htb.	1w IN SOA inlanefreight.htb. root.inlanefreight.htb. (
+				2          ; serial
+				604800     ; refresh (1 week)
+				86400      ; retry (1 day)
+				2419200    ; expire (4 weeks)
+				604800     ; minimum (1 week)
+				)
+;; Query time: 27 msec
+;; SERVER: 10.129.54.123#53(10.129.54.123) (TCP)
+;; WHEN: Sun Dec 28 16:05:06 EST 2025
+;; XFR size: 11 records (messages 1, bytes 560)

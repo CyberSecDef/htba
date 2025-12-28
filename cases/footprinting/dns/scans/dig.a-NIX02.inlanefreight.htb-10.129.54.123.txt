@@ -1,0 +1,29 @@
+dig @10.129.54.123 NIX02.inlanefreight.htb A +multi +stats +ttlunits
+
+; <<>> DiG 9.20.15-2-Debian <<>> @10.129.54.123 NIX02.inlanefreight.htb A +multi +stats +ttlunits
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 45901
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+; COOKIE: f3c86d8e6b0b33c10100000069519b7c41891e3c97d70662 (good)
+;; QUESTION SECTION:
+;NIX02.inlanefreight.htb. IN A
+
+;; AUTHORITY SECTION:
+inlanefreight.htb.	1w IN SOA inlanefreight.htb. root.inlanefreight.htb. (
+				2          ; serial
+				604800     ; refresh (1 week)
+				86400      ; retry (1 day)
+				2419200    ; expire (4 weeks)
+				604800     ; minimum (1 week)
+				)
+
+;; Query time: 31 msec
+;; SERVER: 10.129.54.123#53(10.129.54.123) (UDP)
+;; WHEN: Sun Dec 28 16:05:26 EST 2025
+;; MSG SIZE  rcvd: 121

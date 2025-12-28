@@ -1,0 +1,20 @@
+dig @10.129.54.123 . NS +multi +stats +ttlunits
+
+; <<>> DiG 9.20.15-2-Debian <<>> @10.129.54.123 . NS +multi +stats +ttlunits
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: REFUSED, id: 1870
+;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+; COOKIE: cd0f6dc066baa0220100000069519938145788c550fec733 (good)
+;; QUESTION SECTION:
+;.			IN NS
+
+;; Query time: 27 msec
+;; SERVER: 10.129.54.123#53(10.129.54.123) (UDP)
+;; WHEN: Sun Dec 28 15:55:45 EST 2025
+;; MSG SIZE  rcvd: 56

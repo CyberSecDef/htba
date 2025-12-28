@@ -1,0 +1,39 @@
+dig @10.129.54.123 -c CHAOS hostname.bind NS +multi +stats +ttlunits
+
+; <<>> DiG 9.20.15-2-Debian <<>> @10.129.54.123 -c CHAOS hostname.bind NS +multi +stats +ttlunits
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 43358
+;; flags: qr aa rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+; COOKIE: b068f21681532ec80100000069519a8b5f9381f965349014 (good)
+;; QUESTION SECTION:
+;hostname.bind.			CH	A
+
+;; AUTHORITY SECTION:
+hostname.bind.		86400	CH	SOA	hostname.bind. hostmaster.hostname.bind. 0 28800 7200 604800 86400
+
+;; Query time: 27 msec
+;; SERVER: 10.129.54.123#53(10.129.54.123) (UDP)
+;; WHEN: Sun Dec 28 16:01:24 EST 2025
+;; MSG SIZE  rcvd: 117
+
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: REFUSED, id: 53611
+;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+; COOKIE: b068f21681532ec80100000069519a8b5f9381f965349014 (good)
+;; QUESTION SECTION:
+;NS.			CH A
+
+;; Query time: 27 msec
+;; SERVER: 10.129.54.123#53(10.129.54.123) (UDP)
+;; WHEN: Sun Dec 28 16:01:24 EST 2025
+;; MSG SIZE  rcvd: 59
