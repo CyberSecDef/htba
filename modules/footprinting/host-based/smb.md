@@ -364,6 +364,6 @@ Common tools for SMB enumeration:
 - **smbclient** - Command-line SMB client
 - **enum4linux** - SMB enumeration tool
 - **nmap scripts** - smb-enum-shares, smb-os-discovery, etc.
-- **crackmapexec** - Advanced SMB enumeration and exploitation
+- **CrackMapExec** - Advanced SMB enumeration and exploitation
 
 > **TODO**: Add practical enumeration examples and command outputs
