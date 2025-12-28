@@ -117,15 +117,15 @@ Next Task:
 
             PORT   STATE    SERVICE REASON              VERSION
             53/tcp filtered domain  no-response
-            53/udp open     domain  udp-response ttl 63 (unknown banner: HTB{GoTtgUnyze9Psw4vGjcuMpHRp})
+            53/udp open     domain  udp-response ttl 63 (unknown banner: HTB{XXXXXXXXXXXXXXXXXXX})
             | dns-nsid: 
-            |_  bind.version: HTB{GoTtgUnyze9Psw4vGjcuMpHRp}
+            |_  bind.version: HTB{XXXXXXXXXXXXXXXXXXX}
 
             Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
             Nmap done: 1 IP address (1 host up) scanned in 17.88 seconds
 
         Conclusion:
-            The DNS server version is "HTB{GoTtgUnyze9Psw4vGjcuMpHRp}"
+            The DNS server version is "HTB{XXXXXXXXXXXXXXXXXXX}"
 
 Next Task:
     Now our client wants to know if it is possible to find out the version of the running services.

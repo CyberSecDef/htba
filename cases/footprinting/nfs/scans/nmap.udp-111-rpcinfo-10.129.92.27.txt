@@ -1,0 +1,31 @@
+nmap -sU -Pn -n -T4 --script rpcinfo -p 111 10.129.92.27
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-12-28 15:24 -0500
+Nmap scan report for 10.129.92.27
+Host is up (0.025s latency).
+
+PORT    STATE SERVICE
+111/udp open  rpcbind
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  3,4          111/tcp6  rpcbind
+|   100000  3,4          111/udp6  rpcbind
+|   100003  3           2049/udp   nfs
+|   100003  3           2049/udp6  nfs
+|   100003  3,4         2049/tcp   nfs
+|   100003  3,4         2049/tcp6  nfs
+|   100005  1,2,3      34893/tcp   mountd
+|   100005  1,2,3      39174/udp   mountd
+|   100005  1,2,3      41411/tcp6  mountd
+|   100005  1,2,3      43034/udp6  mountd
+|   100021  1,3,4      34203/tcp6  nlockmgr
+|   100021  1,3,4      38562/udp6  nlockmgr
+|   100021  1,3,4      43021/tcp   nlockmgr
+|   100021  1,3,4      50607/udp   nlockmgr
+|   100227  3           2049/tcp   nfs_acl
+|   100227  3           2049/tcp6  nfs_acl
+|   100227  3           2049/udp   nfs_acl
+|_  100227  3           2049/udp6  nfs_acl
+
+Nmap done: 1 IP address (1 host up) scanned in 0.31 seconds

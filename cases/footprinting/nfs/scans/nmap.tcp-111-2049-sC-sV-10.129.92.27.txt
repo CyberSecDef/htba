@@ -1,0 +1,11 @@
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-12-28 14:58 -0500
+Nmap scan report for 10.129.92.27
+Host is up (0.030s latency).
+
+PORT     STATE SERVICE VERSION
+111/tcp  open  rpcbind 2-4 (RPC #100000)
+|_rpcinfo: ERROR: Script execution failed (use -d to debug)
+2049/tcp open  nfs     3-4 (RPC #100003)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 6.70 seconds

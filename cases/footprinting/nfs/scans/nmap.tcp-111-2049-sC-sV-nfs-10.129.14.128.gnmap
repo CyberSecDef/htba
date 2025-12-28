@@ -1,0 +1,4 @@
+# Nmap 7.98 scan initiated Sun Dec 28 15:05:33 2025 as: /usr/lib/nmap/nmap --privileged -sV -sC -Pn -n -T4 -p 111,2049 --script nfs* -oG - 10.129.14.128
+Host: 10.129.14.128 ()	Status: Up
+Host: 10.129.14.128 ()	Ports: 111/filtered/tcp//rpcbind///, 2049/filtered/tcp//nfs///
+# Nmap done at Sun Dec 28 15:05:35 2025 -- 1 IP address (1 host up) scanned in 2.30 seconds

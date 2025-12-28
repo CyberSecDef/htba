@@ -1,0 +1,12 @@
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-12-28 14:56 -0500
+Nmap scan report for 10.129.92.27
+Host is up (0.026s latency).
+
+PORT     STATE SERVICE
+111/udp  open  rpcbind
+| nfs-showmount: 
+|   /var/nfs 10.0.0.0/8
+|_  /mnt/nfsshare 10.0.0.0/8
+2049/udp open  nfs
+
+Nmap done: 1 IP address (1 host up) scanned in 0.29 seconds

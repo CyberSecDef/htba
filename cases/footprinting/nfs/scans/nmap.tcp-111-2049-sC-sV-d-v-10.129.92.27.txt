@@ -1,0 +1,93 @@
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-12-28 14:59 -0500
+--------------- Timing report ---------------
+  hostgroups: min 1, max 100000
+  rtt-timeouts: init 500, min 100, max 1250
+  max-scan-delay: TCP 10, UDP 1000, SCTP 10
+  parallelism: min 0, max 0
+  max-retries: 6, host-timeout: 0
+  min-rate: 0, max-rate: 0
+---------------------------------------------
+NSE: Using Lua 5.4.
+NSE: Arguments from CLI: 
+NSE: Loaded 158 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 14:59
+Completed NSE at 14:59, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 14:59
+Completed NSE at 14:59, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 14:59
+Completed NSE at 14:59, 0.00s elapsed
+Initiating SYN Stealth Scan at 14:59
+Scanning 10.129.92.27 [2 ports]
+Packet capture filter (device tun0): dst host 10.10.14.122 and (icmp or icmp6 or ((tcp or udp or sctp) and (src host 10.129.92.27)))
+Discovered open port 111/tcp on 10.129.92.27
+Discovered open port 2049/tcp on 10.129.92.27
+Completed SYN Stealth Scan at 14:59, 0.05s elapsed (2 total ports)
+Overall sending rates: 37.98 packets / s, 1670.97 bytes / s.
+Initiating Service scan at 14:59
+Scanning 2 services on 10.129.92.27
+Completed Service scan at 14:59, 6.06s elapsed (2 services on 1 host)
+NSE: Script scanning 10.129.92.27.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 14:59
+NSE: Starting address-info against 10.129.92.27.
+NSE: Finished address-info against 10.129.92.27.
+NSE: Starting rpcinfo against 10.129.92.27:111.
+NSE: Finished rpcinfo against 10.129.92.27:111.
+Completed NSE at 14:59, 0.07s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 14:59
+NSE: Starting rpc-grind against 10.129.92.27:111.
+NSE: Finished rpc-grind against 10.129.92.27:111.
+Completed NSE at 14:59, 0.07s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 14:59
+Completed NSE at 14:59, 0.00s elapsed
+Nmap scan report for 10.129.92.27
+Host is up, received user-set (0.033s latency).
+Scanned at 2025-12-28 14:59:45 EST for 6s
+
+PORT     STATE SERVICE REASON         VERSION
+111/tcp  open  rpcbind syn-ack ttl 63 2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  3,4          111/tcp6  rpcbind
+|   100000  3,4          111/udp6  rpcbind
+|   100003  3           2049/udp   nfs
+|   100003  3           2049/udp6  nfs
+|   100003  3,4         2049/tcp   nfs
+|   100003  3,4         2049/tcp6  nfs
+|   100005  1,2,3      34893/tcp   mountd
+|   100005  1,2,3      39174/udp   mountd
+|   100005  1,2,3      41411/tcp6  mountd
+|   100005  1,2,3      43034/udp6  mountd
+|   100021  1,3,4      34203/tcp6  nlockmgr
+|   100021  1,3,4      38562/udp6  nlockmgr
+|   100021  1,3,4      43021/tcp   nlockmgr
+|   100021  1,3,4      50607/udp   nlockmgr
+|   100227  3           2049/tcp   nfs_acl
+|   100227  3           2049/tcp6  nfs_acl
+|   100227  3           2049/udp   nfs_acl
+|_  100227  3           2049/udp6  nfs_acl
+2049/tcp open  nfs     syn-ack ttl 63 3-4 (RPC #100003)
+Final times for host: srtt: 33281 rttvar: 24963  to: 133133
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 14:59
+Completed NSE at 14:59, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 14:59
+Completed NSE at 14:59, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 14:59
+Completed NSE at 14:59, 0.00s elapsed
+Read from /usr/share/nmap: nmap-protocols nmap-service-probes nmap-services.
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 6.56 seconds
+           Raw packets sent: 2 (88B) | Rcvd: 2 (88B)
