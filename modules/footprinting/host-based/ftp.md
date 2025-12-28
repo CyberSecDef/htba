@@ -400,4 +400,4 @@ FTP remains widely deployed despite fundamental security weaknesses. Misconfigur
 
 The document demonstrates that **FTP enumeration is trivial when configuration hygiene is poor**, and exploitation often follows immediately once access is discovered.
 
-Effective defense requires **intentional configuration, continuous auditing, and elimination of legacy assumptions** .
+Effective defense requires **intentional configuration, continuous auditing, and elimination of legacy assumptions**.
