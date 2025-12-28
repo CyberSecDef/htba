@@ -78,9 +78,9 @@ Samba enables Linux/Unix hosts to participate in SMB networks.
 * Multiple workgroups can coexist on a network
 * NetBIOS provides naming and discovery services
 * Name resolution handled by:
-
   * Local registration
-  * **NBNS / WINS** (Windows Internet Name Service)
+  * WINS (Windows Internet Name Service)
+  * Broadcast queries on the local network
 
 ---
 
@@ -354,4 +354,16 @@ Effective security requires:
 * Layered enumeration
 * Defensive discipline
 
-In SMB environments, *visibility equals vulnerability*—and anonymous visibility is the most dangerous of all .
+In SMB environments, *visibility equals vulnerability*—and anonymous visibility is the most dangerous of all.
+
+---
+
+## Enumeration Techniques
+
+Common tools for SMB enumeration:
+- **smbclient** - Command-line SMB client
+- **enum4linux** - SMB enumeration tool
+- **nmap scripts** - smb-enum-shares, smb-os-discovery, etc.
+- **crackmapexec** - Advanced SMB enumeration and exploitation
+
+> **TODO**: Add practical enumeration examples and command outputs

@@ -106,3 +106,8 @@ sudo nmap 10.129.2.0/24 -F -oN tnet.T5 -T 5
 - **Monitoring:** Use --stats-every for progress. Avoid in production to prevent DoS.
 - **Best Practices:** Start with -T 4 for speed, adjust RTT based on network latency (ping test first). Save results (-oA) for comparison.
 - **Further Reading:** Timing templates details at <https://nmap.org/book/performance-timing-templates.html>. Full performance guide at <https://nmap.org/book/man-performance.html>.
+
+> **TODO**: Document additional performance-related tools and techniques:
+> - Masscan for high-speed scanning
+> - Rustscan as a faster alternative
+> - Comparing scan results across multiple tools

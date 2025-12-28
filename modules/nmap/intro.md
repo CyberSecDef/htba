@@ -91,3 +91,12 @@ Nmap (Network Mapper): Open-source tool in C/C++/Python/Lua for network analysis
 - `-T <0-5>`: Timing.
 
 **General Tips**: Root for raw sockets. Install: `sudo apt install nmap`. Practice on HTB. Combine with Wireshark for packets. For large scans: `-T4 --min-rate 1000`. Module: Network Enumeration with Nmap.
+
+## Related Topics
+- [Enumeration Principles](enumeration.md)
+- [Performance Optimization](performance.md)
+- [Firewall Evasion Techniques](firewall_and_ids_evasion.md)
+
+## Practical Applications
+- [FTP Enumeration Case](../../cases/footprinting/ftp/tasks.md)
+- [Nibbles Initial Scan](../../cases/nibbles/enumeration/nibbles.md)
