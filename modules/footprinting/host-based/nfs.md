@@ -261,11 +261,6 @@ NFS is powerful but inherently **trust-based and fragile** when misconfigured. E
 
 When accessible, NFS often represents a **direct bridge from external access to internal compromise**, making it a high-priority service during enumeration and a high-risk service when improperly secured .
 
-
-
-
-Below is a **clean, practitioner-ready checklist** distilled directly from the previous NFS report. It is designed for **use during an engagement** (enumeration → exploitation → documentation) and can also double as a **defensive audit checklist** if read bottom-up.
-
 ---
 
 # NFS Enumeration & Security Checklist

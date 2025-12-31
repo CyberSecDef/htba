@@ -10,6 +10,3 @@
 
 ## Question 4: What is the FQDN of the host where the last octet ends with "x.x.x.203"?
 
-
-
-for sub in $(cat ./subdomains-top1million-110000.txt);do dig $sub.inlanefreight.htb @10.129.54.123 | grep -v ';\|SOA' | sed -r '/^\s*$/d' | grep $sub | tee -a subdomains.txt;done

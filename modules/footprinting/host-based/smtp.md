@@ -293,11 +293,6 @@ Improperly secured SMTP servers—especially open relays—remain one of the **f
 
 ---
 
-
-Below is a **red team–focused SMTP attack playbook** written for **authorized security testing only**. It is intentionally framed as a **decision-driven, objective-oriented guide** rather than a click-by-click exploit manual. The emphasis is on **strategy, signals, impact validation, and documentation**, not abuse.
-
----
-
 # SMTP Red Team Attack Playbook
 
 **(Authorized Security Testing Only)**
@@ -884,3 +879,697 @@ SMTP defense is about **protecting trust**.
 
 Attackers do not need zero-days—only **misplaced assumptions**. Strong detection, fast response, and disciplined configuration management turn SMTP from a liability into a monitored, controlled service.
 
+---
+
+# Red Team Playbook
+
+## SNMP Exploitation (v1 / v2c / v3)
+
+---
+
+## 1. Objectives
+
+Primary red-team objectives when targeting SNMP:
+
+* Identify **unauthenticated or weakly authenticated SNMP services**
+* Extract **high-fidelity system intelligence**
+* Abuse **read-write SNMP access** where present
+* Enable **lateral movement, privilege escalation, or persistence**
+* Minimize noise while maximizing information gain
+
+SNMP is rarely the final exploit—but it is one of the **most powerful reconnaissance accelerators** available to an attacker.
+
+---
+
+## 2. Threat Model Overview
+
+### Why SNMP Is High Value
+
+* Often enabled by default
+* Frequently overlooked by defenders
+* Legacy versions still widely deployed
+* Exposes **authoritative system data**
+* Operates over UDP (low visibility, low friction)
+
+### Common Red-Team Wins
+
+* Full OS and patch enumeration
+* Installed software inventories
+* Usernames and email addresses
+* Network topology insights
+* Writable configuration abuse
+
+---
+
+## 3. Phase 1 – Discovery & Footprinting
+
+### 3.1 Port Identification
+
+**Targets:**
+
+* UDP 161 – SNMP queries
+* UDP 162 – SNMP traps
+
+Actions:
+
+* Scan for open or filtered UDP 161
+* Treat “filtered” as potentially accessible (UDP lies)
+* Check both IPv4 and IPv6 exposure
+
+Key indicators:
+
+* SNMP banners
+* Response timing differences
+* ICMP unreachable behavior
+
+---
+
+### 3.2 Version Identification
+
+Determine:
+
+* SNMPv1
+* SNMPv2c
+* SNMPv3
+
+Operational value:
+
+* v1/v2c = plaintext, community-based
+* v3 = auth/encryption, higher complexity
+
+If v1 or v2c is present, **assume intelligence leakage is likely**.
+
+---
+
+## 4. Phase 2 – Community String Acquisition
+
+### 4.1 Default Community Testing
+
+Test immediately:
+
+* `public`
+* `private`
+* `community`
+* `snmp`
+* Organization or hostname-based guesses
+
+This step alone succeeds more often than defenders expect.
+
+---
+
+### 4.2 Community String Brute Forcing
+
+Use wordlists targeting:
+
+* Default values
+* Hostnames
+* Environment names
+* Role-based naming patterns
+
+Operational guidance:
+
+* SNMP does not rate-limit well
+* UDP makes detection harder
+* Large environments tend to reuse patterns
+
+Success condition:
+
+* Any valid read-only or read-write community string
+
+---
+
+## 5. Phase 3 – Read-Only Enumeration (Primary Value)
+
+### 5.1 System Identification
+
+Enumerate:
+
+* OS name and version
+* Kernel build
+* Architecture
+* Hostname
+* System uptime
+* Boot parameters
+
+Why this matters:
+
+* Precise exploit selection
+* Patch-level accuracy
+* Zero guesswork
+
+---
+
+### 5.2 User & Identity Intelligence
+
+Extract:
+
+* Contact emails
+* Usernames embedded in system metadata
+* Naming conventions
+
+These often correlate directly with:
+
+* Mail accounts
+* VPN users
+* Active Directory identities
+
+---
+
+### 5.3 Software & Package Enumeration
+
+Query OIDs revealing:
+
+* Installed packages
+* Running services
+* Version numbers
+* Third-party software
+
+This supports:
+
+* Vulnerability mapping
+* Exploit chaining
+* Privilege escalation planning
+
+SNMP frequently reveals **more than authenticated shell access would**.
+
+---
+
+### 5.4 Network Intelligence
+
+Enumerate:
+
+* Interfaces
+* IP addresses
+* Routing information
+* Listening services
+* Open ports (indirectly)
+
+Use this to:
+
+* Map internal networks
+* Identify pivot points
+* Select lateral movement targets
+
+---
+
+## 6. Phase 4 – Write Access Exploitation (High Impact)
+
+### 6.1 Detect Read-Write Access
+
+Check for:
+
+* `rwcommunity`
+* `rwuser noauth`
+* Overly permissive views
+
+If write access exists, SNMP becomes **remote administration**.
+
+---
+
+### 6.2 Configuration Abuse
+
+Potential actions:
+
+* Modify service parameters
+* Disable security controls
+* Change logging behavior
+* Trigger service restarts
+* Alter network settings
+
+These actions can:
+
+* Cause denial of service
+* Enable persistence
+* Mask attacker activity
+
+---
+
+### 6.3 Persistence via SNMP
+
+Possible persistence mechanisms:
+
+* Modify startup configurations
+* Alter monitored scripts
+* Change trap destinations
+* Enable additional management interfaces
+
+SNMP persistence is subtle and often ignored during IR.
+
+---
+
+## 7. Phase 5 – Trap Abuse & Evasion
+
+### 7.1 Trap Intelligence
+
+If traps are enabled:
+
+* Identify trap destinations
+* Infer monitoring infrastructure
+* Learn what events defenders care about
+
+This informs:
+
+* Evasion timing
+* Noise reduction strategies
+
+---
+
+### 7.2 Trap Manipulation (Advanced)
+
+In misconfigured environments:
+
+* Redirect traps to attacker-controlled hosts
+* Suppress alerts
+* Generate false signals
+
+This is rare—but devastating when possible.
+
+---
+
+## 8. Phase 6 – Chaining & Lateral Movement
+
+### 8.1 Exploit Correlation
+
+Use SNMP-derived data to:
+
+* Match CVEs precisely
+* Target unpatched services
+* Identify weak configurations
+
+SNMP turns blind exploitation into **surgical strikes**.
+
+---
+
+### 8.2 Credential Discovery
+
+SNMP data often reveals:
+
+* Usernames
+* Email formats
+* Service accounts
+* Role identifiers
+
+These directly feed:
+
+* Password spraying
+* Phishing
+* Kerberos attacks
+* VPN compromise
+
+---
+
+## 9. Phase 7 – Operational Security (OPSEC)
+
+### 9.1 Noise Management
+
+Best practices:
+
+* Prefer read-only enumeration
+* Avoid write operations unless required
+* Limit OID breadth
+* Avoid repeated brute forcing
+
+SNMP is stealthy—don’t ruin it.
+
+---
+
+### 9.2 Indicators to Avoid Triggering
+
+Avoid:
+
+* Massive OID sweeps during business hours
+* Write operations on production systems
+* Trap flooding
+* Repeated invalid community attempts from same IP
+
+---
+
+## 10. Reporting & Evidence
+
+Document:
+
+* SNMP versions exposed
+* Community strings discovered
+* OIDs accessed
+* Sensitive data retrieved
+* Business impact
+* Exploitation potential (even if not executed)
+
+SNMP findings often justify **high-severity risk ratings**.
+
+---
+
+## 11. Red-Team Success Criteria
+
+* Valid community string obtained
+* Full system inventory enumerated
+* Network intelligence extracted
+* Vulnerability exploitation accelerated
+* Minimal detection footprint
+
+---
+
+## 12. Common Defender Failures (Observed)
+
+* Leaving SNMPv1/v2c enabled
+* Using default community strings
+* Assuming “internal only” is safe
+* Ignoring SNMP in monitoring
+* Treating read-only as harmless
+
+SNMP failures are **quiet, persistent, and systemic**.
+
+---
+
+## 13. Final Takeaway
+
+SNMP is one of the **most underappreciated attack surfaces** in enterprise environments. When exposed, it offers attackers something rare: **truth**—accurate, structured, and complete system intelligence with minimal effort.
+
+A disciplined red team treats SNMP as a **first-stop reconnaissance oracle** and a potential **configuration-level exploit path**, not an afterthought.
+
+---
+
+# Blue Team Guide
+
+## SNMP Detection, Hardening, and Incident Response
+
+*(SNMPv1 / v2c / v3)*
+
+---
+
+## 1. Defensive Objectives
+
+Blue-team priorities for SNMP:
+
+* **Detect unauthorized SNMP access early**
+* **Eliminate legacy SNMP exposure**
+* **Prevent information disclosure via OIDs**
+* **Block write-level SNMP abuse**
+* **Reduce attacker reconnaissance capabilities**
+* **Ensure SNMP does not become a stealth intel oracle**
+
+SNMP should be treated as a **privileged management interface**, not a background service.
+
+---
+
+## 2. Threat Model Summary
+
+### Why SNMP Is Dangerous When Misconfigured
+
+* Uses UDP (low visibility)
+* Legacy versions transmit secrets in plaintext
+* Community strings act as reusable passwords
+* “Read-only” access still leaks critical system intelligence
+* Rarely monitored by default
+
+### Common Attacker Goals
+
+* Enumerate OS, kernel, and packages
+* Identify users and email formats
+* Map internal networks
+* Accelerate exploit selection
+* Abuse read-write access for persistence or sabotage
+
+---
+
+## 3. Detection Strategy
+
+### 3.1 Network-Level Detection (Highest Value)
+
+#### Monitor UDP Traffic on:
+
+* **161** – SNMP queries
+* **162** – SNMP traps
+
+#### Alert On:
+
+* SNMP requests from non-management networks
+* External SNMP traffic (always suspicious)
+* High-frequency SNMP queries
+* SNMP access outside maintenance windows
+* SNMP queries spanning large OID ranges
+
+**Key Insight:**
+Legitimate SNMP traffic is **predictable**. Anything novel is suspect.
+
+---
+
+### 3.2 SNMP Authentication & Access Logs
+
+Enable and centralize logs for:
+
+* Successful SNMP queries
+* Failed community string attempts
+* Version negotiation (v1/v2c/v3)
+* Write operations (`SET` requests)
+
+#### High-Risk Indicators
+
+* Multiple community strings tested
+* Sudden success after failures
+* Read-write operations on production systems
+* Queries originating from user workstations
+
+---
+
+### 3.3 OID Behavior Monitoring
+
+Track access to:
+
+* System OIDs (`.1.3.6.1.2.1.1`)
+* Host resources (`.1.3.6.1.2.1.25`)
+* Software inventory OIDs
+* Network interface OIDs
+
+**Red-team pattern:**
+Broad OID walks (`snmpwalk`) rather than narrow polling.
+
+---
+
+### 3.4 Trap Monitoring
+
+Monitor:
+
+* Trap destination changes
+* Unexpected trap volume
+* Traps sent to non-SIEM systems
+
+Traps reveal:
+
+* What defenders monitor
+* What events attackers may try to suppress
+
+---
+
+## 4. Hardening Strategy (Authoritative)
+
+### 4.1 Eliminate Legacy SNMP (Critical)
+
+#### Disable Completely:
+
+* SNMPv1
+* SNMPv2c
+
+If business constraints prevent removal:
+
+* Isolate aggressively
+* Restrict views
+* Treat as temporary technical debt
+
+Legacy SNMP is **indefensible** in modern threat models.
+
+---
+
+### 4.2 Enforce SNMPv3 Only
+
+SNMPv3 must use:
+
+* Authentication (`auth`)
+* Encryption (`priv`)
+* Unique user credentials
+* Strong cryptographic algorithms
+
+Reject:
+
+* `noAuthNoPriv`
+* Shared SNMPv3 users
+* Default usernames
+
+---
+
+### 4.3 Community String Controls (If v2c Exists)
+
+If SNMPv2c **cannot yet be removed**:
+
+* Use **long, random community strings**
+* Bind community strings to:
+
+  * Specific IPs
+  * Management VLANs
+* Separate read-only and read-write strings
+* Rotate community strings regularly
+* Never reuse strings across environments
+
+Community strings are **passwords**—treat them that way.
+
+---
+
+### 4.4 Restrict OID Views (Mandatory)
+
+Limit exposed OIDs to:
+
+* Only what monitoring actually needs
+
+Explicitly deny:
+
+* Software inventory
+* User/contact metadata
+* Network topology data
+* Host resource details
+
+If SNMP does not need it, **do not expose it**.
+
+---
+
+### 4.5 Disable Write Access Wherever Possible
+
+Audit and remove:
+
+* `rwcommunity`
+* `rwcommunity6`
+* `rwuser noauth`
+
+Write-level SNMP access equals **unaudited remote administration**.
+
+---
+
+## 5. Network Architecture Controls
+
+### 5.1 Segmentation
+
+* Place SNMP agents behind management VLANs
+* Block SNMP from user networks
+* Restrict SNMP managers via firewall rules
+* Explicitly deny SNMP at network borders
+
+SNMP should never be “flat-network accessible.”
+
+---
+
+### 5.2 IPv6 Considerations
+
+Explicitly audit:
+
+* `rwcommunity6`
+* IPv6 SNMP listeners
+* Firewall parity between IPv4 and IPv6
+
+IPv6 often re-introduces SNMP exposure accidentally.
+
+---
+
+## 6. Logging & SIEM Integration
+
+### Required Log Fields
+
+* Source IP
+* SNMP version
+* Community string (hashed, not plaintext)
+* OID requested
+* Read vs write operation
+* Timestamp
+
+### SIEM Use Cases
+
+* Community brute-force detection
+* SNMP access from new hosts
+* Write operations outside maintenance
+* OID enumeration patterns
+
+SNMP logs are **high-signal when collected correctly**.
+
+---
+
+## 7. Incident Response Playbook (SNMP)
+
+### 7.1 Triage
+
+1. Identify SNMP source IPs
+2. Confirm SNMP version and access level
+3. Determine OIDs accessed
+4. Identify whether write operations occurred
+
+---
+
+### 7.2 Containment
+
+* Block SNMP traffic at firewall
+* Rotate community strings or credentials
+* Disable SNMP temporarily if needed
+* Preserve logs for forensics
+
+---
+
+### 7.3 Eradication
+
+* Remove legacy SNMP versions
+* Restrict OID views
+* Remove write permissions
+* Audit all SNMP configurations enterprise-wide
+
+---
+
+### 7.4 Recovery
+
+* Re-enable SNMP with hardened config
+* Validate monitoring functionality
+* Increase alerting sensitivity temporarily
+* Document findings and lessons learned
+
+---
+
+## 8. Audit & Continuous Improvement
+
+### Regular Audits Should Verify:
+
+* No SNMPv1/v2c exposure
+* No default community strings
+* No write access in production
+* OID views are minimal
+* SNMP traffic sources are known
+
+### Metrics to Track
+
+* % of assets running SNMPv3
+* Number of SNMP-exposed hosts
+* Write-enabled SNMP instances
+* SNMP detections per quarter
+
+---
+
+## 9. Common Blue-Team Failures
+
+* Assuming “internal” equals safe
+* Leaving SNMPv2c for “later”
+* Treating read-only as harmless
+* Forgetting IPv6
+* Not logging SNMP activity
+
+Attackers love SNMP because defenders forget it exists.
+
+---
+
+## 10. Executive Takeaway
+
+SNMP is one of the **highest-impact low-effort reconnaissance vectors** available to attackers when misconfigured.
+
+A mature blue team:
+
+* Eliminates legacy SNMP
+* Enforces SNMPv3 with least privilege
+* Monitors SNMP like admin access
+* Treats OIDs as sensitive data
+
+If SNMP exists, it must be **deliberate, minimal, and monitored**.
+
+---

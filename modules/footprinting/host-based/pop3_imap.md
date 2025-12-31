@@ -274,10 +274,6 @@ Proper understanding of protocol mechanics, combined with disciplined enumeratio
 
 ---
 
-Below is a **professional red-team playbook for mail server compromise**, written to be **engagement-ready**, exam-aligned, and usable as a **repeatable operational checklist**. It assumes legal authorization and an internal or external penetration test context.
-
----
-
 # Red Team Playbook
 
 ## Mail Server Compromise (IMAP / POP3 / SMTP)
@@ -618,10 +614,6 @@ Final report should include:
 
 Mail compromise is rarely isolated—show the chain.
 
-
----
-
-Below is a **Blue-Team Detection & Hardening Companion** designed to directly counter the red-team mail server playbook you requested earlier. This is written to be **operational**, **SOC-ready**, and suitable for **defensive architecture reviews, IR runbooks, and audit remediation plans**.
 
 ---
 
