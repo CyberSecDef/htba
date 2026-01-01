@@ -1,0 +1,68 @@
+use auxiliary/admin/oracle/oraenum
+
+msf auxiliary(admin/oracle/oraenum) > set DBPASS tiger
+DBPASS => tiger
+
+msf auxiliary(admin/oracle/oraenum) > set DBUSER scott
+DBUSER => scott
+
+msf auxiliary(admin/oracle/oraenum) > set RHOST 10.129.205.19
+RHOST => 10.129.205.19
+
+msf auxiliary(admin/oracle/oraenum) > exploit
+[-] ORA-12514: TNS:listener does not currently know of service requested in connect descriptor
+[-] Auxiliary failed: NoMethodError undefined method `each' for nil
+[-] Call stack:
+[-]   /usr/share/metasploit-framework/modules/auxiliary/admin/oracle/oraenum.rb:53:in `run'
+[*] Auxiliary module execution completed
+msf auxiliary(admin/oracle/oraenum) > set SID XE
+SID => XE
+msf auxiliary(admin/oracle/oraenum) > exploit
+[*] ORA-00942: table or view does not exist
+[-] It appears you do not have sufficient rights to perform the check
+[*] Running Oracle Enumeration....
+[*] The versions of the Components are:
+[*]     Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+[*]     PL/SQL Release 11.2.0.2.0 - Production
+[*]     CORE    11.2.0.2.0      Production
+[*]     TNS for 64-bit Windows: Version 11.2.0.2.0 - Production
+[*]     NLSRTL Version 11.2.0.2.0 - Production
+[*] Auditing:
+[*]     Database Auditing is enabled!
+[*]     Auditing of SYS Operations is enabled!
+[*] Security Settings:
+[*]     SQL92 Security restriction on SELECT is Enabled
+[*]     UTL Directory Access is set to 
+[*]     Audit log is saved at 
+[*] Password Policy:
+[*] ORA-00942: table or view does not exist
+[-] It appears you do not have sufficient rights to perform the check
+[*] ORA-00942: table or view does not exist
+[-] It appears you do not have sufficient rights to perform the check
+[*] ORA-00942: table or view does not exist
+[-] It appears you do not have sufficient rights to perform the check
+[*] ORA-00942: table or view does not exist
+[-] It appears you do not have sufficient rights to perform the check
+[*] ORA-00942: table or view does not exist
+[-] It appears you do not have sufficient rights to perform the check
+[*] ORA-00942: table or view does not exist
+[-] It appears you do not have sufficient rights to perform the check
+[*] ORA-00942: table or view does not exist
+[-] It appears you do not have sufficient rights to perform the check
+[*] ORA-00942: table or view does not exist
+[-] It appears you do not have sufficient rights to perform the check
+[*] ORA-00942: table or view does not exist
+[-] It appears you do not have sufficient rights to perform the check
+[*] ORA-00942: table or view does not exist
+[-] It appears you do not have sufficient rights to perform the check
+[*] ORA-00942: table or view does not exist
+[-] It appears you do not have sufficient rights to perform the check
+[*] ORA-00942: table or view does not exist
+[-] It appears you do not have sufficient rights to perform the check
+[*] ORA-00942: table or view does not exist
+[-] It appears you do not have sufficient rights to perform the check
+[*] Default password check:
+[*] ORA-00942: table or view does not exist
+[-] It appears you do not have sufficient rights to perform the check
+[*] Auxiliary module execution completed
+msf auxiliary(admin/oracle/oraenum) > 

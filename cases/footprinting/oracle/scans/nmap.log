@@ -1,0 +1,80 @@
+nmap -F 10.129.205.19
+
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-12-31 17:18 -0500
+Nmap scan report for 10.129.205.19
+Host is up (0.028s latency).
+Not shown: 92 closed tcp ports (reset)
+PORT      STATE SERVICE
+80/tcp    open  http
+135/tcp   open  msrpc
+139/tcp   open  netbios-ssn
+445/tcp   open  microsoft-ds
+49152/tcp open  unknown
+49153/tcp open  unknown
+49154/tcp open  unknown
+49155/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 1.03 seconds
+
+nmap -sV 10.129.205.19
+
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-12-31 17:19 -0500
+Nmap scan report for 10.129.205.19
+Host is up (0.028s latency).
+Not shown: 987 closed tcp ports (reset)
+PORT      STATE SERVICE      VERSION
+80/tcp    open  http         Microsoft IIS httpd 8.5
+135/tcp   open  msrpc        Microsoft Windows RPC
+139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds Microsoft Windows Server 2008 R2 - 2012 microsoft-ds
+1521/tcp  open  oracle-tns   Oracle TNS listener 11.2.0.2.0 (unauthorized)
+5985/tcp  open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+49152/tcp open  msrpc        Microsoft Windows RPC
+49153/tcp open  msrpc        Microsoft Windows RPC
+49154/tcp open  msrpc        Microsoft Windows RPC
+49155/tcp open  msrpc        Microsoft Windows RPC
+49159/tcp open  oracle-tns   Oracle TNS listener (requires service name)
+49160/tcp open  msrpc        Microsoft Windows RPC
+49161/tcp open  msrpc        Microsoft Windows RPC
+Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 118.85 seconds
+
+nmap -sV -A -p 1521 10.129.205.19
+
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-12-31 17:22 -0500
+Nmap scan report for 10.129.205.19
+Host is up (0.027s latency).
+
+PORT     STATE SERVICE    VERSION
+1521/tcp open  oracle-tns Oracle TNS listener 11.2.0.2.0 (unauthorized)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: general purpose
+Running: Microsoft Windows 2012
+OS CPE: cpe:/o:microsoft:windows_server_2012:r2
+OS details: Microsoft Windows Server 2012 or 2012 R2
+Network Distance: 2 hops
+
+TRACEROUTE (using port 80/tcp)
+HOP RTT      ADDRESS
+1   28.27 ms 10.10.14.1
+2   28.39 ms 10.129.205.19
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 9.27 seconds
+
+nmap -sV --script oracle* -p 1521 10.129.205.19
+
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-12-31 17:22 -0500
+Nmap scan report for 10.129.205.19
+Host is up (0.028s latency).
+
+PORT     STATE SERVICE    VERSION
+1521/tcp open  oracle-tns Oracle TNS listener 11.2.0.2.0 (unauthorized)
+| oracle-sid-brute: 
+|_  XE
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 50.59 seconds
+

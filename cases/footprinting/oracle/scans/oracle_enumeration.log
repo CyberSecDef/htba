@@ -1,0 +1,101 @@
+Python cx_Oracle enumeration using scott/tiger credentials
+
+Enumerated Users:
+Username: ANONYMOUS, User ID: 35, Created: 2014-05-29 13:18:19
+Username: APEX_040000, User ID: 47, Created: 2014-05-29 13:23:10
+Username: APEX_PUBLIC_USER, User ID: 45, Created: 2014-05-29 13:23:10
+Username: APPQOSSYS, User ID: 30, Created: 2014-05-29 13:15:57
+Username: CTXSYS, User ID: 32, Created: 2014-05-29 13:17:50
+Username: DBSNMP, User ID: 29, Created: 2014-05-29 13:15:55
+Username: DIP, User ID: 14, Created: 2014-05-29 13:11:34
+Username: FLOWS_FILES, User ID: 44, Created: 2014-05-29 13:23:10
+Username: HR, User ID: 43, Created: 2014-05-29 13:21:53
+Username: MDSYS, User ID: 42, Created: 2014-05-29 13:19:55
+Username: ORACLE_OCM, User ID: 21, Created: 2014-05-29 13:12:05
+Username: OUTLN, User ID: 9, Created: 2014-05-29 13:10:45
+Username: SCOTT, User ID: 48, Created: 2018-01-01 14:31:36
+Username: SYS, User ID: 0, Created: 2014-05-29 13:10:44
+Username: SYSTEM, User ID: 5, Created: 2014-05-29 13:10:44
+Username: XDB, User ID: 34, Created: 2014-05-29 13:18:19
+Username: XS$NULL, User ID: 2147483638, Created: 2014-05-29 13:19:51
+
+SCOTT Privileges:
+- role: CONNECT
+  - system privilege: CREATE CLUSTER
+  - system privilege: CREATE INDEXTYPE
+  - system privilege: CREATE OPERATOR
+  - system privilege: CREATE PROCEDURE
+  - system privilege: CREATE SEQUENCE
+  - system privilege: CREATE SESSION
+  - system privilege: CREATE TABLE
+  - system privilege: CREATE TRIGGER
+  - system privilege: CREATE TYPE
+- role: RESOURCE
+  - system privilege: CREATE CLUSTER
+  - system privilege: CREATE INDEXTYPE
+  - system privilege: CREATE OPERATOR
+  - system privilege: CREATE PROCEDURE
+  - system privilege: CREATE SEQUENCE
+  - system privilege: CREATE SESSION
+  - system privilege: CREATE TABLE
+  - system privilege: CREATE TRIGGER
+  - system privilege: CREATE TYPE
+
+Note: SCOTT user does not have DBA privileges to access sys.user$ table directly for password hash extraction.
+Multiple privilege escalation techniques were attempted but failed due to insufficient privileges.
+
+
+======================================================================================
+COMPREHENSIVE ORACLE ENUMERATION WITH scott/tiger CREDENTIALS
+======================================================================================
+
+Target: 10.129.205.19:1521
+SID: XE
+Oracle Version: 11.2.0.2.0
+OS: Microsoft Windows Server 2012 or 2012 R2
+
+Vulnerabilities Identified:
+- TNS Poisoning (CVE-2012-1675): VULNERABLE
+
+Valid Credentials Found:
+- scott/tiger (Standard user with CONNECT and RESOURCE roles)
+
+Database Users Enumerated (via ALL_USERS):
+1. ANONYMOUS (User ID: 35, Created: 2014-05-29)
+2. APEX_040000 (User ID: 47, Created: 2014-05-29)  
+3. APEX_PUBLIC_USER (User ID: 45, Created: 2014-05-29)
+4. APPQOSSYS (User ID: 30, Created: 2014-05-29)
+5. CTXSYS (User ID: 32, Created: 2014-05-29) - LOCKED
+6. DBSNMP (User ID: 29, Created: 2014-05-29) - LOCKED
+7. DIP (User ID: 14, Created: 2014-05-29) - LOCKED
+8. FLOWS_FILES (User ID: 44, Created: 2014-05-29)
+9. HR (User ID: 43, Created: 2014-05-29) - LOCKED  
+10. MDSYS (User ID: 42, Created: 2014-05-29)
+11. ORACLE_OCM (User ID: 21, Created: 2014-05-29) - LOCKED
+12. OUTLN (User ID: 9, Created: 2014-05-29) - LOCKED
+13. SCOTT (User ID: 48, Created: 2018-01-01)
+14. SYS (User ID: 0, Created: 2014-05-29)
+15. SYSTEM (User ID: 5, Created: 2014-05-29) - LOCKED
+16. XDB (User ID: 34, Created: 2014-05-29)
+17. XS$NULL (User ID: 2147483638, Created: 2014-05-29)
+
+SCOTT Account Privileges:
+- Roles: CONNECT, RESOURCE
+- Cannot access sys.user$ (insufficient privileges)
+- Cannot use UTL_FILE, UTL_HTTP, DBMS_SCHEDULER, or other privileged packages
+- No DBA or SYSDBA privileges
+- Privilege escalation attempts FAILED
+
+Limitations:
+- SCOTT user lacks SELECT_CATALOG_ROLE or DBA privileges
+- Cannot query sys.user$ to extract password hashes
+- All privilege escalation techniques blocked
+- Most admin accounts (SYSTEM, HR, DBSNMP, CTXSYS, DIP, ORACLE_OCM, OUTLN) are LOCKED
+
+Note: To retrieve DBSNMP password hash, DBA-level access or SYSDBA connection is required.
+Alternative approaches would require:
+1. Finding another privileged account with default credentials
+2. Exploiting a privilege escalation vulnerability
+3. Using Oracle password cracking against the TNS listener
+4. Network sniffing or other lateral movement techniques
+

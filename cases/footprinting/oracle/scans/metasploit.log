@@ -1,0 +1,7 @@
+auxiliary/scanner/oracle/tnslsnr_version
+
+[*] Processing /tmp/mcp_msf_resource.rc for ERB directives.
+[*] 10.129.205.19:1521 - 10.129.205.19:1521 Oracle - Version: Unknown - Error code 1189 - The listener could not authenticate the user
+[*] 10.129.205.19:1521 - Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+
