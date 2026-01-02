@@ -1,0 +1,45 @@
+Alex Account Enumeration Summary
+==================================
+
+Credentials: alex:lol123!mD
+Source: NFS ticket file 4238791283782.txt
+
+SMB Access Verified: ✅
+WinRM Access: ❌ 
+RDP Access: ❌
+
+SMB Share Access:
+- devshare: READ, WRITE
+- Users: READ ONLY
+- IPC$: READ ONLY
+- ADMIN$: NO ACCESS
+- C$: NO ACCESS
+
+Key Findings:
+1. important.txt in devshare contains: sa:87N1ns@slls83
+2. Alex user has SQL Server Management Studio installed
+3. Alex home directory contains:
+   - Desktop: SQL Server Management Studio shortcut
+   - Documents/SQL Server Management Studio/Code Snippets (empty)
+   - TechSupport folder (same as NFS share, contains ticket files)
+   - devshare symlink/mount
+
+Credentials Found:
+- alex:lol123!mD (SMTP/SMB verified)
+- sa:87N1ns@slls83 (presumed SQL Server SA account)
+
+HTB Password: NOT YET FOUND
+
+Attempted Passwords for HTB:
+- 87N1ns@slls83 ❌
+- lol123!mD ❌
+- HTB ❌
+- Password1 ❌
+- Welcome1 ❌
+
+Additional Information Needed:
+- SQL Server connection (port 1433 closed externally)
+- Registry/configuration files with credentials
+- Other user directories in Users share
+- Alternate authentication methods
+
