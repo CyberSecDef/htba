@@ -1,0 +1,4 @@
+# Nmap 7.98 scan initiated Sat Jan  3 15:32:57 2026 as: /usr/lib/nmap/nmap --privileged -oA nmap.log -sC -sV 94.237.56.175
+Host: 94.237.56.175 (94-237-56-175.uk-lon1.upcloud.host)	Status: Up
+Host: 94.237.56.175 (94-237-56-175.uk-lon1.upcloud.host)	Ports: 19/filtered/tcp//chargen///, 22/open/tcp//ssh//OpenSSH 9.2p1 Debian 2+deb12u3 (protocol 2.0)/, 111/open/tcp//rpcbind//2-4 (RPC #100000)/, 139/filtered/tcp//netbios-ssn///, 445/filtered/tcp//microsoft-ds///, 31038/filtered/tcp/////, 32775/filtered/tcp//sometimes-rpc13///, 38292/filtered/tcp//landesk-cba///, 44442/filtered/tcp//coldfusion-auth///, 50000/open/tcp//http//Apache httpd 2.4.41 ((Ubuntu))/, 51493/filtered/tcp/////, 52848/filtered/tcp/////, 54328/open/tcp//http//nginx 1.19.2/, 57294/filtered/tcp/////	Ignored State: closed (986)
+# Nmap done at Sat Jan  3 15:33:39 2026 -- 1 IP address (1 host up) scanned in 42.36 seconds

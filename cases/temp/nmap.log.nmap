@@ -1,0 +1,36 @@
+# Nmap 7.98 scan initiated Sat Jan  3 15:32:57 2026 as: /usr/lib/nmap/nmap --privileged -oA nmap.log -sC -sV 94.237.56.175
+Nmap scan report for 94-237-56-175.uk-lon1.upcloud.host (94.237.56.175)
+Host is up (0.10s latency).
+Not shown: 986 closed tcp ports (reset)
+PORT      STATE    SERVICE         VERSION
+19/tcp    filtered chargen
+22/tcp    open     ssh             OpenSSH 9.2p1 Debian 2+deb12u3 (protocol 2.0)
+| ssh-hostkey: 
+|   256 ef:4e:ce:eb:54:10:ae:1f:12:74:62:3c:cc:3a:0c:5c (ECDSA)
+|_  256 43:10:e1:0a:ff:f3:90:89:6b:29:67:c4:3b:82:80:76 (ED25519)
+111/tcp   open     rpcbind         2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  3,4          111/tcp6  rpcbind
+|_  100000  3,4          111/udp6  rpcbind
+139/tcp   filtered netbios-ssn
+445/tcp   filtered microsoft-ds
+31038/tcp filtered unknown
+32775/tcp filtered sometimes-rpc13
+38292/tcp filtered landesk-cba
+44442/tcp filtered coldfusion-auth
+50000/tcp open     http            Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Site doesn't have a title (text/html).
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+51493/tcp filtered unknown
+52848/tcp filtered unknown
+54328/tcp open     http            nginx 1.19.2
+|_http-server-header: nginx/1.19.2
+|_http-title: Site doesn't have a title (text/html).
+57294/tcp filtered unknown
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Jan  3 15:33:39 2026 -- 1 IP address (1 host up) scanned in 42.36 seconds
