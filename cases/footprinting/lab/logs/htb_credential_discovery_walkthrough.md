@@ -1,33 +1,33 @@
 # HTB Credential Discovery Walkthrough
 
 ## Objective
-Discover the HTB user's password on the Windows Server 2019 system (10.129.202.41) by accessing the local SQL Server database through RDP session.
+Discover the HTB user's password on the Windows Server 2019 system (X.X.X.X) by accessing the local SQL Server database through RDP session.
 
 ## Background
 Previous enumeration revealed:
-- Alex credentials: alex:lol123!mD (discovered in NFS ticket file)
-- SQL Server SA credentials: sa:87N1ns@slls83 (discovered in devshare/important.txt)
+- XXXXXX credentials: XXXXXX:XXXXXXXXX (discovered in NFS ticket file)
+- SQL Server SA credentials: XXXXXX:XXXXXX@XXXXXX (discovered in devshare/important.txt)
 - SQL Server not accessible remotely (ports 1433/1434 closed)
-- MS SQL Server Management Studio installed on alex's desktop
-- Alex account has SMB access but no WinRM access
+- MS SQL Server Management Studio installed on XXXX's desktop
+- XXXXXX account has SMB access but no WinRM access
 
 ## Discovery Process
 
 ### Step 1: Remote Desktop Connection
 **Tool:** Remote Desktop Protocol (RDP)  
-**Target:** 10.129.202.41:3389  
-**Credentials:** alex / lol123!mD
+**Target:** X.X.X.X:3389  
+**Credentials:** XXXX / XXXXXXXXX
 
 **Action:**
-Initiated RDP connection to the Windows Server 2019 system using alex's credentials.
+Initiated RDP connection to the Windows Server 2019 system using XXXXXX's credentials.
 
 **Command (conceptual):**
 ```bash
-xfreerdp /v:10.129.202.41 /u:alex /p:lol123!mD /cert-ignore
+xfreerdp /v:X.X.X.X /u:XXXXXX /p:XXXXXXXXX /cert-ignore
 ```
 
 **Result:**
-✅ Successfully authenticated and logged into Windows Server 2019 as alex  
+✅ Successfully authenticated and logged into Windows Server 2019 as XXXXXX  
 ✅ Desktop session established with full GUI access
 
 **Evidence Source:** User-executed RDP session  
@@ -40,12 +40,12 @@ xfreerdp /v:10.129.202.41 /u:alex /p:lol123!mD /cert-ignore
 **File:** Microsoft SQL Server Management Studio 18.lnk
 
 **Action:**
-Located the SQL Server Management Studio shortcut on alex's desktop (previously identified during SMB enumeration of alex's Desktop folder).
+Located the SQL Server Management Studio shortcut on XXXXXX's desktop (previously identified during SMB enumeration of XXXXXX's Desktop folder).
 
 **Previous Evidence:**
 From SMB enumeration (smbclient):
 ```
-./Users/alex/Desktop
+./Users/XXXXXX/Desktop
   Microsoft SQL Server Management Studio 18.lnk      A     1237  Wed Nov 10 18:34:50 2021
 ```
 
@@ -69,13 +69,13 @@ Right-clicked the desktop shortcut to launch SQL Server Management Studio as adm
 ### Step 4: Connect to Local SQL Server Instance
 **Server Type:** Database Engine  
 **Server Name:** localhost (or . or (local))  
-**Authentication:** Windows Authentication (using current alex session)
+**Authentication:** Windows Authentication (using current XXXXXX session)
 
 **Connection Details:**
 - **Option - Windows Authentication:**
   - Server name: localhost
   - Authentication: Windows Authentication
-  - Login: WINMEDIUM\alex (automatic from RDP session)
+  - Login: WINMEDIUM\XXXXXX (auXXXXXXatic from RDP session)
 
 **Action:**
 Connected to the local SQL Server instance using available credentials.
@@ -102,7 +102,7 @@ Expanded the "Databases" node in Object Explorer to view all available databases
   - **accounts** ← Target database discovered
 
 **Result:**
-✅ Custom "accounts" database identified  
+✅ CusXXXXXX "accounts" database identified  
 ✅ Database appears to contain application/user account information
 
 ---
@@ -173,7 +173,7 @@ WHERE name LIKE '%HTB%';
 ---
 
 ### Step 9: Results Retrieval
-**Query Results Window:** Bottom pane of SQL Server Management Studio
+**Query Results Window:** BotXXXXXX pane of SQL Server Management Studio
 
 **Result Format:**
 ```
@@ -219,19 +219,19 @@ Captured screenshot of SQL Server Management Studio showing:
 **Password:** [Retrieved from accounts.dbo.devsacc table]  
 **Source:** SQL Server database 'accounts', table 'dbo.devsacc'  
 **Method:** SQL query via local SQL Server Management Studio session  
-**Access Method:** RDP session using alex:lol123!mD credentials
+**Access Method:** RDP session using XXXXXX:XXXXXXXXX credentials
 
 ### Attack Chain Summary
 ```
 1. NFS Share Enumeration
-   └── ticket4238791283782.txt
-       └── alex:lol123!mD credentials
+   └── ticketXXXXXXXXX.txt
+       └── XXXXXX:XXXXXXXXX credentials
            └── SMB Access to devshare
                └── important.txt
-                   └── sa:87N1ns@slls83 (SQL SA credentials)
+                   └── XXXXXX:XXXXXX@XXXXXX (SQL SA credentials)
 
 2. RDP Access
-   └── alex:lol123!mD
+   └── XXXXXX:XXXXXXXXX
        └── Desktop access
            └── SQL Server Management Studio
                └── Local SQL Server connection
@@ -250,7 +250,7 @@ Captured screenshot of SQL Server Management Studio showing:
 
 2. **Overprivileged User Account**
    - **Severity:** HIGH
-   - **Finding:** alex account can RDP to server and access sensitive databases
+   - **Finding:** XXXXXX account can RDP to server and access sensitive databases
    - **Impact:** Standard user has access to credential storage database
    - **Recommendation:** Implement principle of least privilege, restrict database access
 
@@ -277,7 +277,7 @@ Captured screenshot of SQL Server Management Studio showing:
 ## Technical Details
 
 **System Information:**
-- **Target:** 10.129.202.41
+- **Target:** X.X.X.X
 - **Hostname:** WINMEDIUM
 - **OS:** Windows Server 2019 Build 17763
 - **Domain:** WINMEDIUM (workgroup)
@@ -285,7 +285,7 @@ Captured screenshot of SQL Server Management Studio showing:
 
 **Access Path:**
 - **Entry Point:** RDP (port 3389)
-- **Authentication:** alex:lol123!mD
+- **Authentication:** XXXXXX:XXXXXXXXX
 - **Privilege Level:** Standard user with database access
 - **Tools Used:** SQL Server Management Studio 18
 
@@ -294,7 +294,7 @@ Captured screenshot of SQL Server Management Studio showing:
 - **Database:** accounts
 - **Table:** dbo.devsacc
 - **Columns:** name, password (minimum confirmed)
-- **Authentication:** Windows Authentication OR SQL Authentication (sa:87N1ns@slls83)
+- **Authentication:** Windows Authentication OR SQL Authentication (XXXXXX:XXXXXX@XXXXXX)
 
 ---
 
@@ -304,17 +304,17 @@ To verify HTB credentials discovered:
 
 1. **SMB Verification:**
    ```bash
-   netexec smb 10.129.202.41 -u 'HTB' -p '[PASSWORD]'
+   netexec smb X.X.X.X -u 'HTB' -p '[PASSWORD]'
    ```
 
 2. **WinRM Verification:**
    ```bash
-   netexec winrm 10.129.202.41 -u 'HTB' -p '[PASSWORD]'
+   netexec winrm X.X.X.X -u 'HTB' -p '[PASSWORD]'
    ```
 
 3. **RDP Verification:**
    ```bash
-   xfreerdp /v:10.129.202.41 /u:HTB /p:'[PASSWORD]' /cert-ignore
+   xfreerdp /v:X.X.X.X /u:HTB /p:'[PASSWORD]' /cert-ignore
    ```
 
 ---
@@ -323,11 +323,11 @@ To verify HTB credentials discovered:
 
 1. **Source Evidence:**
    - Log: nfs.log (NFS mount and ticket file discovery)
-   - File: nfs_ticket_4238791283782.txt (alex credentials)
+   - File: nfs_ticket_XXXXXXXXX.txt (XXXXXX credentials)
    - File: devshare_listing.txt (SA credentials in important.txt)
 
 2. **Intermediate Evidence:**
-   - Log: smb_alex.log (SMB access with alex account)
+   - Log: smb_XXXXXX.log (SMB access with XXXXXX account)
    - Log: winrm.log (HTB user existence confirmation)
    - Log: nmap.log (RDP service enumeration)
 
@@ -342,9 +342,9 @@ To verify HTB credentials discovered:
 Successfully discovered HTB user credentials by leveraging a multi-step attack chain:
 1. Initial access via NFS share enumeration
 2. Credential discovery in ticket files
-3. Lateral movement to SMB with alex account
+3. Lateral movement to SMB with XXXXXX account
 4. Additional credential discovery (SQL SA)
-5. RDP access with alex credentials
+5. RDP access with XXXXXX credentials
 6. Local SQL Server access via Management Studio
 7. Database enumeration and credential extraction
 

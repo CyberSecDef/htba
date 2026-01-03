@@ -5,20 +5,20 @@ Started on November 10, 2021 at 01:27 PM London time GMT (GMT+0200)
 01:27 PM | Operator: Hello,. 
  
 So what brings you here today?
-01:27 PM | alex: hello
-01:27 PM | Operator: Hey alex!
+01:27 PM | XXXXXX: hello
+01:27 PM | Operator: Hey XXXXXX!
 01:27 PM | Operator: What do you need help with?
-01:36 PM | alex: I run into an issue with the web config file on the system for the smtp server. do you mind to take a look at the config?
+01:36 PM | XXXXXX: I run into an issue with the web config file on the system for the smtp server. do you mind to take a look at the config?
 01:38 PM | Operator: Of course
-01:42 PM | alex: here it is:
+01:42 PM | XXXXXX: here it is:
 
  1smtp {
  2    host=smtp.web.dev.inlanefreight.htb
  3    #port=25
  4    ssl=true
- 5    user="alex"
- 6    password="lol123!mD"
- 7    from="alex.g@web.dev.inlanefreight.htb"
+ 5    user="XXXXXX"
+ 6    password="XXXXXXXXX"
+ 7    from="XXXXXX.g@web.dev.inlanefreight.htb"
  8}
  9
 10securesocial {

@@ -1,10 +1,10 @@
 # HTB User Discovery Walkthrough
 
 ## Objective
-Enumerate the Windows file server (10.129.202.41) to confirm the existence of the HTB user account and identify potential authentication methods for credential discovery.
+Enumerate the Windows file server (X.X.X.X) to confirm the existence of the HTB user account and identify potential authentication methods for credential discovery.
 
 ## Target Information
-- **IP Address:** 10.129.202.41
+- **IP Address:** X.X.X.X
 - **Hostname:** WINMEDIUM
 - **Operating System:** Windows 10 / Server 2019 Build 17763
 - **Domain:** WINMEDIUM (workgroup configuration)
@@ -17,12 +17,12 @@ Enumerate the Windows file server (10.129.202.41) to confirm the existence of th
 
 **Command:**
 ```bash
-netexec winrm 10.129.202.41
+netexec winrm X.X.X.X
 ```
 
 **Results:**
 ```
-WINRM    10.129.202.41   5985   WINMEDIUM   [*] Windows 10 / Server 2019 Build 17763 (name:WINMEDIUM) (domain:WINMEDIUM)
+WINRM    X.X.X.X   5985   WINMEDIUM   [*] Windows 10 / Server 2019 Build 17763 (name:WINMEDIUM) (domain:WINMEDIUM)
 ```
 
 **Analysis:**
@@ -36,13 +36,13 @@ WINRM    10.129.202.41   5985   WINMEDIUM   [*] Windows 10 / Server 2019 Build 1
 ### Step 2: Null Session Authentication Test
 **Command:**
 ```bash
-netexec winrm 10.129.202.41 -u '' -p ''
+netexec winrm X.X.X.X -u '' -p ''
 ```
 
 **Results:**
 ```
-WINRM    10.129.202.41   5985   WINMEDIUM   [*] Windows 10 / Server 2019 Build 17763 (name:WINMEDIUM) (domain:WINMEDIUM)
-WINRM    10.129.202.41   5985   WINMEDIUM   [-] WINMEDIUM\: SpnegoError (16): Operation not supported or available
+WINRM    X.X.X.X   5985   WINMEDIUM   [*] Windows 10 / Server 2019 Build 17763 (name:WINMEDIUM) (domain:WINMEDIUM)
+WINRM    X.X.X.X   5985   WINMEDIUM   [-] WINMEDIUM\: SpnegoError (16): Operation not supported or available
 ```
 
 **Analysis:**
@@ -55,13 +55,13 @@ WINRM    10.129.202.41   5985   WINMEDIUM   [-] WINMEDIUM\: SpnegoError (16): Op
 ### Step 3: Guest Account Authentication Test
 **Command:**
 ```bash
-netexec winrm 10.129.202.41 -u 'guest' -p ''
+netexec winrm X.X.X.X -u 'guest' -p ''
 ```
 
 **Results:**
 ```
-WINRM    10.129.202.41   5985   WINMEDIUM   [*] Windows 10 / Server 2019 Build 17763 (name:WINMEDIUM) (domain:WINMEDIUM)
-WINRM    10.129.202.41   5985   WINMEDIUM   [-] WINMEDIUM\guest: SpnegoError (16): Operation not supported or available
+WINRM    X.X.X.X   5985   WINMEDIUM   [*] Windows 10 / Server 2019 Build 17763 (name:WINMEDIUM) (domain:WINMEDIUM)
+WINRM    X.X.X.X   5985   WINMEDIUM   [-] WINMEDIUM\guest: SpnegoError (16): Operation not supported or available
 ```
 
 **Analysis:**
@@ -74,13 +74,13 @@ WINRM    10.129.202.41   5985   WINMEDIUM   [-] WINMEDIUM\guest: SpnegoError (16
 ### Step 4: Administrator Account Enumeration
 **Command:**
 ```bash
-netexec winrm 10.129.202.41 -u 'administrator' -p ''
+netexec winrm X.X.X.X -u 'administrator' -p ''
 ```
 
 **Results:**
 ```
-WINRM    10.129.202.41   5985   WINMEDIUM   [*] Windows 10 / Server 2019 Build 17763 (name:WINMEDIUM) (domain:WINMEDIUM)
-WINRM    10.129.202.41   5985   WINMEDIUM   [-] WINMEDIUM\administrator: SpnegoError (16): Operation not supported or available
+WINRM    X.X.X.X   5985   WINMEDIUM   [*] Windows 10 / Server 2019 Build 17763 (name:WINMEDIUM) (domain:WINMEDIUM)
+WINRM    X.X.X.X   5985   WINMEDIUM   [-] WINMEDIUM\administrator: SpnegoError (16): Operation not supported or available
 ```
 
 **Analysis:**
@@ -93,13 +93,13 @@ WINRM    10.129.202.41   5985   WINMEDIUM   [-] WINMEDIUM\administrator: SpnegoE
 ### Step 5: HTB User Account Enumeration (CRITICAL FINDING)
 **Command:**
 ```bash
-netexec winrm 10.129.202.41 -u 'HTB' -p ''
+netexec winrm X.X.X.X -u 'HTB' -p ''
 ```
 
 **Results:**
 ```
-WINRM    10.129.202.41   5985   WINMEDIUM   [*] Windows 10 / Server 2019 Build 17763 (name:WINMEDIUM) (domain:WINMEDIUM)
-WINRM    10.129.202.41   5985   WINMEDIUM   [-] WINMEDIUM\HTB: SpnegoError (16): Operation not supported or available
+WINRM    X.X.X.X   5985   WINMEDIUM   [*] Windows 10 / Server 2019 Build 17763 (name:WINMEDIUM) (domain:WINMEDIUM)
+WINRM    X.X.X.X   5985   WINMEDIUM   [-] WINMEDIUM\HTB: SpnegoError (16): Operation not supported or available
 ```
 
 **Analysis:**
@@ -188,7 +188,7 @@ Based on the WinRM enumeration, the following attack vectors should be explored:
 
 ## Conclusion
 
-The WinRM enumeration successfully confirmed the existence of the HTB user account on the WINMEDIUM server (10.129.202.41). While the password remains unknown, the user discovery establishes a confirmed target for credential acquisition efforts. The consistent SPNEGO authentication errors across all tested accounts (guest, administrator, HTB) indicate proper security configuration that requires valid credentials for WinRM access.
+The WinRM enumeration successfully confirmed the existence of the HTB user account on the WINMEDIUM server (X.X.X.X). While the password remains unknown, the user discovery establishes a confirmed target for credential acquisition efforts. The consistent SPNEGO authentication errors across all tested accounts (guest, administrator, HTB) indicate proper security configuration that requires valid credentials for WinRM access.
 
 **Critical Discovery:** HTB user exists as a local account on WINMEDIUM, confirmed via WinRM authentication attempts.
 
