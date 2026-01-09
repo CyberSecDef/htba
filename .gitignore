@@ -161,7 +161,7 @@ cython_debug/
 # VS Code
 .vscode/
 .mcp-kali/
-
+.continue/
 
 # OS generated files
 .DS_Store
