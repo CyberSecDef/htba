@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.98 scan initiated Thu Jan  8 20:06:53 2026 as: /usr/lib/nmap/nmap -&#45;privileged -Pn -&#45;script ftp-anon -p21 -oA ./scans/nmap_ftp_anon 10.129.201.55 -->
+<nmaprun scanner="nmap" args="/usr/lib/nmap/nmap -&#45;privileged -Pn -&#45;script ftp-anon -p21 -oA ./scans/nmap_ftp_anon 10.129.201.55" start="1767920813" startstr="Thu Jan  8 20:06:53 2026" version="7.98" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="1" services="21"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1767920814" endtime="1767920814"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="10.129.201.55" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="21"><state state="open" reason="syn-ack" reason_ttl="127"/><service name="ftp" method="table" conf="3"/></port>
+</ports>
+<times srtt="24499" rttvar="24499" to="122495"/>
+</host>
+<runstats><finished time="1767920814" timestr="Thu Jan  8 20:06:54 2026" summary="Nmap done at Thu Jan  8 20:06:54 2026; 1 IP address (1 host up) scanned in 0.83 seconds" elapsed="0.83" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

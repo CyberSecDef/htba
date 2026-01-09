@@ -1,0 +1,4 @@
+# Nmap 7.98 scan initiated Thu Jan  8 20:06:53 2026 as: /usr/lib/nmap/nmap --privileged -Pn --script ftp-anon -p21 -oA ./scans/nmap_ftp_anon 10.129.201.55
+Host: 10.129.201.55 ()	Status: Up
+Host: 10.129.201.55 ()	Ports: 21/open/tcp//ftp///
+# Nmap done at Thu Jan  8 20:06:54 2026 -- 1 IP address (1 host up) scanned in 0.83 seconds
