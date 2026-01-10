@@ -1,0 +1,4 @@
+# Nmap 7.98 scan initiated Fri Jan  9 19:05:20 2026 as: /usr/lib/nmap/nmap --privileged -F -oA ./logs/nmap_quick 10.129.234.168
+Host: 10.129.234.168 ()	Status: Up
+Host: 10.129.234.168 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (98)
+# Nmap done at Fri Jan  9 19:05:20 2026 -- 1 IP address (1 host up) scanned in 0.83 seconds

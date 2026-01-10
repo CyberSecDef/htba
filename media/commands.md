@@ -5,6 +5,7 @@
 nmap -F X.X.X.X                                  # Fast scan: Quickly checks for the most likely open services.
 nmap -T4 -F X.X.X.X                              # Fast scan with aggressive timing (T4) to speed up execution on stable networks.
 nmap -sS -F X.X.X.X                              # Fast Stealth (SYN) scan: Checks top 100 ports without completing the TCP handshake.
+nmap -sV --script=vuln X.X.X.X                   # Version detection with possible vulnerabilities
 nmap -sV X.X.X.X                                 # Version detection: Probes open ports to determine what service and version are running.
 nmap -sV --top-ports 100 X.X.X.X                 # Version detection on the top 100 ports for a balance of speed and detail.
 nmap -A -sV -p 1521 X.X.X.X                      # Aggressive Oracle scan: Intense version and OS fingerprinting on Oracle DB port.

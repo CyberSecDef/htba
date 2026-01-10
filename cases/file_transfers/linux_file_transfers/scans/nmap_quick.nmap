@@ -1,0 +1,9 @@
+# Nmap 7.98 scan initiated Fri Jan  9 19:05:20 2026 as: /usr/lib/nmap/nmap --privileged -F -oA ./logs/nmap_quick 10.129.234.168
+Nmap scan report for 10.129.234.168
+Host is up (0.029s latency).
+Not shown: 98 closed tcp ports (reset)
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+
+# Nmap done at Fri Jan  9 19:05:20 2026 -- 1 IP address (1 host up) scanned in 0.83 seconds

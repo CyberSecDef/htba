@@ -1,0 +1,4 @@
+# Nmap 7.98 scan initiated Fri Jan  9 19:14:41 2026 as: /usr/lib/nmap/nmap --privileged -sV --script=ssh* -oA ./scans/nmap_ssh_enum 10.129.234.168
+Host: 10.129.234.168 ()	Status: Up
+Host: 10.129.234.168 ()	Ports: 22/open/tcp//ssh//OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)/, 80/open/tcp//http//Apache httpd 2.4.41 ((Ubuntu))/	Ignored State: closed (998)
+# Nmap done at Fri Jan  9 19:24:53 2026 -- 1 IP address (1 host up) scanned in 612.38 seconds

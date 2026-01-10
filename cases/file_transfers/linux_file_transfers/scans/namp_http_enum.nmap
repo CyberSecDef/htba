@@ -1,0 +1,82 @@
+# Nmap 7.98 scan initiated Fri Jan  9 19:05:54 2026 as: /usr/lib/nmap/nmap --privileged -sV --script=http* -oA ./logs/namp_http_enum 10.129.234.168
+Pre-scan script results:
+|_http-robtex-shared-ns: *TEMPORARILY DISABLED* due to changes in Robtex's API. See https://www.robtex.com/api/
+Nmap scan report for 10.129.234.168
+Host is up (0.029s latency).
+Not shown: 998 closed tcp ports (reset)
+Bug in http-security-headers: no string output.
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+| http-traceroute: 
+|_  Possible reverse proxy detected.
+|_http-xssed: No previously reported XSS vuln.
+|_http-slowloris: false
+| http-errors: 
+| Spidering limited to: maxpagecount=40; withinhost=10.129.234.168
+|   Found the following error pages: 
+|   
+|   Error Code: 403
+|_  	http://10.129.234.168:80/
+| http-grep: 
+|   (1) http://10.129.234.168:80/: 
+|     (1) ip: 
+|_      + 10.129.234.168
+|_http-chrono: Request times for /; avg: 175.61ms; min: 167.41ms; max: 192.20ms
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-devframework: Couldn't determine the underlying framework or CMS. Try increasing 'httpspider.maxpagecount' value to spider more pages.
+|_http-mobileversion-checker: No mobile version detected.
+| http-brute:   
+|_  Path "/" does not require authentication
+|_http-date: Sat, 10 Jan 2026 00:35:39 GMT; -30s from local time.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+|_http-malware-host: Host appears to be clean
+| http-headers: 
+|   Date: Sat, 10 Jan 2026 00:35:44 GMT
+|   Server: Apache/2.4.41 (Ubuntu)
+|   Content-Length: 279
+|   Connection: close
+|   Content-Type: text/html; charset=iso-8859-1
+|   
+|_  (Request type: GET)
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+| http-useragent-tester: 
+|   Status for browser useragent: 403
+|   Allowed User Agents: 
+|     Mozilla/5.0 (compatible; Nmap Scripting Engine; https://nmap.org/book/nse.html)
+|   Change in Status Code: 
+|     WWW-Mechanize/1.34: 200
+|     Wget/1.13.4 (linux-gnu): 200
+|     HTTP::Lite: 200
+|     Python-urllib/2.5: 200
+|     PECL::HTTP: 200
+|     PHP/: 200
+|     Zend_Http_Client: 200
+|     Snoopy: 200
+|     URI::Fetch: 200
+|     lwp-trivial: 200
+|     MFC_Tear_Sample: 200
+|     libwww: 200
+|     PHPCrawl: 200
+|     libcurl-agent/1.0: 200
+|_    GT::WWW: 200
+| http-vhosts: 
+| 127 names had status 403
+|_svn
+|_http-referer-checker: Couldn't find any cross-domain scripts.
+|_http-feed: Couldn't find any feeds.
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+| http-sitemap-generator: 
+|   Directory structure:
+|   Longest directory structure:
+|     Depth: 0
+|     Dir: /
+|   Total files found (by extension):
+|_    
+|_http-fetch: Please enter the complete path of the directory to save data in.
+|_http-comments-displayer: Couldn't find any comments.
+|_http-title: 403 Forbidden
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Jan  9 19:36:26 2026 -- 1 IP address (1 host up) scanned in 1831.98 seconds

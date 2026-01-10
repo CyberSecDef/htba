@@ -1,0 +1,64 @@
+# Nmap 7.98 scan initiated Fri Jan  9 19:14:41 2026 as: /usr/lib/nmap/nmap --privileged -sV --script=ssh* -oA ./scans/nmap_ssh_enum 10.129.234.168
+Nmap scan report for 10.129.234.168
+Host is up (0.029s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-publickey-acceptance: 
+|_  Accepted Public Keys: No public keys accepted
+| ssh2-enum-algos: 
+|   kex_algorithms: (9)
+|       curve25519-sha256
+|       curve25519-sha256@libssh.org
+|       ecdh-sha2-nistp256
+|       ecdh-sha2-nistp384
+|       ecdh-sha2-nistp521
+|       diffie-hellman-group-exchange-sha256
+|       diffie-hellman-group16-sha512
+|       diffie-hellman-group18-sha512
+|       diffie-hellman-group14-sha256
+|   server_host_key_algorithms: (5)
+|       rsa-sha2-512
+|       rsa-sha2-256
+|       ssh-rsa
+|       ecdsa-sha2-nistp256
+|       ssh-ed25519
+|   encryption_algorithms: (6)
+|       chacha20-poly1305@openssh.com
+|       aes128-ctr
+|       aes192-ctr
+|       aes256-ctr
+|       aes128-gcm@openssh.com
+|       aes256-gcm@openssh.com
+|   mac_algorithms: (10)
+|       umac-64-etm@openssh.com
+|       umac-128-etm@openssh.com
+|       hmac-sha2-256-etm@openssh.com
+|       hmac-sha2-512-etm@openssh.com
+|       hmac-sha1-etm@openssh.com
+|       umac-64@openssh.com
+|       umac-128@openssh.com
+|       hmac-sha2-256
+|       hmac-sha2-512
+|       hmac-sha1
+|   compression_algorithms: (2)
+|       none
+|_      zlib@openssh.com
+| ssh-brute: 
+|   Accounts: No valid accounts found
+|_  Statistics: Performed 2312 guesses in 602 seconds, average tps: 3.7
+| ssh-auth-methods: 
+|   Supported authentication methods: 
+|     publickey
+|_    password
+|_ssh-run: Failed to specify credentials and command to run.
+| ssh-hostkey: 
+|   3072 48:2e:92:56:fd:fd:2a:f9:75:eb:79:c2:e4:52:4b:9f (RSA)
+|   256 3d:5a:d0:a4:68:c4:e3:b4:84:21:9e:31:24:ca:47:ea (ECDSA)
+|_  256 22:16:5d:d6:74:51:75:0c:26:ad:f4:e7:d0:44:c7:f2 (ED25519)
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Jan  9 19:24:53 2026 -- 1 IP address (1 host up) scanned in 612.38 seconds

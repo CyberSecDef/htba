@@ -1,0 +1,11 @@
+# Nmap 7.98 scan initiated Fri Jan  9 19:13:33 2026 as: /usr/lib/nmap/nmap --privileged -sV --top-ports 1000 -oA ./scans/nmap_top_1000 10.129.234.168
+Nmap scan report for 10.129.234.168
+Host is up (0.031s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Jan  9 19:13:41 2026 -- 1 IP address (1 host up) scanned in 7.78 seconds
