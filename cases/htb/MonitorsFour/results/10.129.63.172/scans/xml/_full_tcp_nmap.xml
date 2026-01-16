@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.98 scan initiated Thu Jan 15 17:35:19 2026 as: /usr/lib/nmap/nmap -&#45;privileged -vv -&#45;reason -Pn -T4 -sV -sC -&#45;version-all -A -&#45;osscan-guess -p- -oN /mnt/htba/cases/htb/MonitorsFour/results/10.129.63.172/scans/_full_tcp_nmap.txt -oX /mnt/htba/cases/htb/MonitorsFour/results/10.129.63.172/scans/xml/_full_tcp_nmap.xml 10.129.63.172 -->
+<nmaprun scanner="nmap" args="/usr/lib/nmap/nmap -&#45;privileged -vv -&#45;reason -Pn -T4 -sV -sC -&#45;version-all -A -&#45;osscan-guess -p- -oN /mnt/htba/cases/htb/MonitorsFour/results/10.129.63.172/scans/_full_tcp_nmap.txt -oX /mnt/htba/cases/htb/MonitorsFour/results/10.129.63.172/scans/xml/_full_tcp_nmap.xml 10.129.63.172" start="1768516519" startstr="Thu Jan 15 17:35:19 2026" version="7.98" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="2"/>
+<debugging level="0"/>
+<taskbegin task="NSE" time="1768516519"/>
+<taskend task="NSE" time="1768516519"/>
+<taskbegin task="NSE" time="1768516519"/>
+<taskend task="NSE" time="1768516519"/>
+<taskbegin task="NSE" time="1768516519"/>
+<taskend task="NSE" time="1768516519"/>
+<taskbegin task="SYN Stealth Scan" time="1768516519"/>
+<taskprogress task="SYN Stealth Scan" time="1768516550" percent="13.42" remaining="200" etc="1768516750"/>
+<taskprogress task="SYN Stealth Scan" time="1768516601" percent="31.90" remaining="176" etc="1768516776"/>
+<taskprogress task="SYN Stealth Scan" time="1768516631" percent="36.69" remaining="194" etc="1768516824"/>
+<taskprogress task="SYN Stealth Scan" time="1768516661" percent="50.76" remaining="138" etc="1768516799"/>
+<taskprogress task="SYN Stealth Scan" time="1768516691" percent="65.45" remaining="91" etc="1768516782"/>
+<taskprogress task="SYN Stealth Scan" time="1768516739" percent="74.41" remaining="76" etc="1768516815"/>
+<taskprogress task="SYN Stealth Scan" time="1768516769" percent="82.31" remaining="54" etc="1768516823"/>
+<taskend task="SYN Stealth Scan" time="1768516810" extrainfo="65535 total ports"/>
+<taskbegin task="Service scan" time="1768516810"/>
+<taskend task="Service scan" time="1768516817" extrainfo="2 services on 1 host"/>
+<taskbegin task="Traceroute" time="1768516822"/>
+<taskend task="Traceroute" time="1768516822"/>
+<taskbegin task="Parallel DNS resolution of 1 host." time="1768516822"/>
+<taskend task="Parallel DNS resolution of 1 host." time="1768516822"/>
+<taskbegin task="NSE" time="1768516822"/>
+<taskend task="NSE" time="1768516828"/>
+<taskbegin task="NSE" time="1768516828"/>
+<taskend task="NSE" time="1768516828"/>
+<taskbegin task="NSE" time="1768516828"/>
+<taskend task="NSE" time="1768516828"/>
+<host starttime="1768516519" endtime="1768516828"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="10.129.63.172" addrtype="ipv4"/>
+<hostnames>
+<hostname name="monitorsfour.htb" type="PTR"/>
+</hostnames>
+<ports><extraports state="filtered" count="65533">
+<extrareasons reason="no-response" count="65533" proto="tcp" ports="1-79,81-5984,5986-65535"/>
+</extraports>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="127"/><service name="http" product="nginx" method="probed" conf="10"><cpe>cpe:/a:igor_sysoev:nginx</cpe></service><script id="http-methods" output="&#xa;  Supported Methods: GET"><table key="Supported Methods">
+<elem>GET</elem>
+</table>
+</script><script id="http-favicon" output="Unknown favicon MD5: 889DCABDC39A9126364F6A675AA4167D"/><script id="http-title" output="MonitorsFour - Networking Solutions"><elem key="title">MonitorsFour - Networking Solutions</elem>
+</script><script id="http-cookie-flags" output="&#xa;  /: &#xa;    PHPSESSID: &#xa;      httponly flag not set"><table key="/">
+<table key="PHPSESSID">
+<elem>httponly flag not set</elem>
+</table>
+</table>
+</script></port>
+<port protocol="tcp" portid="5985"><state state="open" reason="syn-ack" reason_ttl="127"/><service name="http" product="Microsoft HTTPAPI httpd" version="2.0" extrainfo="SSDP/UPnP" ostype="Windows" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows</cpe></service><script id="http-title" output="Not Found"><elem key="title">Not Found</elem>
+</script><script id="http-server-header" output="Microsoft-HTTPAPI/2.0"><elem>Microsoft-HTTPAPI/2.0</elem>
+</script></port>
+</ports>
+<os><portused state="open" proto="tcp" portid="80"/>
+<osmatch name="Microsoft Windows Server 2022" accuracy="86" line="82075">
+<osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="2022" accuracy="86"><cpe>cpe:/o:microsoft:windows_server_2022</cpe></osclass>
+</osmatch>
+<osfingerprint fingerprint="SCAN(V=7.98%E=4%D=1/15%OT=80%CT=%CU=%PV=Y%DS=2%DC=T%G=N%TM=69696CDC%P=x86_64-pc-linux-gnu)&#xa;SEQ(SP=103%GCD=1%ISR=10C%TS=A)&#xa;SEQ(SP=109%GCD=1%ISR=10D%TS=A)&#xa;OPS(O1=M552NW8ST11%O2=M552NW8ST11%O3=M552NW8NNT11%O4=M552NW8ST11%O5=M552NW8ST11%O6=M552ST11)&#xa;WIN(W1=FFFF%W2=FFFF%W3=FFFF%W4=FFFF%W5=FFFF%W6=FFFF)&#xa;ECN(R=Y%DF=Y%TG=80%W=FFFF%O=M552NW8NNS%CC=Y%Q=)&#xa;T1(R=Y%DF=Y%TG=80%S=O%A=S+%F=AS%RD=0%Q=)&#xa;T2(R=N)&#xa;T3(R=N)&#xa;T4(R=N)&#xa;U1(R=N)&#xa;IE(R=Y%DFI=N%TG=80%CD=Z)&#xa;"/>
+</os>
+<uptime seconds="4740" lastboot="Thu Jan 15 16:21:28 2026"/>
+<distance value="2"/>
+<tcpsequence index="259" difficulty="Good luck!" values="C7512D4,3C4F518B,F8E11E4F,1D81DE8F,BAC5C3BD,485AACF8"/>
+<ipidsequence class="Busy server or unknown class" values="B5AC,B5C4,B5D5,B5E7,B5F3,B609"/>
+<tcptssequence class="1000HZ" values="483607,48367D,4836D2,48372C,4837A4,4837F6"/>
+<trace port="80" proto="tcp">
+<hop ttl="1" ipaddr="10.10.14.1" rtt="66.61"/>
+<hop ttl="2" ipaddr="10.129.63.172" rtt="66.86" host="monitorsfour.htb"/>
+</trace>
+<times srtt="62445" rttvar="6106" to="100000"/>
+</host>
+<taskbegin task="NSE" time="1768516828"/>
+<taskend task="NSE" time="1768516828"/>
+<taskbegin task="NSE" time="1768516828"/>
+<taskend task="NSE" time="1768516828"/>
+<taskbegin task="NSE" time="1768516828"/>
+<taskend task="NSE" time="1768516828"/>
+<runstats><finished time="1768516828" timestr="Thu Jan 15 17:40:28 2026" summary="Nmap done at Thu Jan 15 17:40:28 2026; 1 IP address (1 host up) scanned in 309.29 seconds" elapsed="309.29" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

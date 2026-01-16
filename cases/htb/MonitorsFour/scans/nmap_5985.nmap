@@ -1,0 +1,24 @@
+# Nmap 7.98 scan initiated Thu Jan 15 16:31:38 2026 as: /usr/lib/nmap/nmap --privileged -p 5985 -A -oA ./scans/nmap_5985 10.129.63.172
+Nmap scan report for 10.129.63.172
+Host is up (0.056s latency).
+
+PORT     STATE SERVICE VERSION
+5985/tcp open  http    Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-title: Not Found
+|_http-server-header: Microsoft-HTTPAPI/2.0
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: general purpose
+Running (JUST GUESSING): Microsoft Windows 2022 (87%)
+OS CPE: cpe:/o:microsoft:windows_server_2022
+Aggressive OS guesses: Microsoft Windows Server 2022 (87%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 2 hops
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+TRACEROUTE (using port 5985/tcp)
+HOP RTT      ADDRESS
+1   62.78 ms 10.10.14.1
+2   62.98 ms 10.129.63.172
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu Jan 15 16:31:58 2026 -- 1 IP address (1 host up) scanned in 19.81 seconds

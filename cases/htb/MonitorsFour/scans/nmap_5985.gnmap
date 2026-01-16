@@ -1,0 +1,4 @@
+# Nmap 7.98 scan initiated Thu Jan 15 16:31:38 2026 as: /usr/lib/nmap/nmap --privileged -p 5985 -A -oA ./scans/nmap_5985 10.129.63.172
+Host: 10.129.63.172 ()	Status: Up
+Host: 10.129.63.172 ()	Ports: 5985/open/tcp//http//Microsoft HTTPAPI httpd 2.0 (SSDP|UPnP)/	Seq Index: 259	IP ID Seq: Busy server or unknown class
+# Nmap done at Thu Jan 15 16:31:58 2026 -- 1 IP address (1 host up) scanned in 19.81 seconds

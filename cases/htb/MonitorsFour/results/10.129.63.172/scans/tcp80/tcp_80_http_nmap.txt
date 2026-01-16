@@ -1,0 +1,635 @@
+# Nmap 7.98 scan initiated Thu Jan 15 17:35:44 2026 as: /usr/lib/nmap/nmap --privileged -vv --reason -Pn -T4 -sV -p 80 "--script=banner,(http* or ssl*) and not (brute or broadcast or dos or external or http-slowloris* or fuzzer)" -oN /mnt/htba/cases/htb/MonitorsFour/results/10.129.63.172/scans/tcp80/tcp_80_http_nmap.txt -oX /mnt/htba/cases/htb/MonitorsFour/results/10.129.63.172/scans/tcp80/xml/tcp_80_http_nmap.xml 10.129.63.172
+Nmap scan report for monitorsfour.htb (10.129.63.172)
+Host is up, received user-set (0.077s latency).
+Scanned at 2026-01-15 17:35:45 EST for 205s
+
+PORT   STATE SERVICE REASON          VERSION
+80/tcp open  http    syn-ack ttl 127 nginx
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+| http-grep: 
+|   (1) http://monitorsfour.htb:80/: 
+|     (1) email: 
+|_      + sales@monitorsfour.htb
+|_http-chrono: Request times for /; avg: 409.17ms; min: 277.94ms; max: 705.06ms
+|_http-litespeed-sourcecode-download: Request with null byte did not work. This web server might not be vulnerable
+|_http-mobileversion-checker: No mobile version detected.
+| http-fileupload-exploiter: 
+|   
+|     Couldn't find a file-type field.
+|   
+|_    Couldn't find a file-type field.
+| http-methods: 
+|_  Supported Methods: GET
+|_http-title: MonitorsFour - Networking Solutions
+|_http-date: Thu, 15 Jan 2026 22:35:53 GMT; -1s from local time.
+| http-errors: 
+| Spidering limited to: maxpagecount=40; withinhost=monitorsfour.htb
+|   Found the following error pages: 
+|   
+|   Error Code: 405
+|   	http://monitorsfour.htb:80/api/v1/auth
+|   
+|   Error Code: 405
+|_  	http://monitorsfour.htb:80/api/v1/reset
+|_http-wordpress-enum: Nothing found amongst the top 100 resources,use --script-args search-limit=<number|all> for deeper analysis)
+|_http-fetch: Please enter the complete path of the directory to save data in.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+|_http-favicon: Unknown favicon MD5: 889DCABDC39A9126364F6A675AA4167D
+|_http-malware-host: Host appears to be clean
+|_http-wordpress-users: [Error] Wordpress installation was not found. We couldn't find wp-login.php
+| http-vhosts: 
+| 120 names had status 302
+| internal.htb
+| mx1.htb
+| mailgate.htb
+| dns2.htb
+| cms.htb
+| s3.htb
+| mgmt.htb
+|_erp.htb
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+| http-useragent-tester: 
+|   Status for browser useragent: 200
+|   Allowed User Agents: 
+|     Mozilla/5.0 (compatible; Nmap Scripting Engine; https://nmap.org/book/nse.html)
+|     libwww
+|     lwp-trivial
+|     libcurl-agent/1.0
+|     PHP/
+|     Python-urllib/2.5
+|     GT::WWW
+|     Snoopy
+|     MFC_Tear_Sample
+|     PHPCrawl
+|     URI::Fetch
+|     Zend_Http_Client
+|     http client
+|     PECL::HTTP
+|     Wget/1.13.4 (linux-gnu)
+|_    WWW-Mechanize/1.34
+|_http-feed: Couldn't find any feeds.
+| http-php-version: Credits query returned unknown hash 53937d979a42513821246e706c3fc841
+|_Version from header x-powered-by: PHP/8.3.27
+| http-auth-finder: 
+| Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=monitorsfour.htb
+|   url                               method
+|_  http://monitorsfour.htb:80/login  FORM
+| http-security-headers: 
+|   Cache_Control: 
+|     Header: Cache-Control: no-store, no-cache, must-revalidate
+|   Pragma: 
+|     Header: Pragma: no-cache
+|   Expires: 
+|_    Header: Expires: Thu, 19 Nov 1981 08:52:00 GMT
+|_http-drupal-enum: Nothing found amongst the top 100 resources,use --script-args number=<number|all> for deeper analysis)
+| http-headers: 
+|   Server: nginx
+|   Date: Thu, 15 Jan 2026 22:35:56 GMT
+|   Content-Type: text/html; charset=UTF-8
+|   Transfer-Encoding: chunked
+|   Connection: close
+|   X-Powered-By: PHP/8.3.27
+|   Set-Cookie: PHPSESSID=4ad0b86075cc650e21e3ca67b2fed1fd; path=/
+|   Expires: Thu, 19 Nov 1981 08:52:00 GMT
+|   Cache-Control: no-store, no-cache, must-revalidate
+|   Pragma: no-cache
+|   
+|_  (Request type: GET)
+|_http-jsonp-detection: Couldn't find any JSONP endpoints.
+| http-csrf: 
+| Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=monitorsfour.htb
+|   Found the following possible CSRF vulnerabilities: 
+|     
+|     Path: http://monitorsfour.htb:80/login
+|     Form id: username
+|     Form action: /api/v1/auth
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Form id: 
+|_    Form action: /api/v1/reset
+| http-comments-displayer: 
+| Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=monitorsfour.htb
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 39
+|     Comment: 
+|         <!-- Main content -->
+|     
+|     Path: http://monitorsfour.htb:80/static/css/style.css
+|     Line number: 335
+|     Comment: 
+|         /* ==== Services ====== */
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 12
+|     Comment: 
+|         <!-- Pre Loader -->
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 329
+|     Comment: 
+|         <!-- Smooth scroll JS -->
+|     
+|     Path: http://monitorsfour.htb:80/static/css/style.css
+|     Line number: 620
+|     Comment: 
+|         /*====== contact-section ========*/
+|     
+|     Path: http://monitorsfour.htb:80/static/css/style.css
+|     Line number: 144
+|     Comment: 
+|         /*
+|         ================================================
+|         3. Loader CSS
+|         ================================================
+|         */
+|     
+|     Path: http://monitorsfour.htb:80/static/css/plugins.css
+|     Line number: 1
+|     Comment: 
+|         /*Bootstrap CSS*/
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 318
+|     Comment: 
+|         <!-- jQuery Min JS -->
+|     
+|     Path: http://monitorsfour.htb:80/static/css/plugins.css
+|     Line number: 10
+|     Comment: 
+|         /*Owl Slider*/
+|     
+|     Path: http://monitorsfour.htb:80/static/css/style.css
+|     Line number: 468
+|     Comment: 
+|         /* ==== BLog ====== */
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 49
+|     Comment: 
+|         <!-- Navigation End -->
+|     
+|     Path: http://monitorsfour.htb:80/static/js/custom.js
+|     Line number: 2
+|     Comment: 
+|          // Start of use strict 
+|     
+|     Path: http://monitorsfour.htb:80/static/css/plugins.css
+|     Line number: 4
+|     Comment: 
+|         /*FontAwesome*/
+|     
+|     Path: http://monitorsfour.htb:80/static/js/custom.js
+|     Line number: 61
+|     Comment: 
+|         /*------------------------------------------------------------------
+|          Loader 
+|         ------------------------------------------------------------------*/
+|     
+|     Path: http://monitorsfour.htb:80/static/css/style.css
+|     Line number: 307
+|     Comment: 
+|         /*==== About Us ======*/
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 67
+|     Comment: 
+|         <!-- Banner End -->
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 272
+|     Comment: 
+|         <!-- footer Start -->
+|     
+|     Path: http://monitorsfour.htb:80/static/js/custom.js
+|     Line number: 50
+|     Comment: 
+|         /*------------------------------------------------------------------
+|          Fixed Navigation 
+|         ------------------------------------------------------------------*/
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 173
+|     Comment: 
+|         <!-- Pricing Start-->
+|     
+|     Path: http://monitorsfour.htb:80/static/js/owl.carousel.min.js
+|     Line number: 1
+|     Comment: 
+|         /**
+|          * Owl Carousel v2.3.4
+|          * Copyright 2013-2018 David Deutsch
+|          * Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
+|          */
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 75
+|     Comment: 
+|         <!-- /main content -->
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 72
+|     Comment: 
+|         <!-- /content area -->
+|     
+|     Path: http://monitorsfour.htb:80/static/js/custom.js
+|     Line number: 5
+|     Comment: 
+|         /*--------------------------
+|             scrollUp
+|         ---------------------------- */
+|     
+|     Path: http://monitorsfour.htb:80/static/css/style.css
+|     Line number: 745
+|     Comment: 
+|         /* ===== footer ======= */
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 9
+|     Comment: 
+|         <!-- Global stylesheets -->
+|     
+|     Path: http://monitorsfour.htb:80/static/css/style.css
+|     Line number: 27
+|     Comment: 
+|         /*
+|         ================================================
+|         2. Common CSS
+|         ================================================
+|         */
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 316
+|     Comment: 
+|         <!-- footer End -->
+|     
+|     Path: http://monitorsfour.htb:80/static/css/style.css
+|     Line number: 157
+|     Comment: 
+|         /* ======= Header =========*/
+|     
+|     Path: http://monitorsfour.htb:80/static/js/smoothscroll.js
+|     Line number: 10
+|     Comment: 
+|          // Store hash
+|     
+|     Path: http://monitorsfour.htb:80/static/js/jquery-min.js
+|     Line number: 1
+|     Comment: 
+|         /*! jQuery v3.1.1 | (c) jQuery Foundation | jquery.org/license */
+|     
+|     Path: http://monitorsfour.htb:80/static/css/style.css
+|     Line number: 1
+|     Comment: 
+|         /*
+|             Template Name    : Netwica
+|             Author           : konnectcode
+|             Version          : 1.0
+|         /*
+|         ================================================
+|         /* Table of Content
+|         ==================================================
+|         - Fonts
+|         - Common Css
+|         - Loader CSS
+|         - Header
+|         - Custom UI plugin
+|         - About Us
+|         - Services
+|         - BLog
+|         - Reviews
+|         - contact-section
+|         - footer
+|         - Responsive CSS
+|         /*
+|         ================================================
+|         Fonts - Lato & Roboto
+|         ================================================
+|         */
+|     
+|     Path: http://monitorsfour.htb:80/static/js/custom.js
+|     Line number: 47
+|     Comment: 
+|          //
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 159
+|     Comment: 
+|         <!-- Client Logos Start-->
+|     
+|     Path: http://monitorsfour.htb:80/static/js/custom.js
+|     Line number: 15
+|     Comment: 
+|         /*--------------------------
+|             Reviews
+|         ---------------------------- */
+|     
+|     Path: http://monitorsfour.htb:80/static/js/smoothscroll.js
+|     Line number: 13
+|     Comment: 
+|          // Using jQuery's animate() method to add smooth page scroll
+|     
+|     Path: http://monitorsfour.htb:80/static/js/plugins.js
+|     Line number: 24
+|     Comment: 
+|         
+|         // Place any jQuery/helper plugins in here.
+|     
+|     Path: http://monitorsfour.htb:80/static/js/custom.js
+|     Line number: 65
+|     Comment: 
+|          // Start of use strict
+|     
+|     Path: http://monitorsfour.htb:80/static/js/custom.js
+|     Line number: 66
+|     Comment: 
+|          // Loader 
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 157
+|     Comment: 
+|         <!-- services End -->
+|     
+|     Path: http://monitorsfour.htb:80/static/js/bootstrap.min.js
+|     Line number: 1
+|     Comment: 
+|         /*!
+|           * Bootstrap v4.4.1 (https://getbootstrap.com/)
+|           * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+|           * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+|           */
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 36
+|     Comment: 
+|         <!-- Page content -->
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 45
+|     Comment: 
+|         <!-- Password recovery -->
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 62
+|     Comment: 
+|         <!-- /password recovery -->
+|     
+|     Path: http://monitorsfour.htb:80/static/css/style.css
+|     Line number: 397
+|     Comment: 
+|         /*===== CTA ==== */
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 81
+|     Comment: 
+|         <!-- /page container -->
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 69
+|     Comment: 
+|         <!-- /footer -->
+|     
+|     Path: http://monitorsfour.htb:80/static/js/smoothscroll.js
+|     Line number: 2
+|     Comment: 
+|          // Add smooth scrolling to all links
+|     
+|     Path: http://monitorsfour.htb:80/static/js/custom.js
+|     Line number: 38
+|     Comment: 
+|         /*------------------------------------------------------------------
+|            mobile navbar click 
+|         ------------------------------------------------------------------*/
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 65
+|     Comment: 
+|         <!-- Footer -->
+|     
+|     Path: http://monitorsfour.htb:80/login
+|     Line number: 74
+|     Comment: 
+|         <!-- /simple login form -->
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 325
+|     Comment: 
+|         <!-- Owl Carousel Min JS -->
+|     
+|     Path: http://monitorsfour.htb:80/static/css/style.css
+|     Line number: 548
+|     Comment: 
+|         /* ===== Reviews =====*/
+|     
+|     Path: http://monitorsfour.htb:80/login
+|     Line number: 44
+|     Comment: 
+|         <!-- Simple login form -->
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 69
+|     Comment: 
+|         <!-- About us Start -->
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 33
+|     Comment: 
+|         <!-- Page container -->
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 27
+|     Comment: 
+|         <!-- /theme JS files -->
+|     
+|     Path: http://monitorsfour.htb:80/static/css/style.css
+|     Line number: 802
+|     Comment: 
+|         /*
+|         ================================================
+|          Responsive CSS
+|         ================================================
+|         */
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 23
+|     Comment: 
+|         <!-- /core JS files -->
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 321
+|     Comment: 
+|         <!-- Popper Min JS -->
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 51
+|     Comment: 
+|         <!-- Banner Start -->
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 16
+|     Comment: 
+|         <!-- /global stylesheets -->
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 25
+|     Comment: 
+|         <!-- Theme JS files -->
+|     
+|     Path: http://monitorsfour.htb:80/static/js/smoothscroll.js
+|     Line number: 7
+|     Comment: 
+|          // Prevent default anchor click behavior
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 42
+|     Comment: 
+|         <!-- Content area -->
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 323
+|     Comment: 
+|         <!-- Bootstrap Min JS -->
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 333
+|     Comment: 
+|         <!-- Custom JS -->
+|     
+|     Path: http://monitorsfour.htb:80/static/css/style.css
+|     Line number: 679
+|     Comment: 
+|         /*===== section ====== */
+|     
+|     Path: http://monitorsfour.htb:80/static/js/smoothscroll.js
+|     Line number: 14
+|     Comment: 
+|          // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+|     
+|     Path: http://monitorsfour.htb:80/static/js/smoothscroll.js
+|     Line number: 20
+|     Comment: 
+|          // window.location.hash = hash;
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 236
+|     Comment: 
+|         <!-- reviews Start -->
+|     
+|     Path: http://monitorsfour.htb:80/static/js/smoothscroll.js
+|     Line number: 5
+|     Comment: 
+|          // Make sure this.hash has a value before overriding default behavior
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 171
+|     Comment: 
+|         <!-- Client Logos End-->
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 14
+|     Comment: 
+|         <!-- Navigation Start -->
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 96
+|     Comment: 
+|         <!-- services Start -->
+|     
+|     Path: http://monitorsfour.htb:80/static/js/smoothscroll.js
+|     Line number: 19
+|     Comment: 
+|          // Add hash (#) to URL when done scrolling (default click behavior)
+|     
+|     Path: http://monitorsfour.htb:80/static/js/popper.min.js
+|     Line number: 1
+|     Comment: 
+|         /*
+|          Copyright (C) Federico Zivolo 2019
+|          Distributed under the MIT License (license terms are at http://opensource.org/licenses/MIT).
+|          */
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 327
+|     Comment: 
+|         <!-- Owl Plugins JS -->
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 94
+|     Comment: 
+|         <!-- About us End -->
+|     
+|     Path: http://monitorsfour.htb:80/static/js/plugins.js
+|     Line number: 17
+|     Comment: 
+|          // Only stub undefined methods.
+|     
+|     Path: http://monitorsfour.htb:80/static/css/plugins.css
+|     Line number: 7
+|     Comment: 
+|         /*Animate css*/
+|     
+|     Path: http://monitorsfour.htb:80/static/js/smoothscroll.js
+|     Line number: 22
+|     Comment: 
+|          // End if
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 78
+|     Comment: 
+|         <!-- /page content -->
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 234
+|     Comment: 
+|         <!--Pricing End-->
+|     
+|     Path: http://monitorsfour.htb:80/
+|     Line number: 270
+|     Comment: 
+|         <!-- reviews End -->
+|     
+|     Path: http://monitorsfour.htb:80/forgot-password
+|     Line number: 18
+|     Comment: 
+|         <!-- Core JS files -->
+|     
+|     Path: http://monitorsfour.htb:80/static/js/plugins.js
+|     Line number: 26
+|     Comment: 
+|         /*!
+|          * scrollup v2.4.1
+|          * Url: http://markgoodyear.com/labs/scrollup/
+|          * Copyright (c) Mark Goodyear \xC3\xA2\xE2\x82\xAC\xE2\x80\x9D @markgdyr \xC3\xA2\xE2\x82\xAC\xE2\x80\x9D http://markgoodyear.com
+|          * License: MIT
+|          */
+|     
+|     Path: http://monitorsfour.htb:80/static/css/style.css
+|     Line number: 419
+|     Comment: 
+|_        /*==== Pricing ===== */
+| http-sitemap-generator: 
+|   Directory structure:
+|     /
+|       Other: 2
+|     /static/css/
+|       css: 2
+|     /static/images/
+|       svg: 4
+|     /static/images/services/
+|       png: 4
+|     /static/js/
+|       js: 7
+|   Longest directory structure:
+|     Depth: 3
+|     Dir: /static/images/services/
+|   Total files found (by extension):
+|_    Other: 2; css: 2; js: 7; png: 4; svg: 4
+|_http-devframework: Couldn't determine the underlying framework or CMS. Try increasing 'httpspider.maxpagecount' value to spider more pages.
+|_http-referer-checker: Couldn't find any cross-domain scripts.
+
+Read data files from: /usr/share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu Jan 15 17:39:10 2026 -- 1 IP address (1 host up) scanned in 205.51 seconds

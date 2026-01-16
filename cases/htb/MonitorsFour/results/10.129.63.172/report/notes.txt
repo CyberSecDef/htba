@@ -1,0 +1,8 @@
+[*] http found on tcp/80.
+
+
+
+[*] wsman found on tcp/5985.
+
+
+
