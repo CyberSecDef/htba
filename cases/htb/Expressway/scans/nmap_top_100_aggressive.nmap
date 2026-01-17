@@ -1,0 +1,20 @@
+# Nmap 7.98 scan initiated Sat Jan 17 08:13:01 2026 as: /usr/lib/nmap/nmap --privileged --top-ports 100 -A -oA ./scans/nmap_top_100_aggressive 10.129.238.52
+Nmap scan report for 10.129.238.52
+Host is up (0.027s latency).
+Not shown: 99 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 10.0p2 Debian 8 (protocol 2.0)
+Device type: general purpose
+Running: Linux 4.X|5.X
+OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5
+OS details: Linux 4.15 - 5.19
+Network Distance: 2 hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 1720/tcp)
+HOP RTT      ADDRESS
+1   27.22 ms 10.10.14.1
+2   27.39 ms 10.129.238.52
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Jan 17 08:13:06 2026 -- 1 IP address (1 host up) scanned in 4.50 seconds

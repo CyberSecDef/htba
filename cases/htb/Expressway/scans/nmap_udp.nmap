@@ -1,0 +1,42 @@
+# Nmap 7.98 scan initiated Sat Jan 17 08:20:59 2026 as: /usr/lib/nmap/nmap --privileged -sU -sV -T4 -oA ./scans/nmap_udp 10.129.238.52
+Warning: 10.129.238.52 giving up on port because retransmission cap hit (6).
+Nmap scan report for 10.129.238.52
+Host is up (0.029s latency).
+Not shown: 981 closed udp ports (port-unreach)
+PORT      STATE         SERVICE   VERSION
+68/udp    open|filtered dhcpc
+69/udp    open|filtered tftp
+500/udp   open          isakmp?
+999/udp   open|filtered applix
+4500/udp  open|filtered nat-t-ike
+6346/udp  open|filtered gnutella
+9370/udp  open|filtered unknown
+16708/udp open|filtered unknown
+18996/udp open|filtered unknown
+19728/udp open|filtered unknown
+20360/udp open|filtered unknown
+21206/udp open|filtered unknown
+21663/udp open|filtered unknown
+27473/udp open|filtered unknown
+32768/udp open|filtered omad
+49179/udp open|filtered unknown
+49182/udp open|filtered unknown
+49201/udp open|filtered unknown
+52503/udp open|filtered unknown
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port500-UDP:V=7.98%I=7%D=1/17%Time=696B90BB%P=x86_64-pc-linux-gnu%r(IKE
+SF:_MAIN_MODE,70,"\0\x11\"3DUfw\x8fs\x8d'o5G\x87\x01\x10\x02\0\0\0\0\0\0\0
+SF:\0p\r\0\x004\0\0\0\x01\0\0\0\x01\0\0\0\(\x01\x01\0\x01\0\0\0\x20\x01\x0
+SF:1\0\0\x80\x01\0\x05\x80\x02\0\x02\x80\x04\0\x02\x80\x03\0\x01\x80\x0b\0
+SF:\x01\x80\x0c\0\x01\r\0\0\x0c\t\0&\x89\xdf\xd6\xb7\x12\0\0\0\x14\xaf\xca
+SF:\xd7\x13h\xa1\xf1\xc9k\x86\x96\xfcwW\x01\0")%r(IPSEC_START,9C,"1'\xfc\x
+SF:b08\x10\x9e\x89\x8fJ&n7\x16\xef\x85\x01\x10\x02\0\0\0\0\0\0\0\0\x9c\r\0
+SF:\x004\0\0\0\x01\0\0\0\x01\0\0\0\(\x01\x01\0\x01\0\0\0\x20\x01\x01\0\0\x
+SF:80\x01\0\x05\x80\x02\0\x02\x80\x04\0\x02\x80\x03\0\x03\x80\x0b\0\x01\x8
+SF:0\x0c\x0e\x10\r\0\0\x0c\t\0&\x89\xdf\xd6\xb7\x12\r\0\0\x14\xaf\xca\xd7\
+SF:x13h\xa1\xf1\xc9k\x86\x96\xfcwW\x01\0\r\0\0\x18@H\xb7\xd5n\xbc\xe8\x85%
+SF:\xe7\xde\x7f\0\xd6\xc2\xd3\x80\0\0\0\0\0\0\x14\x90\xcb\x80\x91>\xbbin\x
+SF:08c\x81\xb5\xecB{\x1f");
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Jan 17 08:39:43 2026 -- 1 IP address (1 host up) scanned in 1123.85 seconds

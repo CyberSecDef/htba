@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.98 scan initiated Sat Jan 17 08:13:01 2026 as: /usr/lib/nmap/nmap -&#45;privileged -&#45;top-ports 100 -A -oA ./scans/nmap_top_100_aggressive 10.129.238.52 -->
+<nmaprun scanner="nmap" args="/usr/lib/nmap/nmap -&#45;privileged -&#45;top-ports 100 -A -oA ./scans/nmap_top_100_aggressive 10.129.238.52" start="1768655581" startstr="Sat Jan 17 08:13:01 2026" version="7.98" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="100" services="7,9,13,21-23,25-26,37,53,79-81,88,106,110-111,113,119,135,139,143-144,179,199,389,427,443-445,465,513-515,543-544,548,554,587,631,646,873,990,993,995,1025-1029,1110,1433,1720,1723,1755,1900,2000-2001,2049,2121,2717,3000,3128,3306,3389,3986,4899,5000,5009,5051,5060,5101,5190,5357,5432,5631,5666,5800,5900,6000-6001,6646,7070,8000,8008-8009,8080-8081,8443,8888,9100,9999-10000,32768,49152-49157"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="10.129.238.52" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1768655582" endtime="1768655586"><status state="up" reason="echo-reply" reason_ttl="63"/>
+<address addr="10.129.238.52" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="closed" count="99">
+<extrareasons reason="reset" count="99" proto="tcp" ports="7,9,13,21,23,25-26,37,53,79-81,88,106,110-111,113,119,135,139,143-144,179,199,389,427,443-445,465,513-515,543-544,548,554,587,631,646,873,990,993,995,1025-1029,1110,1433,1720,1723,1755,1900,2000-2001,2049,2121,2717,3000,3128,3306,3389,3986,4899,5000,5009,5051,5060,5101,5190,5357,5432,5631,5666,5800,5900,6000-6001,6646,7070,8000,8008-8009,8080-8081,8443,8888,9100,9999-10000,32768,49152-49157"/>
+</extraports>
+<port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="ssh" product="OpenSSH" version="10.0p2 Debian 8" extrainfo="protocol 2.0" ostype="Linux" method="probed" conf="10"><cpe>cpe:/a:openbsd:openssh:10.0p2</cpe><cpe>cpe:/o:linux:linux_kernel</cpe></service></port>
+</ports>
+<os><portused state="open" proto="tcp" portid="22"/>
+<portused state="closed" proto="tcp" portid="7"/>
+<portused state="closed" proto="udp" portid="39767"/>
+<osmatch name="Linux 4.15 - 5.19" accuracy="100" line="70534">
+<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="4.X" accuracy="100"><cpe>cpe:/o:linux:linux_kernel:4</cpe></osclass>
+<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="5.X" accuracy="100"><cpe>cpe:/o:linux:linux_kernel:5</cpe></osclass>
+</osmatch>
+</os>
+<uptime seconds="597958" lastboot="Sat Jan 10 10:07:08 2026"/>
+<distance value="2"/>
+<tcpsequence index="264" difficulty="Good luck!" values="810A6580,178533A9,2241CB80,BD387D31,4F7EC7B4,48A228D0"/>
+<ipidsequence class="All zeros" values="0,0,0,0,0,0"/>
+<tcptssequence class="1000HZ" values="23A41518,23A4157D,23A415E5,23A41646,23A416AA,23A4170E"/>
+<trace port="1720" proto="tcp">
+<hop ttl="1" ipaddr="10.10.14.1" rtt="27.22"/>
+<hop ttl="2" ipaddr="10.129.238.52" rtt="27.39"/>
+</trace>
+<times srtt="26673" rttvar="723" to="100000"/>
+</host>
+<runstats><finished time="1768655586" timestr="Sat Jan 17 08:13:06 2026" summary="Nmap done at Sat Jan 17 08:13:06 2026; 1 IP address (1 host up) scanned in 4.50 seconds" elapsed="4.50" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

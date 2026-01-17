@@ -1,0 +1,4 @@
+# Nmap 7.98 scan initiated Sat Jan 17 08:20:59 2026 as: /usr/lib/nmap/nmap --privileged -sU -sV -T4 -oA ./scans/nmap_udp 10.129.238.52
+Host: 10.129.238.52 ()	Status: Up
+Host: 10.129.238.52 ()	Ports: 68/open|filtered/udp//dhcpc///, 69/open|filtered/udp//tftp///, 500/open/udp//isakmp?///, 999/open|filtered/udp//applix///, 4500/open|filtered/udp//nat-t-ike///, 6346/open|filtered/udp//gnutella///, 9370/open|filtered/udp/////, 16708/open|filtered/udp/////, 18996/open|filtered/udp/////, 19728/open|filtered/udp/////, 20360/open|filtered/udp/////, 21206/open|filtered/udp/////, 21663/open|filtered/udp/////, 27473/open|filtered/udp/////, 32768/open|filtered/udp//omad///, 49179/open|filtered/udp/////, 49182/open|filtered/udp/////, 49201/open|filtered/udp/////, 52503/open|filtered/udp/////	Ignored State: closed (981)
+# Nmap done at Sat Jan 17 08:39:43 2026 -- 1 IP address (1 host up) scanned in 1123.85 seconds
