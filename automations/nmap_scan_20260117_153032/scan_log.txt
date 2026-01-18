@@ -1,0 +1,130 @@
+[2026-01-17 15:30:32] [0;32m================================[0m
+[2026-01-17 15:30:32] [0;32mAutomated Nmap Enumeration v2.0[0m
+[2026-01-17 15:30:32] [0;32m================================[0m
+[2026-01-17 15:30:32] Raw Input: 10.129.238.52
+[2026-01-17 15:30:32] Scan Target: 10.129.238.52
+[2026-01-17 15:30:32] Output Directory: /mnt/htba/automations/nmap_scan_20260117_153032
+[2026-01-17 15:30:32] Scan Mode: default
+[2026-01-17 15:30:32] 
+[2026-01-17 15:30:32] [1;33m[Phase 1] Host Discovery[0m
+[2026-01-17 15:30:32] [0;34mRunning: host_discovery[0m
+[2026-01-17 15:30:32] COMMAND: nmap -sn -PE -PP -PM -PO -oA "/mnt/htba/automations/nmap_scan_20260117_153032/scans/10.129.238.52_host_discovery" 10.129.238.52
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-01-17 15:30 -0500
+Nmap scan report for 10.129.238.52
+Host is up (0.026s latency).
+Nmap done: 1 IP address (1 host up) scanned in 0.60 seconds
+[2026-01-17 15:30:33] [1;33m[Phase 2] Port Discovery[0m
+[2026-01-17 15:30:33] [0;34mRunning: initial_scan[0m
+[2026-01-17 15:30:33] COMMAND: nmap -sS -sV -T4 -oA "/mnt/htba/automations/nmap_scan_20260117_153032/scans/10.129.238.52_initial_scan" 10.129.238.52
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-01-17 15:30 -0500
+Nmap scan report for 10.129.238.52
+Host is up (0.032s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 10.0p2 Debian 8 (protocol 2.0)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 1.47 seconds
+[2026-01-17 15:30:34] [1;33m[Phase 3] UDP Port Scan[0m
+[2026-01-17 15:30:34] [0;34mRunning: udp_scan[0m
+[2026-01-17 15:30:34] COMMAND: nmap -sU --top-ports 100 -T4 -oA "/mnt/htba/automations/nmap_scan_20260117_153032/scans/10.129.238.52_udp_scan" 10.129.238.52
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-01-17 15:30 -0500
+Warning: 10.129.238.52 giving up on port because retransmission cap hit (6).
+Nmap scan report for 10.129.238.52
+Host is up (0.030s latency).
+Not shown: 80 closed udp ports (port-unreach)
+PORT      STATE         SERVICE
+68/udp    open|filtered dhcpc
+69/udp    open|filtered tftp
+177/udp   open|filtered xdmcp
+427/udp   open|filtered svrloc
+500/udp   open          isakmp
+998/udp   open|filtered puparp
+1027/udp  open|filtered unknown
+1028/udp  open|filtered ms-lsa
+1030/udp  open|filtered iad1
+1433/udp  open|filtered ms-sql-s
+1434/udp  open|filtered ms-sql-m
+2048/udp  open|filtered dls-monitor
+3283/udp  open|filtered netassistant
+4500/udp  open|filtered nat-t-ike
+5000/udp  open|filtered upnp
+32815/udp open|filtered unknown
+49156/udp open|filtered unknown
+49182/udp open|filtered unknown
+49190/udp open|filtered unknown
+49201/udp open|filtered unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 87.13 seconds
+[2026-01-17 15:32:01] [1;33m[Phase 4] Service-Specific Enumeration[0m
+[2026-01-17 15:32:01] [1;33m[*] Analyzing discovered services for deep enumeration[0m
+[2026-01-17 15:32:01] [1;33m[Phase 5] Vulnerability Assessment[0m
+[2026-01-17 15:32:01] [0;34mRunning: vuln_scan[0m
+[2026-01-17 15:32:01] COMMAND: nmap -sV --script vuln -oA "/mnt/htba/automations/nmap_scan_20260117_153032/scans/10.129.238.52_vuln_scan" 10.129.238.52
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-01-17 15:32 -0500
+Nmap scan report for 10.129.238.52
+Host is up (0.031s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 10.0p2 Debian 8 (protocol 2.0)
+| vulners: 
+|   cpe:/a:openbsd:openssh:10.0p2: 
+|     	OSV:BELL-CVE-2025-61985	3.6	https://vulners.com/osv/OSV:BELL-CVE-2025-61985
+|     	OSV:BELL-CVE-2025-61984	3.6	https://vulners.com/osv/OSV:BELL-CVE-2025-61984
+|     	CVE-2025-61985	3.6	https://vulners.com/cve/CVE-2025-61985
+|     	CVE-2025-61984	3.6	https://vulners.com/cve/CVE-2025-61984
+|     	B7EACB4F-A5CF-5C5A-809F-E03CCE2AB150	3.6	https://vulners.com/githubexploit/B7EACB4F-A5CF-5C5A-809F-E03CCE2AB150	*EXPLOIT*
+|_    	4C6E2182-0E99-5626-83F6-1646DD648C57	3.6	https://vulners.com/githubexploit/4C6E2182-0E99-5626-83F6-1646DD648C57	*EXPLOIT*
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 8.88 seconds
+[2026-01-17 15:32:10] [1;33m[Phase 6] OS Detection[0m
+[2026-01-17 15:32:10] [0;34mRunning: os_detection[0m
+[2026-01-17 15:32:10] COMMAND: nmap -O --osscan-guess -oA "/mnt/htba/automations/nmap_scan_20260117_153032/scans/10.129.238.52_os_detection" 10.129.238.52
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-01-17 15:32 -0500
+Nmap scan report for 10.129.238.52
+Host is up (0.029s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE
+22/tcp open  ssh
+Device type: general purpose
+Running: Linux 4.X|5.X
+OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5
+OS details: Linux 4.15 - 5.19
+Network Distance: 2 hops
+
+OS detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 2.54 seconds
+[2026-01-17 15:32:13] [1;33m[Phase 7] Report Generation[0m
+[2026-01-17 15:32:13] [0;32m[*] Generating penetration test report...[0m
+[2026-01-17 15:32:13] [0;32m[+] Report generated: /mnt/htba/automations/nmap_scan_20260117_153032/pentest_report.md[0m
+[2026-01-17 15:32:13] 
+[2026-01-17 15:32:13] [0;32m╔══════════════════════════════════════════════════════════════════╗[0m
+[2026-01-17 15:32:13] [0;32m║                      SCAN COMPLETE                               ║[0m
+[2026-01-17 15:32:13] [0;32m╚══════════════════════════════════════════════════════════════════╝[0m
+[2026-01-17 15:32:13] 
+[2026-01-17 15:32:13] [1;37mOutput Directory:[0m /mnt/htba/automations/nmap_scan_20260117_153032
+[2026-01-17 15:32:13] 
+[2026-01-17 15:32:13] [1;37mOpen Ports Found:[0m
+[2026-01-17 15:32:13] 
+[2026-01-17 15:32:13] [1;37mDiscovery Statistics:[0m
+[2026-01-17 15:32:13]   Scans Completed:       3
+[2026-01-17 15:32:13]   Domains Discovered:    0
+[2026-01-17 15:32:13]   Virtual Hosts:         0
+[2026-01-17 15:32:13]   Credentials Found:     0
+0
+[2026-01-17 15:32:13]   Users Discovered:      0
+[2026-01-17 15:32:13]   Shares Found:          0
+[2026-01-17 15:32:13] 
+[2026-01-17 15:32:13] 
+[2026-01-17 15:32:13] [1;37mKey Files:[0m
+[2026-01-17 15:32:13]   Log file:       /mnt/htba/automations/nmap_scan_20260117_153032/scan_log.txt
+[2026-01-17 15:32:13]   Commands:       /mnt/htba/automations/nmap_scan_20260117_153032/commands_executed.txt
+[2026-01-17 15:32:13]   Report:         /mnt/htba/automations/nmap_scan_20260117_153032/pentest_report.md
+[2026-01-17 15:32:13] 
+[2026-01-17 15:32:13] [0;36mTo resume this scan later, run:[0m
+[2026-01-17 15:32:13]   /mnt/htba/automations/auto_nmap.sh 10.129.238.52 -o /mnt/htba/automations/nmap_scan_20260117_153032
+[2026-01-17 15:32:13] 
+[2026-01-17 15:32:13] [0;32mAll enumeration complete![0m

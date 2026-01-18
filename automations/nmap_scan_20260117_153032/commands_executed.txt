@@ -1,0 +1,10 @@
+
+[2026-01-17 15:30:32] COMMAND: nmap -sn -PE -PP -PM -PO -oA "/mnt/htba/automations/nmap_scan_20260117_153032/scans/10.129.238.52_host_discovery" 10.129.238.52
+
+[2026-01-17 15:30:33] COMMAND: nmap -sS -sV -T4 -oA "/mnt/htba/automations/nmap_scan_20260117_153032/scans/10.129.238.52_initial_scan" 10.129.238.52
+
+[2026-01-17 15:30:34] COMMAND: nmap -sU --top-ports 100 -T4 -oA "/mnt/htba/automations/nmap_scan_20260117_153032/scans/10.129.238.52_udp_scan" 10.129.238.52
+
+[2026-01-17 15:32:01] COMMAND: nmap -sV --script vuln -oA "/mnt/htba/automations/nmap_scan_20260117_153032/scans/10.129.238.52_vuln_scan" 10.129.238.52
+
+[2026-01-17 15:32:10] COMMAND: nmap -O --osscan-guess -oA "/mnt/htba/automations/nmap_scan_20260117_153032/scans/10.129.238.52_os_detection" 10.129.238.52

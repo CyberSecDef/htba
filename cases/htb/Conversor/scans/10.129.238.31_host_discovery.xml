@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.98 scan initiated Sat Jan 17 15:40:01 2026 as: /usr/lib/nmap/nmap -&#45;privileged -sn -PE -PP -PM -PO -oA /mnt/htba/cases/htb/Conversor/scans//scans/10.129.238.31_host_discovery 10.129.238.31 -->
+<nmaprun scanner="nmap" args="/usr/lib/nmap/nmap -&#45;privileged -sn -PE -PP -PM -PO -oA /mnt/htba/cases/htb/Conversor/scans//scans/10.129.238.31_host_discovery 10.129.238.31" start="1768682401" startstr="Sat Jan 17 15:40:01 2026" version="7.98" xmloutputversion="1.05">
+<verbose level="0"/>
+<debugging level="0"/>
+<host><status state="up" reason="echo-reply" reason_ttl="63"/>
+<address addr="10.129.238.31" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<times srtt="26126" rttvar="26126" to="130630"/>
+</host>
+<runstats><finished time="1768682401" timestr="Sat Jan 17 15:40:01 2026" summary="Nmap done at Sat Jan 17 15:40:01 2026; 1 IP address (1 host up) scanned in 0.60 seconds" elapsed="0.60" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

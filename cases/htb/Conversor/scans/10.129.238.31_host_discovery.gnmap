@@ -1,0 +1,3 @@
+# Nmap 7.98 scan initiated Sat Jan 17 15:40:01 2026 as: /usr/lib/nmap/nmap --privileged -sn -PE -PP -PM -PO -oA /mnt/htba/cases/htb/Conversor/scans//scans/10.129.238.31_host_discovery 10.129.238.31
+Host: 10.129.238.31 ()	Status: Up
+# Nmap done at Sat Jan 17 15:40:01 2026 -- 1 IP address (1 host up) scanned in 0.60 seconds

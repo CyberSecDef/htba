@@ -1,0 +1,4 @@
+# Nmap 7.98 scan initiated Sat Jan 17 15:40:01 2026 as: /usr/lib/nmap/nmap --privileged -sS -sV -T4 -oA /mnt/htba/cases/htb/Conversor/scans//scans/10.129.238.31_initial_scan 10.129.238.31
+Host: 10.129.238.31 ()	Status: Up
+Host: 10.129.238.31 ()	Ports: 22/open/tcp//ssh//OpenSSH 8.9p1 Ubuntu 3ubuntu0.13 (Ubuntu Linux; protocol 2.0)/, 80/open/tcp//http//Apache httpd 2.4.52/	Ignored State: closed (998)
+# Nmap done at Sat Jan 17 15:40:09 2026 -- 1 IP address (1 host up) scanned in 7.72 seconds

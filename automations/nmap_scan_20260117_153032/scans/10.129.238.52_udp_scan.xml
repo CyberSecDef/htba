@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.98 scan initiated Sat Jan 17 15:30:34 2026 as: /usr/lib/nmap/nmap -&#45;privileged -sU -&#45;top-ports 100 -T4 -oA /mnt/htba/automations/nmap_scan_20260117_153032/scans/10.129.238.52_udp_scan 10.129.238.52 -->
+<nmaprun scanner="nmap" args="/usr/lib/nmap/nmap -&#45;privileged -sU -&#45;top-ports 100 -T4 -oA /mnt/htba/automations/nmap_scan_20260117_153032/scans/10.129.238.52_udp_scan 10.129.238.52" start="1768681834" startstr="Sat Jan 17 15:30:34 2026" version="7.98" xmloutputversion="1.05">
+<scaninfo type="udp" protocol="udp" numservices="100" services="7,9,17,19,49,53,67-69,80,88,111,120,123,135-139,158,161-162,177,427,443,445,497,500,514-515,518,520,593,623,626,631,996-999,1022-1023,1025-1030,1433-1434,1645-1646,1701,1718-1719,1812-1813,1900,2000,2048-2049,2222-2223,3283,3456,3703,4444,4500,5000,5060,5353,5632,9200,10000,17185,20031,30718,31337,32768-32769,32771,32815,33281,49152-49154,49156,49181-49182,49185-49186,49188,49190-49194,49200-49201,65024"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="10.129.238.52" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1768681835" endtime="1768681921"><status state="up" reason="reset" reason_ttl="63"/>
+<address addr="10.129.238.52" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="closed" count="80">
+<extrareasons reason="port-unreach" count="80" proto="udp" ports="7,9,17,19,49,53,67,80,88,111,120,123,135-139,158,161-162,443,445,497,514-515,518,520,593,623,626,631,996-997,999,1022-1023,1025-1026,1029,1645-1646,1701,1718-1719,1812-1813,1900,2000,2049,2222-2223,3456,3703,4444,5060,5353,5632,9200,10000,17185,20031,30718,31337,32768-32769,32771,33281,49152-49154,49181,49185-49186,49188,49191-49194,49200,65024"/>
+</extraports>
+<port protocol="udp" portid="68"><state state="open|filtered" reason="no-response" reason_ttl="0"/><service name="dhcpc" method="table" conf="3"/></port>
+<port protocol="udp" portid="69"><state state="open|filtered" reason="no-response" reason_ttl="0"/><service name="tftp" method="table" conf="3"/></port>
+<port protocol="udp" portid="177"><state state="open|filtered" reason="no-response" reason_ttl="0"/><service name="xdmcp" method="table" conf="3"/></port>
+<port protocol="udp" portid="427"><state state="open|filtered" reason="no-response" reason_ttl="0"/><service name="svrloc" method="table" conf="3"/></port>
+<port protocol="udp" portid="500"><state state="open" reason="udp-response" reason_ttl="63"/><service name="isakmp" method="table" conf="3"/></port>
+<port protocol="udp" portid="998"><state state="open|filtered" reason="no-response" reason_ttl="0"/><service name="puparp" method="table" conf="3"/></port>
+<port protocol="udp" portid="1027"><state state="open|filtered" reason="no-response" reason_ttl="0"/></port>
+<port protocol="udp" portid="1028"><state state="open|filtered" reason="no-response" reason_ttl="0"/><service name="ms-lsa" method="table" conf="3"/></port>
+<port protocol="udp" portid="1030"><state state="open|filtered" reason="no-response" reason_ttl="0"/><service name="iad1" method="table" conf="3"/></port>
+<port protocol="udp" portid="1433"><state state="open|filtered" reason="no-response" reason_ttl="0"/><service name="ms-sql-s" method="table" conf="3"/></port>
+<port protocol="udp" portid="1434"><state state="open|filtered" reason="no-response" reason_ttl="0"/><service name="ms-sql-m" method="table" conf="3"/></port>
+<port protocol="udp" portid="2048"><state state="open|filtered" reason="no-response" reason_ttl="0"/><service name="dls-monitor" method="table" conf="3"/></port>
+<port protocol="udp" portid="3283"><state state="open|filtered" reason="no-response" reason_ttl="0"/><service name="netassistant" method="table" conf="3"/></port>
+<port protocol="udp" portid="4500"><state state="open|filtered" reason="no-response" reason_ttl="0"/><service name="nat-t-ike" method="table" conf="3"/></port>
+<port protocol="udp" portid="5000"><state state="open|filtered" reason="no-response" reason_ttl="0"/><service name="upnp" method="table" conf="3"/></port>
+<port protocol="udp" portid="32815"><state state="open|filtered" reason="no-response" reason_ttl="0"/></port>
+<port protocol="udp" portid="49156"><state state="open|filtered" reason="no-response" reason_ttl="0"/></port>
+<port protocol="udp" portid="49182"><state state="open|filtered" reason="no-response" reason_ttl="0"/></port>
+<port protocol="udp" portid="49190"><state state="open|filtered" reason="no-response" reason_ttl="0"/></port>
+<port protocol="udp" portid="49201"><state state="open|filtered" reason="no-response" reason_ttl="0"/></port>
+</ports>
+<times srtt="30273" rttvar="6841" to="100000"/>
+</host>
+<runstats><finished time="1768681921" timestr="Sat Jan 17 15:32:01 2026" summary="Nmap done at Sat Jan 17 15:32:01 2026; 1 IP address (1 host up) scanned in 87.13 seconds" elapsed="87.13" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

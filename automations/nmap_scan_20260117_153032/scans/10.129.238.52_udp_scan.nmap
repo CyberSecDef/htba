@@ -1,0 +1,28 @@
+# Nmap 7.98 scan initiated Sat Jan 17 15:30:34 2026 as: /usr/lib/nmap/nmap --privileged -sU --top-ports 100 -T4 -oA /mnt/htba/automations/nmap_scan_20260117_153032/scans/10.129.238.52_udp_scan 10.129.238.52
+Warning: 10.129.238.52 giving up on port because retransmission cap hit (6).
+Nmap scan report for 10.129.238.52
+Host is up (0.030s latency).
+Not shown: 80 closed udp ports (port-unreach)
+PORT      STATE         SERVICE
+68/udp    open|filtered dhcpc
+69/udp    open|filtered tftp
+177/udp   open|filtered xdmcp
+427/udp   open|filtered svrloc
+500/udp   open          isakmp
+998/udp   open|filtered puparp
+1027/udp  open|filtered unknown
+1028/udp  open|filtered ms-lsa
+1030/udp  open|filtered iad1
+1433/udp  open|filtered ms-sql-s
+1434/udp  open|filtered ms-sql-m
+2048/udp  open|filtered dls-monitor
+3283/udp  open|filtered netassistant
+4500/udp  open|filtered nat-t-ike
+5000/udp  open|filtered upnp
+32815/udp open|filtered unknown
+49156/udp open|filtered unknown
+49182/udp open|filtered unknown
+49190/udp open|filtered unknown
+49201/udp open|filtered unknown
+
+# Nmap done at Sat Jan 17 15:32:01 2026 -- 1 IP address (1 host up) scanned in 87.13 seconds
