@@ -1,0 +1,40 @@
+
+[2026-01-19 10:00:29] COMMAND: curl -I -L -s "http://ftp.soulmate.htb:80"
+
+[2026-01-19 10:00:29] COMMAND: curl -L -s "http://ftp.soulmate.htb:80"
+
+[2026-01-19 10:00:29] COMMAND: curl -s "http://ftp.soulmate.htb:80/robots.txt"
+
+[2026-01-19 10:00:29] COMMAND: curl -s "http://ftp.soulmate.htb:80/sitemap.xml"
+
+[2026-01-19 10:00:30] COMMAND: curl -s "http://ftp.soulmate.htb:80/security.txt"
+
+[2026-01-19 10:00:30] COMMAND: curl -s "http://ftp.soulmate.htb:80/.well-known/security.txt"
+
+[2026-01-19 10:00:30] COMMAND: curl -s "http://ftp.soulmate.htb:80/README.md"
+
+[2026-01-19 10:00:30] COMMAND: curl -s "http://ftp.soulmate.htb:80/.git/config"
+
+[2026-01-19 10:00:30] COMMAND: curl -s "http://ftp.soulmate.htb:80/.env"
+
+[2026-01-19 10:00:30] COMMAND: curl -s "http://ftp.soulmate.htb:80/composer.json"
+
+[2026-01-19 10:00:30] COMMAND: curl -s "http://ftp.soulmate.htb:80/package.json"
+
+[2026-01-19 10:00:30] COMMAND: curl -X OPTIONS -i -s "http://ftp.soulmate.htb:80"
+
+[2026-01-19 10:00:30] COMMAND: finalrecon --url http://ftp.soulmate.htb:80 --full
+
+[2026-01-19 10:03:09] COMMAND: gobuster vhost -u http://ftp.soulmate.htb:80 -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt --append-domain -t 50
+
+[2026-01-19 10:04:31] COMMAND: nikto -h "http://ftp.soulmate.htb:80" -C all
+
+[2026-01-19 10:25:58] COMMAND: python3 ~/.local/bin/ReconSpider.py http://ftp.soulmate.htb:80
+
+[2026-01-19 10:25:59] COMMAND: wafw00f "http://ftp.soulmate.htb:80"
+
+[2026-01-19 10:26:00] COMMAND: whatweb -a 3 -v "http://ftp.soulmate.htb:80"
+
+[2026-01-19 10:26:18] COMMAND: nmap -sn -PE -PP -PM -PO -oA "/mnt/htba/automations/nmap_scan_20260119_100029/scans/ftp.soulmate.htb_host_discovery" ftp.soulmate.htb
+
+[2026-01-19 10:26:19] COMMAND: nmap -sS -sV -p 80 -T4 -oA "/mnt/htba/automations/nmap_scan_20260119_100029/scans/ftp.soulmate.htb_initial_scan" ftp.soulmate.htb

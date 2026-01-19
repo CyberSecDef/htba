@@ -1,4 +1,0 @@
-# Nmap 7.98 scan initiated Sat Jan 17 15:32:10 2026 as: /usr/lib/nmap/nmap --privileged -O --osscan-guess -oA /mnt/htba/automations/nmap_scan_20260117_153032/scans/10.129.238.52_os_detection 10.129.238.52
-Host: 10.129.238.52 ()	Status: Up
-Host: 10.129.238.52 ()	Ports: 22/open/tcp//ssh///	Ignored State: closed (999)	OS: Linux 4.15 - 5.19	Seq Index: 254	IP ID Seq: All zeros
-# Nmap done at Sat Jan 17 15:32:13 2026 -- 1 IP address (1 host up) scanned in 2.54 seconds

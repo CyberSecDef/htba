@@ -1,0 +1,40 @@
+
+[2026-01-19 09:54:41] COMMAND: curl -I -L -s "http://soulmate.htb:80"
+
+[2026-01-19 09:54:41] COMMAND: curl -L -s "http://soulmate.htb:80"
+
+[2026-01-19 09:54:41] COMMAND: curl -s "http://soulmate.htb:80/robots.txt"
+
+[2026-01-19 09:54:41] COMMAND: curl -s "http://soulmate.htb:80/sitemap.xml"
+
+[2026-01-19 09:54:41] COMMAND: curl -s "http://soulmate.htb:80/security.txt"
+
+[2026-01-19 09:54:42] COMMAND: curl -s "http://soulmate.htb:80/.well-known/security.txt"
+
+[2026-01-19 09:54:42] COMMAND: curl -s "http://soulmate.htb:80/README.md"
+
+[2026-01-19 09:54:42] COMMAND: curl -s "http://soulmate.htb:80/.git/config"
+
+[2026-01-19 09:54:42] COMMAND: curl -s "http://soulmate.htb:80/.env"
+
+[2026-01-19 09:54:42] COMMAND: curl -s "http://soulmate.htb:80/composer.json"
+
+[2026-01-19 09:54:42] COMMAND: curl -s "http://soulmate.htb:80/package.json"
+
+[2026-01-19 09:54:42] COMMAND: curl -X OPTIONS -i -s "http://soulmate.htb:80"
+
+[2026-01-19 09:54:42] COMMAND: finalrecon --url http://soulmate.htb:80 --full
+
+[2026-01-19 09:54:52] COMMAND: gobuster vhost -u http://soulmate.htb:80 -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt --append-domain -t 50
+
+[2026-01-19 09:56:12] COMMAND: nikto -h "http://soulmate.htb:80" -C all
+
+[2026-01-19 10:11:10] COMMAND: python3 ~/.local/bin/ReconSpider.py http://soulmate.htb:80
+
+[2026-01-19 10:11:12] COMMAND: wafw00f "http://soulmate.htb:80"
+
+[2026-01-19 10:11:13] COMMAND: whatweb -a 3 -v "http://soulmate.htb:80"
+
+[2026-01-19 10:11:36] COMMAND: nmap -sn -PE -PP -PM -PO -oA "/mnt/htba/automations/nmap_scan_20260119_095441/scans/soulmate.htb_host_discovery" soulmate.htb
+
+[2026-01-19 10:11:39] COMMAND: nmap -sS -sV -p 80 -T4 -oA "/mnt/htba/automations/nmap_scan_20260119_095441/scans/soulmate.htb_initial_scan" soulmate.htb

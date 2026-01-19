@@ -1,0 +1,28 @@
+# Nmap 7.98 scan initiated Mon Jan 19 09:46:48 2026 as: /usr/lib/nmap/nmap --privileged -Pn -sU --top-ports 100 -T4 -oA /mnt/htba/automations/nmap_scan_20260119_094640/scans/10.129.231.23_udp_scan 10.129.231.23
+Warning: 10.129.231.23 giving up on port because retransmission cap hit (6).
+Nmap scan report for soulmate.htb (10.129.231.23)
+Host is up (0.027s latency).
+Not shown: 80 closed udp ports (port-unreach)
+PORT      STATE         SERVICE
+7/udp     open|filtered echo
+9/udp     open|filtered discard
+17/udp    open|filtered qotd
+68/udp    open|filtered dhcpc
+88/udp    open|filtered kerberos-sec
+138/udp   open|filtered netbios-dgm
+518/udp   open|filtered ntalk
+626/udp   open|filtered serialnumberd
+998/udp   open|filtered puparp
+1022/udp  open|filtered exp2
+1026/udp  open|filtered win-rpc
+1719/udp  open|filtered h323gatestat
+1812/udp  open|filtered radius
+5060/udp  open|filtered sip
+30718/udp open|filtered unknown
+32768/udp open|filtered omad
+33281/udp open|filtered unknown
+49156/udp open|filtered unknown
+49185/udp open|filtered unknown
+49192/udp open|filtered unknown
+
+# Nmap done at Mon Jan 19 09:48:16 2026 -- 1 IP address (1 host up) scanned in 87.92 seconds

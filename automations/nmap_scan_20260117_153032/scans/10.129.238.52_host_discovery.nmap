@@ -1,4 +1,0 @@
-# Nmap 7.98 scan initiated Sat Jan 17 15:30:32 2026 as: /usr/lib/nmap/nmap --privileged -sn -PE -PP -PM -PO -oA /mnt/htba/automations/nmap_scan_20260117_153032/scans/10.129.238.52_host_discovery 10.129.238.52
-Nmap scan report for 10.129.238.52
-Host is up (0.026s latency).
-# Nmap done at Sat Jan 17 15:30:33 2026 -- 1 IP address (1 host up) scanned in 0.60 seconds

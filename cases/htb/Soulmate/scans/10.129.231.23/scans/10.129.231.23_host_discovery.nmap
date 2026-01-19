@@ -1,0 +1,4 @@
+# Nmap 7.98 scan initiated Mon Jan 19 09:46:41 2026 as: /usr/lib/nmap/nmap --privileged -Pn -sn -PE -PP -PM -PO -oA /mnt/htba/automations/nmap_scan_20260119_094640/scans/10.129.231.23_host_discovery 10.129.231.23
+Nmap scan report for soulmate.htb (10.129.231.23)
+Host is up.
+# Nmap done at Mon Jan 19 09:46:41 2026 -- 1 IP address (1 host up) scanned in 0.02 seconds

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.98 scan initiated Mon Jan 19 10:26:18 2026 as: /usr/lib/nmap/nmap -&#45;privileged -sn -PE -PP -PM -PO -oA /mnt/htba/automations/nmap_scan_20260119_100029/scans/ftp.soulmate.htb_host_discovery ftp.soulmate.htb -->
+<nmaprun scanner="nmap" args="/usr/lib/nmap/nmap -&#45;privileged -sn -PE -PP -PM -PO -oA /mnt/htba/automations/nmap_scan_20260119_100029/scans/ftp.soulmate.htb_host_discovery ftp.soulmate.htb" start="1768836378" startstr="Mon Jan 19 10:26:18 2026" version="7.98" xmloutputversion="1.05">
+<verbose level="0"/>
+<debugging level="0"/>
+<host><status state="up" reason="echo-reply" reason_ttl="63"/>
+<address addr="10.129.231.23" addrtype="ipv4"/>
+<hostnames>
+<hostname name="ftp.soulmate.htb" type="user"/>
+<hostname name="soulmate.htb" type="PTR"/>
+</hostnames>
+<times srtt="25480" rttvar="25480" to="127400"/>
+</host>
+<runstats><finished time="1768836379" timestr="Mon Jan 19 10:26:19 2026" summary="Nmap done at Mon Jan 19 10:26:19 2026; 1 IP address (1 host up) scanned in 0.15 seconds" elapsed="0.15" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

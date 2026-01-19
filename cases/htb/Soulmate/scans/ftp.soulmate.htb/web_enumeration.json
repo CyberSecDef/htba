@@ -1,0 +1,71 @@
+{
+    "emails": [],
+    "links": [
+        "https://support.google.com/accounts/answer/32050",
+        "https://support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored",
+        "http://ftp.soulmate.htb:80/#/",
+        "http://support.microsoft.com/kb/278835",
+        "https://support.apple.com/kb/PH21411?locale=en_US",
+        "http://ftp.soulmate.htb:80/WebInterface/cookie-policy.html",
+        "javascript:void(0);"
+    ],
+    "external_files": [],
+    "js_files": [
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/utils/api/apis.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/app/components/loader2.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/utils/dom.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/app/templates/resizable.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/app/components/toast.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/app/components/hash-listener.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/webcomponents.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/store.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/utils/common.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/app/components/loader.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/app/components/template2.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/app/login.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/js/thirdparty/purify/purify.min.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/js/thirdparty/Reqwest/reqwest.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/constants.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/utils/ajax.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/app/components/localizations.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/app/components/alert.js?v=11.W.657-2025_03_08_07_52",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/utils/te.js?v=11.W.657-2025_03_08_07_52"
+    ],
+    "form_fields": [
+        "skip_login",
+        "command",
+        "confirm_password",
+        "remember",
+        "username",
+        "password",
+        "new_password",
+        "current_password",
+        "encoded"
+    ],
+    "images": [
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/images/amazon.png",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/images/login.png",
+        "http://ftp.soulmate.htb:80/WebInterface/new-ui/assets/images/microsoft.png"
+    ],
+    "videos": [],
+    "audio": [],
+    "comments": [
+        "<!--GSIGNIN_SCRIPT-->",
+        "<!-- Style Files -->",
+        "<!--AMAZON_COGNITO_SINGIN_SCRIPT-->",
+        "<!--  -->",
+        "<!-- Change Password Form -->",
+        "<!--SAML_SIGNIN_SCRIPT-->",
+        "<!-- Reset password form -->",
+        "<!--MSSIGNIN_SCRIPT-->",
+        "<!--##COVERIMAGEPATH##-->",
+        "<!-- Common CSS -->",
+        "<!-- End Common CSS -->",
+        "<!-- accept cookie dialog -->",
+        "<!--OIDC_SIGNIN_SCRIPT-->",
+        "<!-- <link rel=\"icon\" type=\"image/x-icon\" href=\"/favicon.ico\" />\n\n    <link rel=\"apple-touch-icon\" href=\"/favicon.ico\" /> -->",
+        "<!-- Login form -->",
+        "<!--AZURE_B2C_SINGIN_SCRIPT-->",
+        "<!-- Javascript Files -->"
+    ]
+}

@@ -1,0 +1,4 @@
+# Nmap 7.98 scan initiated Mon Jan 19 10:11:39 2026 as: /usr/lib/nmap/nmap --privileged -sS -sV -p 80 -T4 -oA /mnt/htba/automations/nmap_scan_20260119_095441/scans/soulmate.htb_initial_scan soulmate.htb
+Host: 10.129.231.23 (soulmate.htb)	Status: Up
+Host: 10.129.231.23 (soulmate.htb)	Ports: 80/open/tcp//http//nginx 1.18.0 (Ubuntu)/
+# Nmap done at Mon Jan 19 10:11:45 2026 -- 1 IP address (1 host up) scanned in 6.77 seconds

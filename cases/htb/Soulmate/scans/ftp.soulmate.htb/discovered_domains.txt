@@ -1,0 +1,3 @@
+www.recaptcha.net
+www.w3.org
+ftp.soulmate.htb

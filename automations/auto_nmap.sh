@@ -56,6 +56,12 @@ declare -A DISCOVERED_SHARES
 # Resume tracking
 RESUME_MODE=false
 
+# OS/Ping detection
+HOST_PINGABLE=true
+NMAP_PING_FLAG=""
+DETECTED_OS=""
+DETECTED_TTL=""
+
 ################################################################################
 # Initialization Functions
 ################################################################################
@@ -272,6 +278,113 @@ check_tool() {
     return 0
 }
 
+################################################################################
+# TTL-Based OS Fingerprinting
+################################################################################
+
+# Test whether the host is pingable and extract TTL
+# Returns two lines: 1) nmap command prefix, 2) TTL value (if pingable)
+# $1 is target host
+check_ping() {
+    local target="$1"
+    local kernel="$(uname -s)"
+    local ping_timeout_flag
+    
+    # Set timeout flag based on OS (Linux uses -W, macOS/BSD uses -t)
+    if [[ "${kernel}" == "Linux" ]]; then
+        ping_timeout_flag="-W"
+    else
+        ping_timeout_flag="-t"
+    fi
+    
+    # Test ping with 1 second timeout
+    local ping_test
+    ping_test="$(ping -c 1 ${ping_timeout_flag} 1 "${target}" 2>/dev/null | grep -i ttl)"
+    
+    if [[ -z "${ping_test}" ]]; then
+        # Host not responding to ping - need -Pn flag
+        echo "nmap -Pn"
+        echo ""
+    else
+        # Host is pingable - extract TTL
+        echo "nmap"
+        # Extract TTL value - format varies between IP and hostname
+        if [[ "${target}" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            # IP address format: "64 bytes from IP: icmp_seq=1 ttl=64 time=..."
+            echo "${ping_test}" | sed -n 's/.*ttl=\([0-9]*\).*/\1/ip' | head -1
+        else
+            # Hostname format may have different spacing
+            echo "${ping_test}" | sed -n 's/.*ttl=\([0-9]*\).*/\1/ip' | head -1
+        fi
+    fi
+}
+
+# Determine OS type based on TTL value
+# Common TTL values:
+#   255/254 - Cisco/Network devices, OpenBSD, Oracle
+#   128/127 - Windows
+#   64/63   - Linux, macOS, FreeBSD
+#   32      - Windows 95/98
+# $1 is TTL value
+check_os_by_ttl() {
+    local ttl="$1"
+    
+    # Handle empty TTL
+    if [[ -z "${ttl}" ]] || ! [[ "${ttl}" =~ ^[0-9]+$ ]]; then
+        echo "Unknown (no TTL)"
+        return
+    fi
+    
+    # OS detection based on TTL ranges
+    # TTL decrements by 1 per hop, so we check ranges
+    if (( ttl >= 250 && ttl <= 255 )); then
+        echo "Cisco/Network Device, OpenBSD, or Solaris"
+    elif (( ttl >= 125 && ttl <= 129 )); then
+        echo "Windows"
+    elif (( ttl >= 60 && ttl <= 65 )); then
+        echo "Linux/Unix/macOS"
+    elif (( ttl >= 30 && ttl <= 32 )); then
+        echo "Windows 95/98 (Legacy)"
+    elif (( ttl > 200 )); then
+        echo "Network Device (likely Cisco/Juniper)"
+    elif (( ttl > 100 )); then
+        echo "Windows (possibly distant)"
+    elif (( ttl > 40 )); then
+        echo "Linux/Unix (possibly distant)"
+    else
+        echo "Unknown OS (TTL=${ttl})"
+    fi
+}
+
+# Perform TTL-based OS fingerprint and return results
+# $1 is target host
+# Returns: OS_TYPE|TTL|PINGABLE
+fingerprint_os_by_ttl() {
+    local target="$1"
+    local ping_result
+    local nmap_cmd
+    local ttl_value
+    local os_type
+    local pingable
+    
+    # Get ping results
+    ping_result="$(check_ping "${target}")"
+    nmap_cmd="$(echo "${ping_result}" | head -1)"
+    ttl_value="$(echo "${ping_result}" | tail -1)"
+    
+    # Determine if host is pingable
+    if [[ "${nmap_cmd}" == *"-Pn"* ]]; then
+        pingable="false"
+        os_type="Unknown (host not responding to ICMP)"
+    else
+        pingable="true"
+        os_type="$(check_os_by_ttl "${ttl_value}")"
+    fi
+    
+    # Return pipe-delimited result
+    echo "${os_type}|${ttl_value}|${pingable}|${nmap_cmd}"
+}
+
 add_discovered_domain() {
     local domain="$1"
     if [[ -z "${PROCESSED_DOMAINS[$domain]}" ]]; then
@@ -351,7 +464,13 @@ run_nmap() {
         return
     fi
     
-    local full_command="nmap ${nmap_args} -oA \"${output_file}\" ${target}"
+    # Add -Pn flag if host is not responding to ping (unless already included)
+    local effective_args="${nmap_args}"
+    if [[ "${HOST_PINGABLE}" == "false" ]] && [[ ! "${nmap_args}" =~ "-Pn" ]]; then
+        effective_args="-Pn ${nmap_args}"
+    fi
+    
+    local full_command="nmap ${effective_args} -oA \"${output_file}\" ${target}"
     
     log_message "${BLUE}Running: ${scan_name}${NC}"
     log_command "${full_command}"
@@ -1315,8 +1434,25 @@ enumerate_mssql() {
     local port="$2"
     log_message "${GREEN}[*] Enumerating MSSQL service on port ${port}${NC}"
     
-    run_nmap "mssql_enum_${port}" "${target}" "--script ms-sql-info,ms-sql-config,ms-sql-dump-hashes -p ${port}"
-    run_nmap "mssql_vulns_${port}" "${target}" "--script ms-sql-vuln* -p ${port}"
+    run_nmap "mssql_enum_${port}" "${target}" "--script ms-sql-info,ms-sql-config,ms-sql-dump-hashes,ms-sql-ntlm-info -p ${port}"
+    run_nmap "mssql_vulns_${port}" "${target}" "--script ms-sql-vuln*,ms-sql-empty-password -p ${port}"
+}
+
+enumerate_postgresql() {
+    local target="$1"
+    local port="$2"
+    log_message "${GREEN}[*] Enumerating PostgreSQL service on port ${port}${NC}"
+    
+    run_nmap "postgresql_enum_${port}" "${target}" "--script pgsql-brute -p ${port}"
+}
+
+enumerate_oracle() {
+    local target="$1"
+    local port="$2"
+    log_message "${GREEN}[*] Enumerating Oracle service on port ${port}${NC}"
+    
+    run_nmap "oracle_enum_${port}" "${target}" "--script oracle-sid-brute,oracle-enum-users -p ${port}"
+    run_nmap "oracle_vulns_${port}" "${target}" "--script oracle-vuln* -p ${port}"
 }
 
 enumerate_dns() {
@@ -1340,8 +1476,50 @@ enumerate_smtp() {
     local port="$2"
     log_message "${GREEN}[*] Enumerating SMTP service on port ${port}${NC}"
     
-    run_nmap "smtp_enum_${port}" "${target}" "--script smtp-commands,smtp-enum-users,smtp-open-relay -p ${port}"
+    run_nmap "smtp_enum_${port}" "${target}" "--script smtp-commands,smtp-enum-users,smtp-open-relay,smtp-ntlm-info -p ${port}"
     run_nmap "smtp_vulns_${port}" "${target}" "--script smtp-vuln* -p ${port}"
+}
+
+enumerate_imap() {
+    local target="$1"
+    local port="$2"
+    log_message "${GREEN}[*] Enumerating IMAP service on port ${port}${NC}"
+    
+    run_nmap "imap_enum_${port}" "${target}" "--script imap-capabilities,imap-ntlm-info -p ${port}"
+    
+    # Test with curl for capability enumeration
+    local protocol="imap"
+    if [[ "${port}" == "993" ]]; then
+        protocol="imaps"
+    fi
+    
+    local safe_name="${target//\//_}"
+    local output_file="${OUTPUT_DIR}/logs/${safe_name}_imap_${port}_capabilities.txt"
+    
+    if check_tool "curl"; then
+        run_tool "curl imap capabilities" "${output_file}" "curl -k '${protocol}://${target}:${port}' --user user:pass 2>&1 || true"
+    fi
+}
+
+enumerate_pop3() {
+    local target="$1"
+    local port="$2"
+    log_message "${GREEN}[*] Enumerating POP3 service on port ${port}${NC}"
+    
+    run_nmap "pop3_enum_${port}" "${target}" "--script pop3-capabilities,pop3-ntlm-info -p ${port}"
+    
+    # Test with curl for capability enumeration
+    local protocol="pop3"
+    if [[ "${port}" == "995" ]]; then
+        protocol="pop3s"
+    fi
+    
+    local safe_name="${target//\//_}"
+    local output_file="${OUTPUT_DIR}/logs/${safe_name}_pop3_${port}_capabilities.txt"
+    
+    if check_tool "curl"; then
+        run_tool "curl pop3 capabilities" "${output_file}" "curl -k '${protocol}://${target}:${port}' --user user:pass 2>&1 || true"
+    fi
 }
 
 enumerate_snmp() {
@@ -1378,7 +1556,15 @@ enumerate_ldap() {
     local port="$2"
     log_message "${GREEN}[*] Enumerating LDAP service on port ${port}${NC}"
     
-    run_nmap "ldap_enum_${port}" "${target}" "--script ldap-rootdse,ldap-search -p ${port}"
+    run_nmap "ldap_enum_${port}" "${target}" "--script ldap-rootdse,ldap-search,ldap-brute -p ${port}"
+    
+    # Anonymous bind test with ldapsearch if available
+    local safe_name="${target//\//_}"
+    local output_file="${OUTPUT_DIR}/logs/${safe_name}_ldap_${port}_anon.txt"
+    
+    if check_tool "ldapsearch"; then
+        run_tool "ldapsearch anonymous" "${output_file}" "ldapsearch -x -H ldap://${target}:${port} -s base namingcontexts 2>&1 || true"
+    fi
 }
 
 enumerate_nfs() {
@@ -1414,6 +1600,48 @@ enumerate_telnet() {
     log_message "${GREEN}[*] Enumerating Telnet service on port ${port}${NC}"
     
     run_nmap "telnet_enum_${port}" "${target}" "--script telnet-encryption,telnet-ntlm-info -p ${port}"
+}
+
+enumerate_winrm() {
+    local target="$1"
+    local port="$2"
+    log_message "${GREEN}[*] Enumerating WinRM service on port ${port}${NC}"
+    
+    run_nmap "winrm_enum_${port}" "${target}" "--script http-ntlm-info -p ${port}"
+    
+    # Test with netexec/crackmapexec if available
+    local safe_name="${target//\//_}"
+    local output_file="${OUTPUT_DIR}/logs/${safe_name}_winrm_${port}_test.txt"
+    
+    if check_tool "netexec"; then
+        run_tool "netexec winrm" "${output_file}" "netexec winrm ${target} -u '' -p '' 2>&1 || true"
+    elif check_tool "crackmapexec"; then
+        run_tool "crackmapexec winrm" "${output_file}" "crackmapexec winrm ${target} -u '' -p '' 2>&1 || true"
+    fi
+}
+
+enumerate_kerberos() {
+    local target="$1"
+    local port="$2"
+    log_message "${GREEN}[*] Enumerating Kerberos service on port ${port}${NC}"
+    
+    run_nmap "kerberos_enum_${port}" "${target}" "--script krb5-enum-users -p ${port}"
+}
+
+enumerate_ipmi() {
+    local target="$1"
+    local port="$2"
+    log_message "${GREEN}[*] Enumerating IPMI service on port ${port}${NC}"
+    
+    run_nmap "ipmi_enum_${port}" "${target}" "--script ipmi-version,ipmi-cipher-zero -p ${port}"
+}
+
+enumerate_postgresql() {
+    local target="$1"
+    local port="$2"
+    log_message "${GREEN}[*] Enumerating PostgreSQL service on port ${port}${NC}"
+    
+    run_nmap "postgresql_enum_${port}" "${target}" "--script pgsql-brute -p ${port}"
 }
 
 ################################################################################
@@ -1468,6 +1696,12 @@ perform_service_enumeration() {
             *smtp*)
                 enumerate_smtp "${target}" "${port}"
                 ;;
+            *imap*)
+                enumerate_imap "${target}" "${port}"
+                ;;
+            *pop3*)
+                enumerate_pop3 "${target}" "${port}"
+                ;;
             *snmp*)
                 enumerate_snmp "${target}" "${port}"
                 ;;
@@ -1489,6 +1723,21 @@ perform_service_enumeration() {
                 ;;
             *redis*)
                 enumerate_redis "${target}" "${port}"
+                ;;
+            *postgresql*|*postgres*)
+                enumerate_postgresql "${target}" "${port}"
+                ;;
+            *oracle*)
+                enumerate_oracle "${target}" "${port}"
+                ;;
+            *winrm*|*wsman*)
+                enumerate_winrm "${target}" "${port}"
+                ;;
+            *kerberos*|*krb5*)
+                enumerate_kerberos "${target}" "${port}"
+                ;;
+            *ipmi*)
+                enumerate_ipmi "${target}" "${port}"
                 ;;
             *telnet*)
                 enumerate_telnet "${target}" "${port}"
@@ -1550,6 +1799,13 @@ REPORT_HEADER
     echo "| Target | ${target} |" >> "${REPORT_FILE}"
     echo "| Scan Date | $(date '+%Y-%m-%d %H:%M:%S') |" >> "${REPORT_FILE}"
     echo "| Output Directory | ${OUTPUT_DIR} |" >> "${REPORT_FILE}"
+    echo "| Host Pingable | ${HOST_PINGABLE} |" >> "${REPORT_FILE}"
+    if [[ -n "${DETECTED_TTL}" ]]; then
+        echo "| TTL Value | ${DETECTED_TTL} |" >> "${REPORT_FILE}"
+    fi
+    if [[ -n "${DETECTED_OS}" ]]; then
+        echo "| Probable OS (TTL-based) | ${DETECTED_OS} |" >> "${REPORT_FILE}"
+    fi
     echo "" >> "${REPORT_FILE}"
     
     # Open Ports Section
@@ -1703,13 +1959,15 @@ show_help() {
     echo "  --udp              Include UDP scan"
     echo "  --no-report        Skip report generation"
     echo "  --dir-bruteforce   Enable web directory bruteforcing"
+    echo "  --network          Network scan mode (scan all hosts in subnet)"
     echo ""
     echo "Examples:"
     echo "  $0 192.168.1.1"
     echo "  $0 example.com"
     echo "  $0 example.com:8080"
     echo "  $0 https://api.example.com:8443"
-    echo "  $0 192.168.1.0/24 --full --udp"
+    echo "  $0 192.168.1.0/24 --network          # Discover live hosts"
+    echo "  $0 192.168.1.0/24 --network --full   # Scan all discovered hosts"
     echo "  $0 192.168.1.1 -o /path/to/output    # Resume previous scan"
     echo ""
     echo "Integrated tools:"
@@ -1742,6 +2000,7 @@ main() {
     local include_udp=false
     local generate_report_flag=true
     local dir_bruteforce=false
+    local network_mode=false
     
     # Parse options
     while [[ $# -gt 0 ]]; do
@@ -1768,6 +2027,10 @@ main() {
                 ;;
             --dir-bruteforce)
                 dir_bruteforce=true
+                shift
+                ;;
+            --network)
+                network_mode=true
                 shift
                 ;;
             *)
@@ -1812,7 +2075,123 @@ main() {
         log_message "${CYAN}Resume Mode: ENABLED${NC}"
     fi
     
+    # TTL-based OS fingerprinting
     log_message ""
+    log_message "${CYAN}[*] Performing TTL-based OS fingerprinting...${NC}"
+    local os_fingerprint
+    os_fingerprint="$(fingerprint_os_by_ttl "${scan_target}")"
+    
+    local detected_os=$(echo "${os_fingerprint}" | cut -d'|' -f1)
+    local detected_ttl=$(echo "${os_fingerprint}" | cut -d'|' -f2)
+    local is_pingable=$(echo "${os_fingerprint}" | cut -d'|' -f3)
+    local nmap_prefix=$(echo "${os_fingerprint}" | cut -d'|' -f4)
+    
+    # Set global variables for use in run_nmap
+    DETECTED_OS="${detected_os}"
+    DETECTED_TTL="${detected_ttl}"
+    HOST_PINGABLE="${is_pingable}"
+    
+    if [[ "${is_pingable}" == "true" ]]; then
+        log_message "${GREEN}[+] Host is responding to ICMP (TTL=${detected_ttl})${NC}"
+        log_message "${GREEN}[+] Probable OS: ${detected_os}${NC}"
+    else
+        HOST_PINGABLE="false"
+        log_message "${YELLOW}[!] Host not responding to ICMP ping${NC}"
+        log_message "${YELLOW}[!] Will use -Pn flag for nmap scans${NC}"
+    fi
+    
+    log_message ""
+    
+    # Network mode: scan subnet for live hosts
+    if [[ "${network_mode}" == true ]]; then
+        # Check if target looks like a subnet (contains /)
+        if [[ "${scan_target}" =~ / ]]; then
+            log_message "${YELLOW}[Network Mode] Discovering live hosts in ${scan_target}${NC}"
+            log_message ""
+            
+            # Perform network scan
+            local discovered_hosts
+            discovered_hosts=$(network_scan "${scan_target}")
+            
+            # If --full or --quick specified, scan each discovered host
+            if [[ "${scan_mode}" != "default" ]] && [[ -n "${discovered_hosts}" ]]; then
+                log_message ""
+                log_message "${YELLOW}[Network Mode] Scanning all discovered hosts...${NC}"
+                log_message ""
+                
+                echo "${discovered_hosts}" | while read -r discovered_host; do
+                    if [[ -n "${discovered_host}" ]]; then
+                        log_message "${CYAN}═══════════════════════════════════════════════════════${NC}"
+                        log_message "${CYAN}[*] Scanning discovered host: ${discovered_host}${NC}"
+                        log_message "${CYAN}═══════════════════════════════════════════════════════${NC}"
+                        log_message ""
+                        
+                        # Perform TTL-based OS fingerprinting for each host
+                        local os_fingerprint
+                        os_fingerprint="$(fingerprint_os_by_ttl "${discovered_host}")"
+                        
+                        local detected_os=$(echo "${os_fingerprint}" | cut -d'|' -f1)
+                        local detected_ttl=$(echo "${os_fingerprint}" | cut -d'|' -f2)
+                        local is_pingable=$(echo "${os_fingerprint}" | cut -d'|' -f3)
+                        
+                        DETECTED_OS="${detected_os}"
+                        DETECTED_TTL="${detected_ttl}"
+                        HOST_PINGABLE="${is_pingable}"
+                        
+                        if [[ "${is_pingable}" == "true" ]]; then
+                            log_message "${GREEN}[+] TTL=${detected_ttl} - Probable OS: ${detected_os}${NC}"
+                        else
+                            HOST_PINGABLE="false"
+                        fi
+                        log_message ""
+                        
+                        # Port scan
+                        local port_scan_args=""
+                        case "${scan_mode}" in
+                            quick)
+                                port_scan_args="-sS -sV --top-ports 100 -T4"
+                                ;;
+                            full)
+                                port_scan_args="-sS -sV -p- -T4"
+                                ;;
+                            *)
+                                port_scan_args="-sS -sV -T4"
+                                ;;
+                        esac
+                        
+                        local host_scan_xml=$(run_nmap "initial_scan" "${discovered_host}" "${port_scan_args}")
+                        
+                        # Service enumeration
+                        perform_service_enumeration "${discovered_host}" "${host_scan_xml}"
+                        
+                        log_message ""
+                    fi
+                done
+            fi
+            
+            # Summary
+            log_message ""
+            log_message "${GREEN}╔══════════════════════════════════════════════════════════════════╗${NC}"
+            log_message "${GREEN}║                   NETWORK SCAN COMPLETE                         ║${NC}"
+            log_message "${GREEN}╚══════════════════════════════════════════════════════════════════╝${NC}"
+            log_message ""
+            log_message "${WHITE}Output Directory:${NC} ${OUTPUT_DIR}"
+            log_message "${WHITE}Live Hosts:${NC} ${OUTPUT_DIR}/live_hosts.txt"
+            log_message ""
+            
+            if [[ -f "${OUTPUT_DIR}/live_hosts.txt" ]]; then
+                log_message "${GREEN}Discovered Hosts:${NC}"
+                cat "${OUTPUT_DIR}/live_hosts.txt" | while read -r host; do
+                    log_message "  • ${host}"
+                done
+            fi
+            
+            exit 0
+        else
+            log_message "${RED}[!] Error: --network mode requires a subnet (e.g., 192.168.1.0/24)${NC}"
+            exit 1
+        fi
+    fi
     
     # If a specific URL was provided, run web enumeration immediately
     if has_protocol "${parsed_target}" && has_specific_port "${parsed_target}"; then

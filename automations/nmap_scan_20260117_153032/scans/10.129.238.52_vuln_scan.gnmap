@@ -1,4 +1,0 @@
-# Nmap 7.98 scan initiated Sat Jan 17 15:32:01 2026 as: /usr/lib/nmap/nmap --privileged -sV --script vuln -oA /mnt/htba/automations/nmap_scan_20260117_153032/scans/10.129.238.52_vuln_scan 10.129.238.52
-Host: 10.129.238.52 ()	Status: Up
-Host: 10.129.238.52 ()	Ports: 22/open/tcp//ssh//OpenSSH 10.0p2 Debian 8 (protocol 2.0)/	Ignored State: closed (999)
-# Nmap done at Sat Jan 17 15:32:10 2026 -- 1 IP address (1 host up) scanned in 8.88 seconds

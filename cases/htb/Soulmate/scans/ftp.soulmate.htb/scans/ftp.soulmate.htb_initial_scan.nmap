@@ -1,0 +1,11 @@
+# Nmap 7.98 scan initiated Mon Jan 19 10:26:19 2026 as: /usr/lib/nmap/nmap --privileged -sS -sV -p 80 -T4 -oA /mnt/htba/automations/nmap_scan_20260119_100029/scans/ftp.soulmate.htb_initial_scan ftp.soulmate.htb
+Nmap scan report for ftp.soulmate.htb (10.129.231.23)
+Host is up (0.028s latency).
+rDNS record for 10.129.231.23: soulmate.htb
+
+PORT   STATE SERVICE VERSION
+80/tcp open  http    nginx 1.18.0 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Jan 19 10:26:26 2026 -- 1 IP address (1 host up) scanned in 6.93 seconds

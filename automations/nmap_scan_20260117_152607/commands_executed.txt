@@ -1,8 +1,0 @@
-
-[2026-01-17 15:26:07] COMMAND: nmap -sn -PE -PP -PM -PO -oA "/mnt/htba/automations/nmap_scan_20260117_152607/scans/--help_host_discovery" --help
-
-[2026-01-17 15:26:07] COMMAND: nmap -sS -sV -T4 -oA "/mnt/htba/automations/nmap_scan_20260117_152607/scans/--help_initial_scan" --help
-
-[2026-01-17 15:26:07] COMMAND: nmap -sV --script vuln -oA "/mnt/htba/automations/nmap_scan_20260117_152607/scans/--help_vuln_scan" --help
-
-[2026-01-17 15:26:07] COMMAND: nmap -O --osscan-guess -oA "/mnt/htba/automations/nmap_scan_20260117_152607/scans/--help_os_detection" --help

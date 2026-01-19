@@ -1,0 +1,11 @@
+HTTP/1.1 401 Unauthorized
+Server: nginx/1.18.0 (Ubuntu)
+Date: Mon, 19 Jan 2026 14:59:53 GMT
+Content-Type: text/html;charset=utf-8
+Content-Length: 12
+Connection: keep-alive
+Set-Cookie: currentAuth=jzi4; path=/
+Set-Cookie: CrushAuth=1768834793374_VmYrONMhtC88gplmeWolufMqssjzi4; path=/; HttpOnly
+Pragma: no-cache
+WWW-Authenticate: Basic realm="ftp.soulmate.htb"
+

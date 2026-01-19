@@ -1,0 +1,4 @@
+# Nmap 7.98 scan initiated Mon Jan 19 09:50:26 2026 as: /usr/lib/nmap/nmap --privileged -Pn -O --osscan-guess -oA /mnt/htba/automations/nmap_scan_20260119_094640/scans/10.129.231.23_os_detection 10.129.231.23
+Host: 10.129.231.23 (soulmate.htb)	Status: Up
+Host: 10.129.231.23 (soulmate.htb)	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (998)	OS: Linux 4.15 - 5.19|MikroTik RouterOS 7.2 - 7.5 (Linux 5.6.3)	Seq Index: 263	IP ID Seq: All zeros
+# Nmap done at Mon Jan 19 09:50:28 2026 -- 1 IP address (1 host up) scanned in 2.07 seconds

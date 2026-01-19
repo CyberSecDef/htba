@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Server: nginx/1.18.0 (Ubuntu)
+Date: Mon, 19 Jan 2026 14:59:54 GMT
+Content-Type: text/plain
+Content-Length: 0
+Connection: keep-alive
+Pragma: no-cache
+x-responding-server: sslngn018
+X-dmUser: username
+MS-Author-Via: DAV
+Allow: GET, HEAD, OPTIONS, PUT, POST, COPY, PROPFIND, DELETE, LOCK, MKCOL, MOVE, PROPPATCH, UNLOCK, ACL, TRACE
+DAV: 1,2, access-control, <http://apache.org/dav/propset/fs/1>
+P3P: policyref="/WebInterface/w3c/p3p.xml", CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+

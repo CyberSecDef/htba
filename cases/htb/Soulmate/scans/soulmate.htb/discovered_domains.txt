@@ -1,0 +1,4 @@
+cdnjs.cloudflare.com
+cdn.jsdelivr.net
+images.pexels.com
+soulmate.htb

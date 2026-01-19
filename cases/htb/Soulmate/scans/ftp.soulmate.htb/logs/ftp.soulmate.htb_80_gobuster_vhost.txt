@@ -1,0 +1,22 @@
+===============================================================
+Gobuster v3.8
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                       http://ftp.soulmate.htb:80
+[+] Method:                    GET
+[+] Threads:                   50
+[+] Wordlist:                  /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt
+[+] User Agent:                gobuster/3.8
+[+] Timeout:                   10s
+[+] Append Domain:             true
+[+] Exclude Hostname Length:   false
+===============================================================
+Starting gobuster in VHOST enumeration mode
+===============================================================
+#www.ftp.soulmate.htb:80 Status: 400 [Size: 166]
+#mail.ftp.soulmate.htb:80 Status: 400 [Size: 166]
+#smtp.ftp.soulmate.htb:80 Status: 400 [Size: 166]
+#pop3.ftp.soulmate.htb:80 Status: 400 [Size: 166]
+===============================================================
+Finished
+===============================================================

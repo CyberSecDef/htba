@@ -1,0 +1,4 @@
+# Nmap 7.98 scan initiated Mon Jan 19 09:46:41 2026 as: /usr/lib/nmap/nmap --privileged -Pn -sS -sV -T4 -oA /mnt/htba/automations/nmap_scan_20260119_094640/scans/10.129.231.23_initial_scan 10.129.231.23
+Host: 10.129.231.23 (soulmate.htb)	Status: Up
+Host: 10.129.231.23 (soulmate.htb)	Ports: 22/open/tcp//ssh//OpenSSH 8.9p1 Ubuntu 3ubuntu0.13 (Ubuntu Linux; protocol 2.0)/, 80/open/tcp//http//nginx 1.18.0 (Ubuntu)/	Ignored State: closed (998)
+# Nmap done at Mon Jan 19 09:46:48 2026 -- 1 IP address (1 host up) scanned in 7.10 seconds
