@@ -1,0 +1,4 @@
+# Nmap 7.98 scan initiated Mon Jan 19 16:32:46 2026 as: /usr/lib/nmap/nmap --privileged -Pn -O --osscan-guess -oA /mnt/htba/cases/htb/TwoMillion/scans/10.129.229.66_os_detection 10.129.229.66
+Host: 10.129.229.66 ()	Status: Up
+Host: 10.129.229.66 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (998)	OS: Linux 4.15 - 5.19|MikroTik RouterOS 7.2 - 7.5 (Linux 5.6.3)	Seq Index: 261	IP ID Seq: All zeros
+# Nmap done at Mon Jan 19 16:32:59 2026 -- 1 IP address (1 host up) scanned in 12.58 seconds

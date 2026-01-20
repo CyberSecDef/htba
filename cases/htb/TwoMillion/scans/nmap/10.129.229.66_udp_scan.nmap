@@ -1,0 +1,8 @@
+# Nmap 7.98 scan initiated Mon Jan 19 16:32:05 2026 as: /usr/lib/nmap/nmap --privileged -Pn -sU --top-ports 100 -T4 -oA /mnt/htba/cases/htb/TwoMillion/scans/10.129.229.66_udp_scan 10.129.229.66
+Warning: 10.129.229.66 giving up on port because retransmission cap hit (6).
+Nmap scan report for 10.129.229.66
+Host is up (0.032s latency).
+All 100 scanned ports on 10.129.229.66 are in ignored states.
+Not shown: 69 closed udp ports (port-unreach), 31 open|filtered udp ports (no-response)
+
+# Nmap done at Mon Jan 19 16:33:24 2026 -- 1 IP address (1 host up) scanned in 78.70 seconds

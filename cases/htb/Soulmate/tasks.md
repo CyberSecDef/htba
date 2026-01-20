@@ -78,3 +78,7 @@ researched CrushFTP for vulnerabilities, found:
     obtained access
     researched Erlang commands: https://vuln.be/post/os-command-and-code-execution-in-erlang-and-elixir/
     erlang was running as root.  captured root flag.
+
+
+
+

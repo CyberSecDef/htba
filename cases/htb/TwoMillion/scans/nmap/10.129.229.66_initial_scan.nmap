@@ -1,0 +1,12 @@
+# Nmap 7.98 scan initiated Mon Jan 19 16:23:16 2026 as: /usr/lib/nmap/nmap --privileged -Pn -sS -sV -T4 -oA /mnt/htba/cases/htb/TwoMillion/scans/10.129.229.66_initial_scan nmap 10.129.229.66
+Failed to resolve "nmap".
+Nmap scan report for 10.129.229.66
+Host is up (0.033s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    nginx
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Jan 19 16:23:29 2026 -- 1 IP address (1 host up) scanned in 12.64 seconds

@@ -1,0 +1,4 @@
+# Nmap 7.98 scan initiated Mon Jan 19 16:32:05 2026 as: /usr/lib/nmap/nmap --privileged -Pn -sU --top-ports 100 -T4 -oA /mnt/htba/cases/htb/TwoMillion/scans/10.129.229.66_udp_scan 10.129.229.66
+Host: 10.129.229.66 ()	Status: Up
+Host: 10.129.229.66 ()	Ports: 
+# Nmap done at Mon Jan 19 16:33:24 2026 -- 1 IP address (1 host up) scanned in 78.70 seconds

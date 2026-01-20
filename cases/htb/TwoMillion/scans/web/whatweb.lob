@@ -1,0 +1,88 @@
+[2026-01-19T16:52:26-0500] CMD: whatweb -a 3 -v http://2million.htb:80
+WhatWeb report for [1m[34mhttp://2million.htb:80[0m
+Status    : 200 OK
+Title     : [1m[33mHack The Box :: Penetration Testing Labs[0m
+IP        : 10.129.229.66
+Country   : [1m[31mRESERVED, ZZ[0m
+
+Summary   : [1mCookies[0m[[0m[22mPHPSESSID[0m], [1mEmail[0m[[0m[22minfo@hackthebox.eu[0m], [1mFrame[0m, [1mHTML5[0m, [1mHTTPServer[0m[[1m[36mnginx[0m], [1mMeta-Author[0m[[0m[22mHack The Box[0m], [1mnginx[0m, [1mScript[0m, [1mX-UA-Compatible[0m[[0m[22mIE=edge[0m], [1mYouTube[0m
+
+Detected Plugins:
+[ [1mCookies[0m ]
+	Display the names of cookies in the HTTP headers. The 
+	values are not returned to save on space. 
+
+	String       : [1m[36mPHPSESSID[0m
+
+[ [1mEmail[0m ]
+	Extract email addresses. Find valid email address and 
+	syntactically invalid email addresses from mailto: link 
+	tags. We match syntactically invalid links containing 
+	mailto: to catch anti-spam email addresses, eg. bob at 
+	gmail.com. This uses the simplified email regular 
+	expression from 
+	http://www.regular-expressions.info/email.html for valid 
+	email address matching. 
+
+	String       : [1m[36minfo@hackthebox.eu[0m
+	String       : [1m[36minfo@hackthebox.eu[0m
+
+[ [1mFrame[0m ]
+	This plugin detects instances of frame and iframe HTML 
+	elements. 
+
+
+[ [1mHTML5[0m ]
+	HTML version 5, detected by the doctype declaration 
+
+
+[ [1mHTTPServer[0m ]
+	HTTP server header string. This plugin also attempts to 
+	identify the operating system from the server header. 
+
+	String       : [1m[36mnginx[0m (from server string)
+
+[ [1mMeta-Author[0m ]
+	This plugin retrieves the author name from the meta name 
+	tag - info: 
+	http://www.webmarketingnow.com/tips/meta-tags-uncovered.html
+	#author
+
+	String       : [1m[36mHack The Box[0m
+
+[ [1mScript[0m ]
+	This plugin detects instances of script HTML elements and 
+	returns the script language/type. 
+
+
+[ [1mX-UA-Compatible[0m ]
+	This plugin retrieves the X-UA-Compatible value from the 
+	HTTP header and meta http-equiv tag. - More Info: 
+	http://msdn.microsoft.com/en-us/library/cc817574.aspx 
+
+	String       : [1m[36mIE=edge[0m
+
+[ [1mYouTube[0m ]
+	Embedded YouTube video 
+
+	Website     : http://youtube.com/
+
+[ [1mnginx[0m ]
+	Nginx (Engine-X) is a free, open-source, high-performance 
+	HTTP server and reverse proxy, as well as an IMAP/POP3 
+	proxy server. 
+
+	Website     : http://nginx.net/
+
+HTTP Headers:
+	HTTP/1.1 200 OK
+	Server: nginx
+	Date: Mon, 19 Jan 2026 21:52:27 GMT
+	Content-Type: text/html; charset=UTF-8
+	Transfer-Encoding: chunked
+	Connection: close
+	Set-Cookie: PHPSESSID=ashmp2b1tojle17f85ljv09b5d; path=/
+	Expires: Thu, 19 Nov 1981 08:52:00 GMT
+	Cache-Control: no-store, no-cache, must-revalidate
+	Pragma: no-cache
+	

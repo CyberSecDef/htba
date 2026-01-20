@@ -1,0 +1,212 @@
+client
+dev tun
+proto udp
+remote edge-eu-free-1.2million.htb 1337
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+remote-cert-tls server
+comp-lzo
+verb 3
+data-ciphers-fallback AES-128-CBC
+data-ciphers AES-256-CBC:AES-256-CFB:AES-256-CFB1:AES-256-CFB8:AES-256-OFB:AES-256-GCM
+tls-cipher "DEFAULT:@SECLEVEL=0"
+auth SHA256
+key-direction 1
+<ca>
+-----BEGIN CERTIFICATE-----
+MIIGADCCA+igAwIBAgIUQxzHkNyCAfHzUuoJgKZwCwVNjgIwDQYJKoZIhvcNAQEL
+BQAwgYgxCzAJBgNVBAYTAlVLMQ8wDQYDVQQIDAZMb25kb24xDzANBgNVBAcMBkxv
+bmRvbjETMBEGA1UECgwKSGFja1RoZUJveDEMMAoGA1UECwwDVlBOMREwDwYDVQQD
+DAgybWlsbGlvbjEhMB8GCSqGSIb3DQEJARYSaW5mb0BoYWNrdGhlYm94LmV1MB4X
+DTIzMDUyNjE1MDIzM1oXDTIzMDYyNTE1MDIzM1owgYgxCzAJBgNVBAYTAlVLMQ8w
+DQYDVQQIDAZMb25kb24xDzANBgNVBAcMBkxvbmRvbjETMBEGA1UECgwKSGFja1Ro
+ZUJveDEMMAoGA1UECwwDVlBOMREwDwYDVQQDDAgybWlsbGlvbjEhMB8GCSqGSIb3
+DQEJARYSaW5mb0BoYWNrdGhlYm94LmV1MIICIjANBgkqhkiG9w0BAQEFAAOCAg8A
+MIICCgKCAgEAubFCgYwD7v+eog2KetlST8UGSjt45tKzn9HmQRJeuPYwuuGvDwKS
+JknVtkjFRz8RyXcXZrT4TBGOj5MXefnrFyamLU3hJJySY/zHk5LASoP0Q0cWUX5F
+GFjD/RnehHXTcRMESu0M8N5R6GXWFMSl/OiaNAvuyjezO34nABXQYsqDZNC/Kx10
+XJ4SQREtYcorAxVvC039vOBNBSzAquQopBaCy9X/eH9QUcfPqE8wyjvOvyrRH0Mi
+BXJtZxP35WcsW3gmdsYhvqILPBVfaEZSp0Jl97YN0ea8EExyRa9jdsQ7om3HY7w1
+Q5q3HdyEM5YWBDUh+h6JqNJsMoVwtYfPRdC5+Z/uojC6OIOkd2IZVwzdZyEYJce2
+MIT+8ennvtmJgZBAxIN6NCF/Cquq0ql4aLmo7iST7i8ae8i3u0OyEH5cvGqd54J0
+n+fMPhorjReeD9hrxX4OeIcmQmRBOb4A6LNfY6insXYS101bKzxJrJKoCJBkJdaq
+iHLs5GC+Z0IV7A5bEzPair67MiDjRP3EK6HkyF5FDdtjda5OswoJHIi+s9wubJG7
+qtZvj+D+B76LxNTLUGkY8LtSGNKElkf9fiwNLGVG0rydN9ibIKFOQuc7s7F8Winw
+Sv0EOvh/xkisUhn1dknwt3SPvegc0Iz10//O78MbOS4cFVqRdj2w2jMCAwEAAaNg
+MF4wHQYDVR0OBBYEFHpi3R22/krI4/if+qz0FQyWui6RMB8GA1UdIwQYMBaAFHpi
+3R22/krI4/if+qz0FQyWui6RMA8GA1UdEwEB/wQFMAMBAf8wCwYDVR0PBAQDAgH+
+MA0GCSqGSIb3DQEBCwUAA4ICAQBv+4UixrSkYDMLX3m3Lh1/d1dLpZVDaFuDZTTN
+0tvswhaatTL/SucxoFHpzbz3YrzwHXLABssWko17RgNCk5T0i+5iXKPRG5uUdpbl
+8RzpZKEm5n7kIgC5amStEoFxlC/utqxEFGI/sTx+WrC+OQZ0D9yRkXNGr58vNKwh
+SFd13dJDWVrzrkxXocgg9uWTiVNpd2MLzcrHK93/xIDZ1hrDzHsf9+dsx1PY3UEh
+KkDscM5UUOnGh5ufyAjaRLAVd0/f8ybDU2/GNjTQKY3wunGnBGXgNFT7Dmkk9dWZ
+lm3B3sMoI0jE/24Qiq+GJCK2P1T9GKqLQ3U5WJSSLbh2Sn+6eFVC5wSpHAlp0lZH
+HuO4wH3SvDOKGbUgxTZO4EVcvn7ZSq1VfEDAA70MaQhZzUpe3b5WNuuzw1b+YEsK
+rNfMLQEdGtugMP/mTyAhP/McpdmULIGIxkckfppiVCH+NZbBnLwf/5r8u/3PM2/v
+rNcbDhP3bj7T3htiMLJC1vYpzyLIZIMe5gaiBj38SXklNhbvFqonnoRn+Y6nYGqr
+vLMlFhVCUmrTO/zgqUOp4HTPvnRYVcqtKw3ljZyxJwjyslsHLOgJwGxooiTKwVwF
+pjSzFm5eIlO2rgBUD2YvJJYyKla2n9O/3vvvSAN6n8SNtCgwFRYBM8FJsH8Jap2s
+2iX/ag==
+-----END CERTIFICATE-----
+</ca>
+<cert>
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 1 (0x1)
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=UK, ST=London, L=London, O=HackTheBox, OU=VPN, CN=2million/emailAddress=info@hackthebox.eu
+        Validity
+            Not Before: Jan 19 23:51:42 2026 GMT
+            Not After : Jan 19 23:51:42 2027 GMT
+        Subject: C=GB, ST=London, L=London, O=test2, CN=test2
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:bb:86:17:a1:c5:1f:3d:b6:c6:21:48:74:89:4c:
+                    24:2a:ae:a6:dc:64:c3:87:44:1f:b6:8c:b1:f4:72:
+                    25:a8:e0:c9:9a:4b:dd:c9:fb:b9:08:b2:94:db:f4:
+                    b2:86:7b:b1:6b:d8:67:67:ca:a1:d4:ef:cd:79:43:
+                    c8:f9:67:60:ce:d5:e0:92:5c:6a:9d:a2:94:de:47:
+                    41:ae:27:f8:37:cc:04:5e:40:d9:ef:7b:52:d3:bd:
+                    68:49:3c:85:fb:1d:69:77:24:e3:43:42:ca:08:7e:
+                    aa:a9:be:8e:fa:1c:f7:83:72:6d:48:e7:43:88:65:
+                    c5:ea:d6:0b:a4:d8:46:e3:5b:e5:bf:a8:31:d1:14:
+                    35:0e:b2:17:9f:4d:ee:93:da:0e:ea:38:14:15:44:
+                    76:7f:32:89:ef:da:64:62:e6:62:d3:28:4a:1e:0c:
+                    94:48:1c:6f:a1:76:0c:49:b9:11:24:fb:a2:2d:09:
+                    90:42:8a:5b:e5:d5:af:99:cf:f3:8c:61:b8:f0:2f:
+                    0a:97:8a:c7:1e:fc:09:a8:73:63:d3:22:20:2e:0f:
+                    a7:68:9f:c8:25:8b:76:54:c6:0d:0b:2d:af:ff:49:
+                    e8:ff:9e:ec:69:0a:2c:23:32:b5:a9:80:f3:db:ef:
+                    a2:3c:c6:17:8c:11:70:e4:f6:03:8a:ed:58:dd:a4:
+                    e8:93
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Subject Key Identifier: 
+                F4:0C:37:F6:89:E2:B4:08:92:68:00:5F:F0:B4:51:69:9E:81:32:96
+            X509v3 Authority Key Identifier: 
+                7A:62:DD:1D:B6:FE:4A:C8:E3:F8:9F:FA:AC:F4:15:0C:96:BA:2E:91
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            X509v3 Key Usage: 
+                Digital Signature, Non Repudiation, Key Encipherment, Data Encipherment, Key Agreement, Certificate Sign, CRL Sign
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        4b:d6:b1:e2:16:33:42:25:09:cf:5e:99:92:cb:fd:42:1e:e2:
+        5c:19:cb:d6:4c:95:9d:f1:c9:bf:56:82:26:f9:c1:73:d8:39:
+        3f:72:68:e5:f0:36:54:4b:eb:a4:56:0b:ef:12:f6:4e:ca:1f:
+        d3:fe:e5:23:19:47:a6:f6:1c:ff:a7:13:47:39:14:e7:06:57:
+        9a:d6:b0:8e:20:3b:a3:f0:96:d2:eb:01:e9:ce:85:73:c3:38:
+        80:b3:6e:91:1f:73:68:0f:e9:67:8d:b9:ce:e0:6e:60:8d:66:
+        30:74:47:13:41:c8:15:ba:a6:54:09:85:65:ee:06:ac:5c:90:
+        47:20:64:a1:ae:5a:ba:b3:7c:d5:91:b5:93:b3:9b:34:aa:1e:
+        c9:6b:63:13:63:fe:75:e6:50:12:08:56:db:61:7b:c0:15:19:
+        8d:3f:fc:0b:f1:20:cb:e1:f7:e5:91:77:81:b4:39:a3:78:ce:
+        33:8e:8a:04:db:19:2b:59:14:98:25:6f:6d:25:da:6a:65:81:
+        15:b8:04:bb:c5:e3:2f:cf:78:25:1e:7c:21:ff:9a:92:39:59:
+        ce:16:4f:06:11:41:cf:4b:31:29:91:a6:0c:28:31:3b:67:33:
+        1a:dc:f5:69:13:a4:74:c3:e7:fe:d2:1b:c0:22:1a:4c:06:e7:
+        60:4a:ed:ee:76:a5:a2:5f:d7:ec:0f:cf:b6:75:7e:94:86:8b:
+        0e:f1:2f:95:37:f6:2c:0a:94:a7:3e:6a:43:c1:b7:c4:ea:7a:
+        f2:c7:d9:e5:1b:5e:fe:75:36:81:eb:96:3f:06:9b:dc:86:70:
+        84:b5:cd:99:37:d8:03:97:80:6b:26:26:79:8b:1d:23:db:0d:
+        e0:53:a3:3f:1f:76:d1:c5:0d:f5:89:97:c0:d2:f5:69:fc:9f:
+        52:d1:ce:29:96:22:ce:65:cd:77:e0:b4:4d:44:c0:07:7b:bc:
+        9c:fa:db:e6:6c:67:f3:6c:8d:a0:8b:5d:b9:75:5c:04:63:b3:
+        d8:ff:b5:c6:1a:88:69:fc:47:84:c8:e5:c3:53:50:b5:5f:eb:
+        b3:be:4d:17:b1:e0:f1:20:9b:49:39:f2:d8:4f:b0:18:13:fa:
+        79:c5:98:36:65:4a:35:74:c8:90:43:5f:97:76:c7:b0:c7:1f:
+        ec:8a:b7:ac:7f:f0:1b:b8:9c:5f:31:78:47:f4:d2:e5:42:2a:
+        47:56:e7:a2:72:6f:29:bb:b7:34:26:a1:94:2a:32:ee:e9:b4:
+        fd:67:2e:f3:85:84:08:19:3b:dd:6c:76:fd:6d:3d:a6:e5:a6:
+        89:92:4f:8a:c3:8d:dc:64:db:6b:cd:7b:e0:83:ed:88:cf:7c:
+        50:8d:b8:71:64:79:33:47
+-----BEGIN CERTIFICATE-----
+MIIE3TCCAsWgAwIBAgIBATANBgkqhkiG9w0BAQsFADCBiDELMAkGA1UEBhMCVUsx
+DzANBgNVBAgMBkxvbmRvbjEPMA0GA1UEBwwGTG9uZG9uMRMwEQYDVQQKDApIYWNr
+VGhlQm94MQwwCgYDVQQLDANWUE4xETAPBgNVBAMMCDJtaWxsaW9uMSEwHwYJKoZI
+hvcNAQkBFhJpbmZvQGhhY2t0aGVib3guZXUwHhcNMjYwMTE5MjM1MTQyWhcNMjcw
+MTE5MjM1MTQyWjBPMQswCQYDVQQGEwJHQjEPMA0GA1UECAwGTG9uZG9uMQ8wDQYD
+VQQHDAZMb25kb24xDjAMBgNVBAoMBXRlc3QyMQ4wDAYDVQQDDAV0ZXN0MjCCASIw
+DQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALuGF6HFHz22xiFIdIlMJCquptxk
+w4dEH7aMsfRyJajgyZpL3cn7uQiylNv0soZ7sWvYZ2fKodTvzXlDyPlnYM7V4JJc
+ap2ilN5HQa4n+DfMBF5A2e97UtO9aEk8hfsdaXck40NCygh+qqm+jvoc94NybUjn
+Q4hlxerWC6TYRuNb5b+oMdEUNQ6yF59N7pPaDuo4FBVEdn8yie/aZGLmYtMoSh4M
+lEgcb6F2DEm5EST7oi0JkEKKW+XVr5nP84xhuPAvCpeKxx78CahzY9MiIC4Pp2if
+yCWLdlTGDQstr/9J6P+e7GkKLCMytamA89vvojzGF4wRcOT2A4rtWN2k6JMCAwEA
+AaOBiTCBhjAdBgNVHQ4EFgQU9Aw39onitAiSaABf8LRRaZ6BMpYwHwYDVR0jBBgw
+FoAUemLdHbb+Ssjj+J/6rPQVDJa6LpEwCQYDVR0TBAIwADALBgNVHQ8EBAMCAf4w
+LAYJYIZIAYb4QgENBB8WHU9wZW5TU0wgR2VuZXJhdGVkIENlcnRpZmljYXRlMA0G
+CSqGSIb3DQEBCwUAA4ICAQBL1rHiFjNCJQnPXpmSy/1CHuJcGcvWTJWd8cm/VoIm
++cFz2Dk/cmjl8DZUS+ukVgvvEvZOyh/T/uUjGUem9hz/pxNHORTnBlea1rCOIDuj
+8JbS6wHpzoVzwziAs26RH3NoD+lnjbnO4G5gjWYwdEcTQcgVuqZUCYVl7gasXJBH
+IGShrlq6s3zVkbWTs5s0qh7Ja2MTY/515lASCFbbYXvAFRmNP/wL8SDL4fflkXeB
+tDmjeM4zjooE2xkrWRSYJW9tJdpqZYEVuAS7xeMvz3glHnwh/5qSOVnOFk8GEUHP
+SzEpkaYMKDE7ZzMa3PVpE6R0w+f+0hvAIhpMBudgSu3udqWiX9fsD8+2dX6UhosO
+8S+VN/YsCpSnPmpDwbfE6nryx9nlG17+dTaB65Y/BpvchnCEtc2ZN9gDl4BrJiZ5
+ix0j2w3gU6M/H3bRxQ31iZfA0vVp/J9S0c4pliLOZc134LRNRMAHe7yc+tvmbGfz
+bI2gi125dVwEY7PY/7XGGohp/EeEyOXDU1C1X+uzvk0XseDxIJtJOfLYT7AYE/p5
+xZg2ZUo1dMiQQ1+Xdsewxx/siresf/AbuJxfMXhH9NLlQipHVueicm8pu7c0JqGU
+KjLu6bT9Zy7zhYQIGTvdbHb9bT2m5aaJkk+Kw43cZNtrzXvgg+2Iz3xQjbhxZHkz
+Rw==
+-----END CERTIFICATE-----
+</cert>
+<key>
+-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC7hhehxR89tsYh
+SHSJTCQqrqbcZMOHRB+2jLH0ciWo4MmaS93J+7kIspTb9LKGe7Fr2GdnyqHU7815
+Q8j5Z2DO1eCSXGqdopTeR0GuJ/g3zAReQNnve1LTvWhJPIX7HWl3JONDQsoIfqqp
+vo76HPeDcm1I50OIZcXq1guk2EbjW+W/qDHRFDUOshefTe6T2g7qOBQVRHZ/Monv
+2mRi5mLTKEoeDJRIHG+hdgxJuREk+6ItCZBCilvl1a+Zz/OMYbjwLwqXisce/Amo
+c2PTIiAuD6don8gli3ZUxg0LLa//Sej/nuxpCiwjMrWpgPPb76I8xheMEXDk9gOK
+7VjdpOiTAgMBAAECggEAHJA3wEnU0OMqub4eFh21cpTo0LA+gjeTtwwmPQw4BUm8
+G5cLwOzpSdRdzUUv/kEQDNPJKGuai+M9AogbMDYZblfwnYqbKMivcU4cSIlJC0K1
+tZ+eMpavzpXOsT0ZUV8xBddmEIQ3XuTgXPusLpfD8c83qz+irz+FTphs7J6O6al+
+dPF495Mu7/YlqKdP+404zVtz1rNRPCOp+EIGr49yV6dXsfkwWi7KdnhMZbK/VcMs
+DNTjRD2fbBvnIRNNsUVuCH73S0ERN4ZO0mqFCb+JwN8hcIPlEL0kThd22mnY3n3d
+nTjTPfZQ+4tVbGoU2dR3vXEYvwxGlI9ACfZjVe+lSQKBgQDPsL+ntvJ3M3LRAHEP
+kup4WbSlB9jfGp5kj8dzo/6GGN73s1F2i5Hb0S+LSshGirz0t6+uQ7Q6xn3Wadt5
+YSXY0X0B2VjaKCMvxtw1pms6a+ZAM8BvOQRzWhY5g0ZG2yclIkFgx2yGIaOrd1Do
+aXrTvAXXT7sDO0Uv6UsuPeKuCQKBgQDnJH2Gkx7X67WCLE7OzLEo0LIt7F9zP17d
+r+GGMGTLMmOzmlf29vgxVJ82gqlrveqrdUAHvc3KZflASwmnLHl6v2Li+af+0tQF
+XoLEqi4YR/rMZcF+oZ0G0erZcfWpebg1OcP1jNRCubtuk5mAojYxYQuXO3PJ2Pv2
+sf8sPoOIuwKBgFtwoBEBNSNSHXzzStPmhSDTrfryx4MCvzXbL580Vr1HefNombct
+n9w970bOd/rG3oaH0OtSl6lA9upN1PlN0lHxea40uS/jeApy7UUZriAcnVUq89CE
+M/dtdFeB+pD7r/JjcJFhe+BaMyss7wxEVHWgVJoFWnsDv2RmvFjxmjmxAoGBANER
+UnC89bL7wothpE6tGrj+O4wKNzO46AfApE6Jy0F37HJxcosxS8Di97eIa9HGUFKR
+lT7rUQ53OgILXUnWknKSVdFTW77D136bw9A61cKkqJbkmyX87FlU2gWgbEHElPef
+rj2WCg/oiz4zRy7wifAUBTXfUpYKK60xxsqwKK0tAoGBAMjx2SAdoOZ9q0+KLwHz
+daQl9XWqYfKY5er7XoS18zo7kb/reyRxGWND4240/P30qlmMvMFe0LC2LCUiXJBf
+PUlfvL2Dxw2WonFIBotXGZ4f144thlOav4NUQyrgA2WxWYWk699FhnWkzcXMbJp5
+01Z37b4GwA/95zz5TreW/fmg
+-----END PRIVATE KEY-----
+</key>
+<tls-auth>
+#
+# 2048 bit OpenVPN static key
+#
+-----BEGIN OpenVPN Static key V1-----
+45df64cdd950c711636abdb1f78c058c
+358730b4f3bcb119b03e43c46a856444
+05e96eaed55755e3eef41cd21538d041
+079c0fc8312517d851195139eceb458b
+f8ff28ba7d46ef9ce65f13e0e259e5e3
+068a47535cd80980483a64d16b7d10ca
+574bb34c7ad1490ca61d1f45e5987e26
+7952930b85327879cc0333bb96999abe
+2d30e4b592890149836d0f1eacd2cb8c
+a67776f332ec962bc22051deb9a94a78
+2b51bafe2da61c3dc68bbdd39fa35633
+e511535e57174665a2495df74f186a83
+479944660ba924c91dd9b00f61bc09f5
+2fe7039aa114309111580bc5c910b4ac
+c9efb55a3f0853e4b6244e3939972ff6
+bfd36c19a809981c06a91882b6800549
+-----END OpenVPN Static key V1-----
+</tls-auth>

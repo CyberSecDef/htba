@@ -1,0 +1,4 @@
+# Nmap 7.98 scan initiated Mon Jan 19 16:38:23 2026 as: /usr/lib/nmap/nmap --privileged -sn -PE -PP -PM -PO -oA /mnt/htba/cases/htb/TwoMillion/scans/2million.htb_host_discovery 2million.htb
+Nmap scan report for 2million.htb (10.129.229.66)
+Host is up (0.027s latency).
+# Nmap done at Mon Jan 19 16:38:24 2026 -- 1 IP address (1 host up) scanned in 0.08 seconds

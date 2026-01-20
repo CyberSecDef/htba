@@ -1,0 +1,4 @@
+# Nmap 7.98 scan initiated Mon Jan 19 16:40:27 2026 as: /usr/lib/nmap/nmap --privileged -sS -sV -p 80 -T4 -oA /mnt/htba/cases/htb/TwoMillion/scans/2million.htb_initial_scan 2million.htb
+Host: 10.129.229.66 (2million.htb)	Status: Up
+Host: 10.129.229.66 (2million.htb)	Ports: 80/open/tcp//http//nginx/
+# Nmap done at Mon Jan 19 16:40:34 2026 -- 1 IP address (1 host up) scanned in 6.89 seconds
